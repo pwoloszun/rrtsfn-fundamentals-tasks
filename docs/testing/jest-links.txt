@@ -1,0 +1,10 @@
+====== Jest ======
+  # debugging Jest
+  https://jestjs.io/docs/troubleshooting#debugging-in-vs-code
+
+  # DOM custom matchers:
+  https://github.com/testing-library/jest-dom#custom-matchers
+
+  # cheat sheets:
+  https://github.com/sapegin/jest-cheat-sheet
+  https://devhints.io/jest

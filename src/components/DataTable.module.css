@@ -1,0 +1,42 @@
+.list {
+  margin: 0 10px 10px;
+  padding: 10px 0;
+  display: block;
+}
+
+.list table {
+  width: 100%;
+  border: 1px solid #777;
+}
+
+.list .list-item:nth-child(even) {
+  background-color: #ececec;
+}
+
+.list .list-item:hover {
+  cursor: pointer;
+  background-color: #e7e7e7;
+}
+
+.list .list-item:hover:nth-child(odd) {
+  background-color: #b7b7b7;
+}
+
+.list .list-item.highlighted,
+.list .list-item.highlighted:hover:nth-child(odd) {
+  background-color: paleturquoise;
+}
+
+.list .list-header tr {
+  border-bottom: 1px solid #000;
+  background-color: #e7e7e7;
+}
+
+.list .list-header a {
+  color: #3388ff;
+  cursor: pointer;
+}
+
+.list .list-header .selected {
+  font-weight: bold;
+}

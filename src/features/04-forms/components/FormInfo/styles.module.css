@@ -1,0 +1,17 @@
+.formInfo {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+
+  margin: 0 auto;
+  border: 2px solid #000;
+  padding: 22px;
+  background-color: #fff;
+}
+
+.formInfo h6,
+.formInfo h5 {
+  margin: 0 auto;
+  padding: 0;
+}

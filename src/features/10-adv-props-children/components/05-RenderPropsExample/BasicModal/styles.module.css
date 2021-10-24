@@ -1,0 +1,16 @@
+:local(.basicModal) {
+  padding: 12px;
+  border: 1px solid #000;
+  width: 80%;
+  position: absolute;
+  top: 8px;
+  left: 10%;
+}
+
+:local(.success) {
+  background-color: #0c0;
+}
+
+:local(.failure) {
+  background-color: #c00;
+}

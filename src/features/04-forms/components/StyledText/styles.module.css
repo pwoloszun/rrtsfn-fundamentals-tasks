@@ -1,0 +1,18 @@
+.styledText {
+  border: 1px solid #000;
+  padding: 18px;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.styledText .makeBold {
+  font-weight: bold;
+}
+
+.styledText .addUnderline {
+  text-decoration: underline;
+}
+
+.styledText .myItalic {
+  font-style: italic;
+}

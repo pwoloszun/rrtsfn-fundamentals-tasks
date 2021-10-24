@@ -1,0 +1,9 @@
+====== ARIA roles ======
+  # ARIA roles
+  https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles
+
+  # using ARIA: roles & states
+  https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques
+
+  # accessible name
+  https://www.tpgi.com/what-is-an-accessible-name/

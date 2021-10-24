@@ -1,0 +1,9 @@
+====== testing-library ======
+  # testing-library - types of queries:
+  https://testing-library.com/docs/queries/about#types-of-queries
+
+  # use events:
+  https://testing-library.com/docs/ecosystem-user-event/
+
+  # cheat sheet:
+  https://testing-library.com/docs/react-testing-library/cheatsheet/

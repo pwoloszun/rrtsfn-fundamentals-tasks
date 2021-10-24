@@ -1,0 +1,15 @@
+:local(.parentChild) {
+  padding: 8px;
+  background-color: lightcoral;
+}
+
+:local(.parentChild input) {
+  border: 1px solid #000;
+  padding: 3px;
+}
+
+:local(.parentChild button) {
+  background-color: #fff;
+  border: 1px solid #000;
+  padding: 6px 12px;
+}

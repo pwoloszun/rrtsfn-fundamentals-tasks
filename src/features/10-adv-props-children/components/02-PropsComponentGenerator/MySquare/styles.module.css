@@ -1,0 +1,7 @@
+:local(.mySquare) {
+  width: 24px;
+  height: 24px;
+  margin: 2px;
+  background-color: #3388ff;
+  float: left;
+}

@@ -1,0 +1,14 @@
+.tempChange {
+  color: #fff;
+  background-color: darkgray;
+  padding: 0.25em 0.5em;
+  font-weight: bold;
+}
+
+.tempChange.tempRisen {
+  background-color: #f00;
+}
+
+.tempChange.tempDropped {
+  background-color: #00f;
+}

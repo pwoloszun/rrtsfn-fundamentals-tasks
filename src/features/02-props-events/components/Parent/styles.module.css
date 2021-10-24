@@ -1,0 +1,9 @@
+:local(.parent) {
+  padding: 18px;
+  background-color: aquamarine;
+}
+
+:local(.parent input) {
+  border: 1px solid #000;
+  padding: 3px;
+}

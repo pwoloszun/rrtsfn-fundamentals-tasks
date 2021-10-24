@@ -1,0 +1,26 @@
+.myForm {
+  position: relative;
+  padding: 12px;
+  border: 1px solid #000;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.myForm input,
+.myForm input[type='text'],
+.myForm input[type='number'],
+.myForm input[type='password'],
+.myForm input[type='checkbox'],
+.myForm select {
+  display: inline;
+  margin: 4px;
+}
+
+.myForm select {
+  width: 30%;
+}
+
+.myForm div {
+  margin: 0 0 12px;
+}

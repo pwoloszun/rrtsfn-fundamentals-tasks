@@ -1,0 +1,21 @@
+:local(.myExample) {
+  padding: 12px;
+  border: 1px solid #000;
+  background-color: #dddddd;
+}
+
+:local(.success) {
+  background-color: #0c0;
+}
+
+:local(.failure) {
+  background-color: #c00;
+}
+
+:local(.modalContainer) {
+  width: 640px;
+  height: 200px;
+  position: relative;
+  border: 1px solid #000;
+  background-color: #fff;
+}

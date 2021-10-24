@@ -1,0 +1,9 @@
+.carConfigurator {
+  border: 1px solid #000;
+  padding: 8px;
+  background-color: deepskyblue;
+}
+
+.chosenConfig {
+  padding: 8px;
+}

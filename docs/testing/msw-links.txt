@@ -1,0 +1,3 @@
+====== msw ======
+  # msw server example
+  https://mswjs.io/docs/api/setup-server#examples

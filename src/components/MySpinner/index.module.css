@@ -1,0 +1,8 @@
+.mySpinner {
+  display: block;
+  margin: 0 auto;
+}
+
+.mySpinner .spinnerText {
+  margin: 0 0.5em;
+}

@@ -1,0 +1,6 @@
+:local(.fancyModal) {
+  width: 80%;
+  position: absolute;
+  top: 8px;
+  left: 10%;
+}
