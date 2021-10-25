@@ -1,16 +1,21 @@
 /*eslint @typescript-eslint/no-unused-vars: 'off'*/
 import React from 'react';
+import { useState } from 'react';
+import { TodoDto, TodoDtoParams } from 'src/api/dto/todo-dto';
 
 import TodoList from './components/TodoList';
-// import TodoForm from './components/TodoForm';
 import { TODOS_DATA } from './data/todos-data';
 
-import { TodoDtoParams, TodoDto } from 'src/api/dto/todo-dto';
-
+// import TodoForm from './components/TodoForm';
 export default function TodosPage(): React.ReactElement {
+  const [todos, setTodos] = useState(TODOS_DATA);
+
   // TODO: init local state
   const handleRemoveClick = (todo: TodoDto) => {
-    // TODO
+    setTodos((currTodos) => {
+      const nextTodos = currTodos.filter((td) => td.id !== todo.id);
+      return nextTodos;
+    });
   };
   const handleCreateClick = ({ title, description }: TodoDtoParams) => {
     // TODO
@@ -23,7 +28,7 @@ export default function TodosPage(): React.ReactElement {
       <div>
 
         <TodoList
-          todos={TODOS_DATA}
+          todos={todos}
           onRemoveClick={handleRemoveClick}
         />
 

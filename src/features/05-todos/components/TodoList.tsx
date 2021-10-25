@@ -9,12 +9,16 @@ interface TodoListProps {
 }
 
 export default function TodoList(props: TodoListProps): React.ReactElement {
-  const { todos } = props;
+  const { todos, onRemoveClick } = props;
 
   return (
     <ListGroup>
       {
         todos.map((todo) => {
+          const removeClickHandler = () => {
+            onRemoveClick(todo);
+          };
+
           return (
             <ListGroup.Item key={todo.id}>
               <Row>
@@ -24,6 +28,7 @@ export default function TodoList(props: TodoListProps): React.ReactElement {
                 </Col>
                 <Col sm={4}>
                   <Button
+                    onClick={removeClickHandler}
                     variant="danger"
                     size="sm">
                     Remove
