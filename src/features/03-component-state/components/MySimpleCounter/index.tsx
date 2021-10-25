@@ -19,10 +19,10 @@ import { produce } from 'immer';
 
 
 // pseudo code - what happens under the hood
-const _state = {
-  0: 210, // piece of state
-  1: { name: 'bob', age: 123 }
-};
+// const _state = {
+//   0: 210, // piece of state
+//   1: { name: 'bob', age: 123 }
+// };
 
 export default function MySimpleCounter(): React.ReactElement {
   console.log('RENDERED ');
@@ -31,12 +31,6 @@ export default function MySimpleCounter(): React.ReactElement {
   const [person, setPerson] = useState({
     name: 'bob',
     age: 123,
-    myChildren: [
-      {
-        name: 'ed',
-        friends: [{ name: 'kate' }]
-      }
-    ]
   }); // local component state
 
   const incrementHandler = () => {
@@ -53,7 +47,6 @@ export default function MySimpleCounter(): React.ReactElement {
       });
       return nextPerson;
     });
-
   };
 
   return (
