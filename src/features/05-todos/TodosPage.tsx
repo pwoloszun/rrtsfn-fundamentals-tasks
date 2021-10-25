@@ -24,7 +24,7 @@ export default function TodosPage(): React.ReactElement {
 
         <TodoList
           todos={TODOS_DATA}
-        // onRemoveClick={handleRemoveClick}
+          onRemoveClick={handleRemoveClick}
         />
 
       </div>
