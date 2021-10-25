@@ -15,14 +15,20 @@ interface OptionPickerProps {
 
 // TODO: props
 export default function OptionPicker(props: OptionPickerProps): React.ReactElement {
-  const { label, options } = props;
+  const { label, options, onOptionSelect } = props;
   return (
     <div className={styles.optionPicker}>
       <span>{label}</span>
       {
         options.map((op) => {
+          const btnClickHandler = () => {
+            onOptionSelect(op);
+          };
+
           return (
-            <button key={op.id}>{op.value}</button>
+            <button key={op.id} onClick={btnClickHandler}>
+              {op.value}
+            </button>
           );
         })
       }
