@@ -35,6 +35,7 @@ export default function CarConfigurator(): React.ReactElement {
         <OptionPicker
           label="Choose engine type"
           options={ENGINES_DICT}
+          onOptionSelect={}
         />
 
         <OptionPicker

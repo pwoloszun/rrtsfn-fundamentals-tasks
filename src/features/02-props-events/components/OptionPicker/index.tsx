@@ -10,7 +10,7 @@ export interface Option {
 interface OptionPickerProps {
   label: string;
   options: Option[];
-  // onOptionSelect: (option: Option) => void;
+  onOptionSelect: (option: Option) => void;
 }
 
 // TODO: props
