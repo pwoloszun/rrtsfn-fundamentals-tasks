@@ -1,26 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from './index.module.css';
 
+const selectCssClass = (isVisible: boolean) => isVisible ? 'btn btn-danger' : 'btn btn-primary';
+
 export default function MyToggleText(): React.ReactElement {
-  // TODO: init component LOCAL state
-  // TODO css classes: 'btn-danger', 'btn-primary'
+  // primary aka essential STATE
+  const [isVisible, setIsVisible] = useState(true);
+
+  // computed aka derived STATE
+  const cssClass = selectCssClass(isVisible);
+  const btnText = isVisible ? 'Toggle Show' : 'Toggle Hide';
+
+  const toggleHandler = () => {
+    setIsVisible((currIsVisible) => !currIsVisible);
+  };
 
   return (
     <div className={styles.myToggleText}>
-      <button className="btn">
-        Toggle TODO
-        </button>
+      <button onClick={toggleHandler} className={cssClass}>
+        {btnText}
+      </button>
       <hr />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus nisi eu sapien finibus elementum. Integer
-        porta mi orci, congue malesuada velit varius eu. Fusce quis ante fermentum, tempus nisi nec, luctus neque.
-        Maecenas in laoreet ante, aliquet rutrum justo. Phasellus placerat felis erat, et dapibus libero mollis eget.
-        Nunc nec dictum lacus. Fusce congue nisi sit amet tristique vestibulum. Aenean congue diam eu lectus laoreet
-        molestie. Morbi leo odio, gravida quis hendrerit non, volutpat eget quam. Nulla sagittis lacus sit amet diam
-        lacinia sodales. In fermentum elementum interdum. Donec sit amet venenatis augue. Aliquam suscipit sagittis
-        mauris sed vestibulum. Donec facilisis vestibulum venenatis. Proin venenatis libero vel feugiat ultrices.
+      {
+        isVisible && <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus nisi eu sapien finibus elementum. Integer
+          porta mi orci, congue malesuada velit varius eu. Fusce quis ante fermentum, tempus nisi nec, luctus neque.
+          Maecenas in laoreet ante, aliquet rutrum justo. Phasellus placerat felis erat, et dapibus libero mollis eget.
+          Nunc nec dictum lacus. Fusce congue nisi sit amet tristique vestibulum. Aenean congue diam eu lectus laoreet
+          molestie. Morbi leo odio, gravida quis hendrerit non, volutpat eget quam. Nulla sagittis lacus sit amet diam
+          lacinia sodales. In fermentum elementum interdum. Donec sit amet venenatis augue. Aliquam suscipit sagittis
+          mauris sed vestibulum. Donec facilisis vestibulum venenatis. Proin venenatis libero vel feugiat ultrices.
         </p>
+      }
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import styles from './styles.module.css';
 import { produce } from 'immer';
+import { cloneDeep, cloneDeepWith } from 'lodash';
 
 // const myArr = [1, 2, 3, 4];
 
@@ -19,10 +20,58 @@ import { produce } from 'immer';
 
 
 // pseudo code - what happens under the hood
-// const _state = {
-//   0: 210, // piece of state
-//   1: { name: 'bob', age: 123 }
+const _state = {
+  0: 210, // piece of state
+  1: { name: 'bob', age: 123 }
+};
+
+
+
+
+// const person = {
+//   name: 'bob',
+//   age: 123,
+//   hhhGgg: [{ age: 123456 }],
+//   myChildren: [
+//     {
+//       name: 'ed',
+//       friends: [
+//         { name: 'kate' }
+//       ]
+//     }
+//   ]
 // };
+
+// person.myChildren[0].friends[0].name = 'smth';
+
+// const personCpy2 = cloneDeep(perosn);
+// personCpy2.myChildren[0].friends[0].name = 'smth';
+
+// const personCpy3 = produce(person, (draft) => {
+//   draft.myChildren[0].friends[0].name = 'smth';
+// });
+
+
+
+
+// const personCpy = {
+//   ...person,
+//   myChildren: [
+//     ...person.myChildren,
+//   ]
+// }
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default function MySimpleCounter(): React.ReactElement {
   console.log('RENDERED ');
@@ -31,14 +80,20 @@ export default function MySimpleCounter(): React.ReactElement {
   const [person, setPerson] = useState({
     name: 'bob',
     age: 123,
+    myChildren: [
+      {
+        name: 'ed',
+        friends: [{ name: 'kate' }]
+      }
+    ]
   }); // local component state
 
   const incrementHandler = () => {
-    setValue((currValue) => {
-      const nextValue = currValue + 10;
-      return nextValue
-    });
-    setValue((currValue) => currValue + 10);
+    // setValue((currValue) => {
+    //   const nextValue = currValue + 10;
+    //   return nextValue
+    // });
+    // setValue((currValue) => currValue + 10);
 
     setPerson((currPerson) => {
       // const nextPerson = { ...person, name: `Batman ${Math.random()}` };
@@ -47,6 +102,7 @@ export default function MySimpleCounter(): React.ReactElement {
       });
       return nextPerson;
     });
+
   };
 
   return (
