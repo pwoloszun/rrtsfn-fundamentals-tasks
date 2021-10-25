@@ -1,17 +1,35 @@
 import React from 'react';
 
-// import styles from './styles.module.css';
+import gggHhh from './styles.module.css';
 
 export default function HelloWorld(): React.ReactElement {
-  // JSX element !!
+  const person = {
+    name: `Bob ${Math.random()}`
+  };
+
   return (
-    <div>
-      <h3>
-        Hello!!!
-        </h3>
-    </div>
+    <h3 id="my-smth" className={gggHhh.aaaBbb + ' aaaBbb'}>
+      Hello 22!!!
+      {person.name.toUpperCase() + ' smith'}
+    </h3>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const element = (
 //   <h1 className="greeting">

@@ -8,6 +8,9 @@ export default function ComponentBasics() {
     <div>
       <h3>Component Basics</h3>
       <HelloWorld />
+      <HelloWorld />
+      <HelloWorld />
+
       <hr />
       {/* TODO: create PersonalData component instance  */}
     </div>
