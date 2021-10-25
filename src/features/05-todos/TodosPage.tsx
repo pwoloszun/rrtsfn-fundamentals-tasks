@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { TodoDto, TodoDtoParams } from 'src/api/dto/todo-dto';
 
 import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
 import { TODOS_DATA } from './data/todos-data';
 
-// import TodoForm from './components/TodoForm';
 export default function TodosPage(): React.ReactElement {
   const [todos, setTodos] = useState(TODOS_DATA);
 
@@ -19,6 +19,7 @@ export default function TodosPage(): React.ReactElement {
   };
   const handleCreateClick = ({ title, description }: TodoDtoParams) => {
     // TODO
+    const id = Math.random();
   };
 
   // TODO
@@ -35,11 +36,11 @@ export default function TodosPage(): React.ReactElement {
       </div>
       <hr />
       <div>
-        {/* 
+
         <TodoForm
           onCreateClick={handleCreateClick}
         />
- */}
+
       </div>
     </div>
   );
