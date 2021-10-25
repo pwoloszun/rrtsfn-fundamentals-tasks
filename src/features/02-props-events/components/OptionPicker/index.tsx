@@ -14,10 +14,18 @@ interface OptionPickerProps {
 }
 
 // TODO: props
-export default function OptionPicker(): React.ReactElement {
+export default function OptionPicker(props: OptionPickerProps): React.ReactElement {
+  const { label, options } = props;
   return (
     <div className={styles.optionPicker}>
-      <span>TODO_PLACEHOLDER</span>
+      <span>{label}</span>
+      {
+        options.map((op) => {
+          return (
+            <button key={op.id}>{op.value}</button>
+          );
+        })
+      }
     </div>
   );
 }

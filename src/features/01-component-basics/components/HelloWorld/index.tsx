@@ -22,6 +22,7 @@ export default function HelloWorld(): React.ReactElement {
         Hello 22!!!
         {person.name.toUpperCase() + ' smith'}
       </h3>
+
       <ul>
         {
           people.map((personEntity) => {
