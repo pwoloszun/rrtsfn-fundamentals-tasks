@@ -7,11 +7,6 @@ import EntitiesSimpleList from '../../components/EntitiesSimpleList';
 import useAsync from '../../hooks/useAsync';
 
 export default function MyDashboard() {
-  // TODO 1
-  // const realEstates: RealEstate[] = [];
-  // const isLoading = true;;
-  // const error = null;
-
   const [
     realEstates,
     isRealEstatesLoading,
