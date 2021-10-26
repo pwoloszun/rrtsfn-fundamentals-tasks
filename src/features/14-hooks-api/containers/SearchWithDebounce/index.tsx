@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Card, Form } from 'react-bootstrap';
 
 import useDebounce from '../../hooks/useDebounce';
@@ -6,7 +6,9 @@ import useDebounce from '../../hooks/useDebounce';
 export default function SearchWithDebounce() {
   const [searchTerm, setSearchTerm] = useDebounce('', 1200);
 
-  console.log(`searchHandler`, searchTerm);
+  useEffect(() => {
+    console.log('emulated REQ query:', searchTerm);
+  }, [searchTerm]);
 
   return (
     <Card>
@@ -22,6 +24,9 @@ export default function SearchWithDebounce() {
           </Form.Group>
 
         </Form>
+        <div>
+          Search query: {searchTerm}
+        </div>
       </Card.Body>
     </Card>
   );
