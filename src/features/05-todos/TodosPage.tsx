@@ -9,13 +9,14 @@ import useManageTodos from './hooks/useManageTodos';
 // WHAT should happen in app
 // ---------bad - knows HOW app works under the hood  
 export default function TodosPage(): React.ReactElement {
-  const { createTodo, removeTodo, todos } = useManageTodos();
+  // const { createTodo, removeTodo, todos } = useManageTodos();
+  const todosFacade = useManageTodos();
 
   const handleRemoveClick = (todo: TodoDto) => {
-    removeTodo(todo);
+    todosFacade.removeTodo(todo);
   };
   const handleCreateClick = ({ title, description }: TodoDtoParams) => {
-    createTodo(title, description);
+    todosFacade.createTodo(title, description);
   };
 
   return (
@@ -25,7 +26,7 @@ export default function TodosPage(): React.ReactElement {
 
         {/* Pure aka Presentation aka Dumb components */}
         <TodoList
-          todos={todos}
+          todos={[]}
           onRemoveClick={handleRemoveClick}
         />
 
@@ -41,3 +42,21 @@ export default function TodosPage(): React.ReactElement {
     </div>
   );
 }
+
+
+
+// ==== 90%
+// function DefaultTodoList() {
+//   const todosFacade = useManageTodos();
+
+//   const handleRemoveClick = (todo: TodoDto) => {
+//     todosFacade.removeTodo(todo);
+//   };
+
+//   return (
+//     <TodoList
+//       todos={todosFacade.todos}
+//       onRemoveClick={handleRemoveClick}
+//     />
+//   );
+// }
