@@ -6,22 +6,18 @@ import Counter from '../../../../components/Counter';
 import usePrevious from '../../hooks/usePrevious';
 
 export default function HistoricCounter() {
-  // const [previousValue, setPreviousValue] = useState<number | undefined>(undefined);
-  // const [currentValue, setCurrentValue] = useState(100);
   const [
     currentValue,
     previousValue,
-    setCurrentValue
+    setCurrent
   ] = usePrevious(100);
 
-
   const incrementHandler = () => {
-    setCurrentValue(currentValue + 10);
-    // setPreviousValue(currentValue);
-    // setCurrentValue(currentValue + 10);
+    setCurrent(currentValue + 10);
+
   };
   const decrementHandler = () => {
-    // setCurrentValue(currentValue - 5);
+    setCurrent(currentValue - 5);
   };
 
   return (
