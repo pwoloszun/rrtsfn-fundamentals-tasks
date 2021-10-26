@@ -7,18 +7,15 @@ export default function HelloEffectHook(props: any) {
 
   useEffect(() => {
     console.log('EFFECT',);
-
     const intervalId = setInterval(() => {
       console.log('interval',);
-
       setGreeting(`hi ${Math.random()}`);
     }, 1000);
-
     return () => { // cleanup
       console.log('CLEANUP:',);
       clearInterval(intervalId);
     };
-  }, []); // ===
+  }, []);
 
   const btnClickHandler = () => setUpdatedAtGreeting(Date.now());
 
