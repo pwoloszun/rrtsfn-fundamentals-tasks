@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
 export default function HelloEffectHook() {
+  console.log('RENDER',);
+
   const [greeting, setGreeting] = useState(`Hello!`);
   const [updatedAt, setUpdatedAtGreeting] = useState(0);
 
   useEffect(() => {
-    // TODO 1: async generate next greeting: `Hello Bob ${Math.random()}`
+    console.log('EFFECT',);
 
-    // TODO 2: cleanup
-  }); // TODO: effect dependencies
+    const intervalId = setInterval(() => {
+      console.log('interval',);
+
+      setGreeting(`hi ${Math.random()}`);
+    }, 1000);
+
+    return () => { // cleanup
+      console.log('CLEANUP:',);
+      clearInterval(intervalId);
+    };
+  }, []);
 
   const btnClickHandler = () => setUpdatedAtGreeting(Date.now());
 
@@ -20,3 +31,5 @@ export default function HelloEffectHook() {
     </div>
   );
 }
+
+// const jsx = HelloEffectHook();
