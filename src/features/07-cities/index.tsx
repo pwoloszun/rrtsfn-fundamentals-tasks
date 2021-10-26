@@ -24,7 +24,7 @@ export default function Cities(): React.ReactElement {
     setTimeout(() => setCities(CITIES_DATA), 2200);
 
     setTimeout(() => setSelectedCity(cities[1]), 3200);
-  }, []);
+  }, [cities]);
 
   const markerClickHandler = (city: any) => {
     setSelectedCity((selectedCity: City | null) => {
