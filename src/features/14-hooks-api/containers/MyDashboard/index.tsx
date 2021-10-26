@@ -19,17 +19,6 @@ export default function MyDashboard() {
     usersError
   ] = useAsync(fetchUsers);
 
-  // fetchRealEstates()
-  //   .then((realEstates) => {
-  //     console.log('re json:', realEstates);
-  //   })
-  //   .catch((err) => {
-
-  //   })
-  //   .finally(() => {
-
-  //   });
-
   return (
     <div>
       <h3>MyDashboard</h3>
