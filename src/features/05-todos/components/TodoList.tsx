@@ -1,7 +1,11 @@
 import React from 'react';
 import { ListGroup, Button, Row, Col, } from 'react-bootstrap';
 
-import { TodoDto } from 'src/api/dto/todo-dto';
+interface TodoDto {
+  id: number;
+  title: string;
+  description?: string;
+}
 
 interface TodoListProps {
   todos: TodoDto[];

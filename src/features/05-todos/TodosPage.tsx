@@ -7,10 +7,12 @@ import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 import { TODOS_DATA } from './data/todos-data';
 
+// Smart component aka Container
+// WHAT should happen in app
+// bad - knows HOW app works under the hood  
 export default function TodosPage(): React.ReactElement {
   const [todos, setTodos] = useState(TODOS_DATA);
 
-  // TODO: init local state
   const handleRemoveClick = (todo: TodoDto) => {
     setTodos((currTodos) => {
       const nextTodos = currTodos.filter((td) => td.id !== todo.id);
@@ -33,6 +35,7 @@ export default function TodosPage(): React.ReactElement {
       <h3>Todos Feature</h3>
       <div>
 
+        {/* Pure aka Presentation aka Dumb components */}
         <TodoList
           todos={todos}
           onRemoveClick={handleRemoveClick}
