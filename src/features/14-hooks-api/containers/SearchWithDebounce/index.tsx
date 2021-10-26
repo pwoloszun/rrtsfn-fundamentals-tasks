@@ -2,11 +2,14 @@ import React from 'react';
 import { Card, Form } from 'react-bootstrap';
 
 import useDebounce from '../../hooks/useDebounce';
+import { useEffect } from 'react';
 
 export default function SearchWithDebounce() {
   const [searchTerm, setSearchTerm] = useDebounce('', 1200);
 
-  console.log(`searchHandler`, searchTerm);
+  useEffect(() => {
+    console.log(`REQ TODO`, searchTerm);
+  }, [searchTerm])
 
   return (
     <Card>
