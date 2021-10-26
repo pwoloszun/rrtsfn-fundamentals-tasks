@@ -13,7 +13,6 @@ export default function MyDashboard() {
     reError
   ] = useAsync(fetchRealEstates);
 
-
   const [
     users,
     isUsersLoading,
@@ -30,24 +29,6 @@ export default function MyDashboard() {
   //   .finally(() => {
 
   //   });
-
-  // TODO 1: impl fetching real estates
-
-
-  // TODO 2: refactor
-  // const [
-  //   realEstates,
-  //   isRealEstatesLoading,
-  //   realEstatesError
-  // ] = useAsync(fetchRealEstates);
-
-  // const [
-  //   users,
-  //   isUsersLoading,
-  //   usersError
-  // ] = useAsync(fetchUsers);
-
-
 
   return (
     <div>
