@@ -34,14 +34,23 @@ interface ILeafletMapProps {
 export default function LeafletMap(props: ILeafletMapProps): React.ReactElement {
   const { selected, geoObjects, onMarkerClick } = props;
 
-  const el = useRef(null);
+  const divRef = useRef<HTMLDivElement | null>(null);
   // el.current
+
+  useEffect(() => {
+    const divDom = divRef.current;
+    if (divDom !== null) {
+      const map = new MapViewModel(divDom);
+    } else {
+      throw new Error(`smth wrong`);
+    }
+  }, []);
 
   console.log('TODO selected', selected);
   console.log('TODO geoObjects', geoObjects);
 
   return (
-    <div ref={el} className={styles.map}>
+    <div ref={divRef} className={styles.map}>
       leaflet map TODO
     </div>
   );
