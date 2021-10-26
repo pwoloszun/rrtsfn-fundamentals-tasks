@@ -36,32 +36,57 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
 
   const divRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapViewModel | null>(null);
+  const markersRef = useRef<MarkerViewModel[]>([]);
 
   useEffect(() => {
-    const divDom = divRef.current;
-    if (divDom !== null) {
-      mapRef.current = new MapViewModel(divDom);
-    } else {
-      throw new Error(`smth wrong`);
-    }
+    renderMap(divRef, mapRef);
   }, []);
-
 
   useEffect(() => {
     const map = mapRef.current;
     if (map !== null) {
-      map.removeAllMarkers();
-      props.geoObjects.forEach((geo) => {
-        map.createMarker(geo);
-      });
+      renderMarkers(map, markersRef, geoObjects, onMarkerClick);
     } else {
       throw new Error(`smth wrong`);
     }
-  }, [props.geoObjects]);
+  }, [geoObjects, onMarkerClick, selected]);
+
+  useEffect(() => {
+    console.log('selected EFFECT call:', selected, geoObjects);
+    highlightSelected(markersRef, selected);
+  }, [selected, markersRef.current]);
 
   return (
     <div ref={divRef} className={styles.map}>
       leaflet map TODO
     </div>
   );
+}
+
+
+function highlightSelected(markersRef: any, selected: any) {
+  markersRef.current.forEach((marker: any) => {
+    const isHighlighted = marker.matches(selected);
+    marker.toggleHighlight(isHighlighted);
+  });
+}
+
+function renderMarkers(map: any, markersRef: any, geoObjects: any[], onMarkerClick: any) {
+  map.removeAllMarkers();
+  markersRef.current = geoObjects.map((geo) => {
+    const marker = map.createMarker(geo);
+    marker.on('click', (obj: any) => {
+      onMarkerClick(obj);
+    });
+    return marker;
+  });
+}
+
+function renderMap(divRef: any, mapRef: any) {
+  const divDom = divRef.current;
+  if (divDom !== null) {
+    mapRef.current = new MapViewModel(divDom);
+  } else {
+    throw new Error(`smth wrong`);
+  }
 }
