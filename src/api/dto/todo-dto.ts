@@ -6,4 +6,4 @@ export interface TodoDto {
   description?: string;
 }
 
-export type TodoDtoParams = EntityParams<TodoDto>;
+export type TodoDtoParams = Omit<TodoDto, 'id'>;

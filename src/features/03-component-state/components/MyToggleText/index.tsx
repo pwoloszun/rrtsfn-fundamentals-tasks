@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import styles from './index.module.css';
 
 const selectCssClass = (isVisible: boolean) => isVisible ? 'btn btn-danger' : 'btn btn-primary';
 
+const myglobVar: any = {};
+
 export default function MyToggleText(): React.ReactElement {
   // primary aka essential STATE
   const [isVisible, setIsVisible] = useState(true);
+  // const tmp = useRef<number | null>(null);
+  // tmp.current = 123;
+  // myglobVar.ggg = 123567;
 
   // computed aka derived STATE
   const cssClass = selectCssClass(isVisible);
@@ -36,3 +41,18 @@ export default function MyToggleText(): React.ReactElement {
     </div>
   );
 }
+
+
+// pseudo code
+// const data = {name: };
+
+// function fn(...args: any[]) { }
+
+// const result = fn(data);
+
+// app state === Single Source of Truth
+// const jsx = App(state);
+
+
+
+

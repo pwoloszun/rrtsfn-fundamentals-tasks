@@ -20,6 +20,11 @@ export default function TodosPage(): React.ReactElement {
   const handleCreateClick = ({ title, description }: TodoDtoParams) => {
     // TODO
     const id = Math.random();
+    const todo = { id, title, description };
+    setTodos((currTodos) => {
+      const nexTodos = [...currTodos, todo];
+      return nexTodos;
+    });
   };
 
   // TODO
