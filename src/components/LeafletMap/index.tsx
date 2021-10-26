@@ -59,9 +59,6 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
     }
   }, [props.geoObjects]);
 
-  console.log('TODO selected', selected);
-  console.log('TODO geoObjects', geoObjects);
-
   return (
     <div ref={divRef} className={styles.map}>
       leaflet map TODO
