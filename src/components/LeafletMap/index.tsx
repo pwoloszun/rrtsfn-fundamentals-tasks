@@ -48,10 +48,11 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
 
 
   useEffect(() => {
-    if (mapRef.current !== null) {
-      mapRef.current!.removeAllMarkers();
+    const map = mapRef.current;
+    if (map !== null) {
+      map.removeAllMarkers();
       props.geoObjects.forEach((geo) => {
-        mapRef.current!.createMarker(geo);
+        map.createMarker(geo);
       });
     } else {
       throw new Error(`smth wrong`);
