@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-export default function HelloEffectHook() {
+export default function HelloEffectHook(props: any) {
   console.log('RENDER',);
-
   const [greeting, setGreeting] = useState(`Hello!`);
   const [updatedAt, setUpdatedAtGreeting] = useState(0);
 
@@ -19,7 +18,7 @@ export default function HelloEffectHook() {
       console.log('CLEANUP:',);
       clearInterval(intervalId);
     };
-  }, []);
+  }, []); // ===
 
   const btnClickHandler = () => setUpdatedAtGreeting(Date.now());
 
