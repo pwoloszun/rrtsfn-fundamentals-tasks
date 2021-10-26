@@ -35,16 +35,28 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
   const { selected, geoObjects, onMarkerClick } = props;
 
   const divRef = useRef<HTMLDivElement | null>(null);
-  // el.current
+  const mapRef = useRef<MapViewModel | null>(null);
 
   useEffect(() => {
     const divDom = divRef.current;
     if (divDom !== null) {
-      const map = new MapViewModel(divDom);
+      mapRef.current = new MapViewModel(divDom);
     } else {
       throw new Error(`smth wrong`);
     }
   }, []);
+
+
+  useEffect(() => {
+    if (mapRef.current !== null) {
+      mapRef.current!.removeAllMarkers();
+      props.geoObjects.forEach((geo) => {
+        mapRef.current!.createMarker(geo);
+      });
+    } else {
+      throw new Error(`smth wrong`);
+    }
+  }, [props.geoObjects]);
 
   console.log('TODO selected', selected);
   console.log('TODO geoObjects', geoObjects);
