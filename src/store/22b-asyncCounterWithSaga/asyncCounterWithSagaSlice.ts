@@ -38,6 +38,15 @@ const asyncCounterSlice = createSlice({
       state.asyncWithSagaValue = value;
     },
 
+    decrementRequest: (state, action: PayloadAction<{ decBy: number }>) => {
+      state.isLoading = true;
+    },
+    decrementSuccess: (state, action: PayloadAction<{ value: number }>) => {
+      const { value } = action.payload;
+      state.isLoading = false;
+      state.asyncWithSagaValue = value;
+    },
+
     // TODO: decrement - request & success
 
     // TODO: reset

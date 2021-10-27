@@ -21,11 +21,19 @@ export default function AsyncCounterUsingSaga() {
     dispatch(action);
   };
 
+  const onDecrementHandler = () => {
+    const action = actions.decrementRequest({
+      decBy: 5
+    });
+    dispatch(action);
+  };
+
   return (
     <div>
       <Counter
         value={value}
         onIncrement={onIncrementHandler}
+        onDecrement={onDecrementHandler}
       />
       {isLoading && <div>Loading...</div>}
     </div>
