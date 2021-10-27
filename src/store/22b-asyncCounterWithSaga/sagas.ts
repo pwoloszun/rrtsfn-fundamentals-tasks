@@ -34,7 +34,7 @@ export function* incrementWatcherSaga() {
 // TODO incrementWatcherSaga() 
 
 // decrement process:
-// 1. read conterValue entity from server
+// 1. read conterValue entity from server: counterApi.getById(100)
 // 2. calc nextValue = entity.value - decBy 
 // 3. update counter value on server
 // 4. delay for 1s
