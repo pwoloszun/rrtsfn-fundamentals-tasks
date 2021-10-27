@@ -1,3 +1,5 @@
+import { waitFor } from '@testing-library/react';
+
 import { RootState } from 'src/store/store';
 
 type SelectorMappingFn = (state: RootState) => any;
@@ -21,4 +23,14 @@ export function expectStateChanges(
     }
     i++;
   });
+}
+
+interface WaitOptions {
+  timeout?: number;
+}
+
+export async function waitForElToNotBeInDoc(el: HTMLElement, options?: WaitOptions) {
+  return waitFor(() => {
+    expect(el).not.toBeInTheDocument();
+  }, options);
 }

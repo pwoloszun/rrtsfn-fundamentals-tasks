@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ComponentsTestingPage from 'src/features/12-components-testing/ComponentsTestingPage';
+import TestingTasksPage from 'src/features/13-testing-tasks/TestingTasksPage';
 import MemoExamplePage from 'src/features/16-simple-optimizations/MemoExamplePage';
 import SimpleOptimizationsPage from 'src/features/16-simple-optimizations/SimpleOptimizationsPage';
 
@@ -15,6 +16,13 @@ const otherRoutes = [
     label: 'Memo example',
     main: () => <MemoExamplePage />
   },
+
+  {
+    path: "/testing-tasks",
+    label: 'Testing Tasks',
+    main: () => <TestingTasksPage />
+  },
+
   {
     path: "/components-testing",
     label: 'Components Testing',

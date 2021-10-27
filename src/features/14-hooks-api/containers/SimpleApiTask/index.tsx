@@ -1,9 +1,9 @@
 import React from 'react';
 
-import api from 'src/api/todos-api';
+import todoApi from 'src/api/todos-api';
 import { TodoDto } from 'src/api/dto/todo-dto';
 
-import useFetch from '../../hooks/useFetch';
+import useFetch, { RequestStatus } from '../../hooks/useFetch';
 
 function renderContent(data: TodoDto[], isLoading: boolean) {
   if (isLoading) {
@@ -17,15 +17,15 @@ function renderContent(data: TodoDto[], isLoading: boolean) {
   }
 }
 
-export default function SimpleApiTask() {
+export default function SimpleApiTask(): React.ReactElement {
   const {
-    data,
+    data = [],
     fetchData,
-    isLoading,
-  } = useFetch(api.getAll);
+    status,
+  } = useFetch(todoApi.getAll);
 
   const fetchTodoHandler = () => fetchData();
-  let content = renderContent(data, isLoading);
+  let content = renderContent(data, status === RequestStatus.Pending);
 
   return (
     <div>
