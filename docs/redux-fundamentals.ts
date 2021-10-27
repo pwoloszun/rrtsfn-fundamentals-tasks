@@ -1,7 +1,11 @@
-interface Action {
+interface Action { // app event
   type: string;
-  payload: any;
+
+  payload?: any;
 }
+
+
+// FSA Flux Standard Action
 
 class Store {
   dispatch(action: Action) { /*...*/ }
@@ -15,6 +19,13 @@ class Store {
 const store = new Store();
 
 const state = {
+  myCounter: { // initial slice state
+    value: 110,
+    updatedAt: null,
+  },
+
+
+
   counter: { // state slice
     value: 997
   },
@@ -28,7 +39,7 @@ const state = {
 
 
 // actions
-const action = {
+const action: Action = {
   type: 'users/fetched',
   payload: {
     users: [{ id: 123, name: 'bob' }, { id: 2, name: 'ed' }]
@@ -40,17 +51,31 @@ store.dispatch(action);
 
 
 // reducer(s)
+// user slice reducer
 function usersReducer(state, action) {
-  return {};
+  switch (action.type) {
+    case 'users/fetched': {
+      const nextState = {};
+      return nextState
+    }
+    case 'gggHhh': {
+      const nextState = {};
+      return nextState
+    }
+    default: {
+      return state;
+    }
+  }
 }
 
+// counter slice reducer
 function counterReducer(state, action) {
 }
 
 
 function rootReducer(state, action) {
-  const nextUsersState = usersReducer(state.users, action);
   const nextCounterState = counterReducer(state.counter, action);
+  const nextUsersState = usersReducer(state.users, action);
 
   return {
     ...state,
