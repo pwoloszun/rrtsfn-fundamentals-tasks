@@ -2,21 +2,29 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Counter from 'src/components/Counter';
-// import { actions, selectors } from 'src/store/21-syncCounter'; // redux module
+import { actions, selectors } from 'src/store/21b-newSyncCounter'; // redux module
 import { RootState } from '../../../../store/store';
+
+// action creator
+// function incrementAction(payload: { incBy: number }) {
+//   return {
+//     type: 'newSyncCounter/increment',
+//     payload
+//   };
+// }
+
+// const selectCounterValue = (state: RootState) => state.newSyncCounter.value;
 
 export default function NewSyncCounter() {
   const dispatch = useDispatch();
   const syncCounterValue = useSelector(
-    (state: RootState) => state.newSyncCounter.value
+    selectors.selectCounterValue
   );
   const updatedAt = 999999;
 
   const incrementHandler = () => {
-    const action = {
-      type: 'newSyncCounter/increment',
-      payload: { name: 'bob' }
-    };
+    // const action = incrementAction({ incBy: 10 });
+    const action = actions.increment({ incBy: 20 });
     dispatch(action);
   };
 
