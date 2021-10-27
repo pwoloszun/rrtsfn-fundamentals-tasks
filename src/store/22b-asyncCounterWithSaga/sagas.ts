@@ -1,6 +1,6 @@
 import { put, takeEvery, delay, select, call } from 'redux-saga/effects';
 
-import * as counterApi from 'src/api/counter-api';
+import counterApi from 'src/api/counter-api';
 
 import { actions } from './asyncCounterWithSagaSlice';
 import * as selectors from './selectors';
@@ -8,23 +8,18 @@ import * as selectors from './selectors';
 // private impl details
 function* incrementWorkerSaga(action: any): Generator<any, any, any> {
   try {
-    const resp1 = yield 'todo';
-    console.log('response 1', resp1);
+    const { incBy } = action.payload;
 
-    const resp2 = yield 123;
-    console.log('response 2', resp2);
+    yield delay(2000);
 
-    // TODO: get data from payload
+    const inMemValue = yield select(selectors.selectAsyncCounterWithSagaValue);
 
-    // TODO: delay for 2 secs
+    const id = 100;
+    const nextValue = inMemValue + incBy; // -987
+    const counterEntity = yield call(counterApi.update, id, { value: nextValue });
 
-    // TODO: select current counter value from redux store
-
-    // TODO: calculate next counter value === curr value + incBy
-
-    // TODO: update countervalue onserver using API
-
-    // TODO: dispatch incrementSuccess event
+    const incSuccAction = actions.incrementSuccess({ value: counterEntity.value });
+    yield put(incSuccAction);
   } catch (e) {
     throw e; // TODO handle errors
   }

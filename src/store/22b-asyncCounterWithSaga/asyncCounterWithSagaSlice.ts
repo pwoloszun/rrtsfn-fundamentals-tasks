@@ -15,6 +15,12 @@ const initialState: AsyncCounterWithSagaState = { // initial slice state
   errorInfo: undefined
 };
 
+
+// REQUEST -> SUCCESS
+//          -> ERROR
+// pending -> resolved
+//          -> rejected
+
 export const asyncCounterWithSagaSliceId = 'asyncCounterWithSaga'; // slice ID
 
 const asyncCounterSlice = createSlice({
@@ -26,10 +32,10 @@ const asyncCounterSlice = createSlice({
     incrementRequest: (state, action: PayloadAction<{ incBy: number }>) => {
       state.isLoading = true;
     },
-    incrementSuccess: (state, action: PayloadAction<{ incBy: number }>) => {
-      const { incBy } = action.payload;
+    incrementSuccess: (state, action: PayloadAction<{ value: number }>) => {
+      const { value } = action.payload;
       state.isLoading = false;
-      state.asyncWithSagaValue += incBy;
+      state.asyncWithSagaValue = value;
     },
 
     // TODO: decrement - request & success
