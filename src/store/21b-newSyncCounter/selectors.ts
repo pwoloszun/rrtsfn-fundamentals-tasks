@@ -4,15 +4,15 @@ import { RootState } from '../store';
 import { newSyncCounterSliceId } from './newSyncCounterSlice';
 
 const selectStateSlice = (state: RootState) => {
-  return 123; // TODO
+  return state[newSyncCounterSliceId];
 };
 
-export const selectCounterValue = (state: RootState) => state.newSyncCounter.value;
+export const selectCounterValue = (state: RootState) => selectStateSlice(state).value;
 
-const selectUpdatedAt = (state: RootState) => state.newSyncCounter.updatedAt;
+const selectUpdatedAt = (state: RootState) => selectStateSlice(state).updatedAt;
 
 export const selectFormattedUpdatedAt = (state: RootState) => {
-  const updatedAt = state.newSyncCounter.updatedAt;
+  const updatedAt = selectUpdatedAt(state);
   if (updatedAt === null) {
     return '';
   } else {
