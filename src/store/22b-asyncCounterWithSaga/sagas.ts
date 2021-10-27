@@ -32,3 +32,10 @@ export function* incrementWatcherSaga() {
 
 // TODO: incrementWorkerSaga(action: any)
 // TODO incrementWatcherSaga() 
+
+// decrement process:
+// 1. read conterValue entity from server
+// 2. calc nextValue = entity.value - decBy 
+// 3. update counter value on server
+// 4. delay for 1s
+// 5. dispatch SUCC event -> update value redux store
