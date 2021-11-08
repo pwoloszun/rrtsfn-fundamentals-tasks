@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.globTtt {
+  border: 5px solid #000;
+  padding: 12px;
+}
