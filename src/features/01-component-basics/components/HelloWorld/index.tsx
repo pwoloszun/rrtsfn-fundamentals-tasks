@@ -8,6 +8,8 @@ export default function HelloWorld(): React.ReactElement {
     age: 123
   };
 
+  React.createElement('h3', { id: '123' }, 'Hello!!');
+
   // JSX element !!
   // NOT HTML; NOT DOM!!
   return ( // snapshot app

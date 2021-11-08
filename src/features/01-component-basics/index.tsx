@@ -1,7 +1,7 @@
 import React from 'react';
 
 import HelloWorld from './components/HelloWorld';
-// import PersonalData from './components/PersonalData';
+import PersonalData from './components/PersonalData';
 
 export default function ComponentBasics() {
   return (
@@ -12,7 +12,7 @@ export default function ComponentBasics() {
       <HelloWorld />
 
       <hr />
-      {/* TODO: create PersonalData component instance  */}
+      <PersonalData />
     </div>
   );
 }
