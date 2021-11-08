@@ -20,10 +20,12 @@ export default function Parent(): React.ReactElement {
       </p>
       <div>
 
+
         <ParentChild
           fullName={user.name}
           onMessageSent={logMessageHandler}
         />
+
 
       </div>
     </div>

@@ -9,9 +9,6 @@ interface ParentChildProps {
 }
 
 export default function ParentChild(props: ParentChildProps): React.ReactElement {
-  // props.fullName === 'a qq!';
-  // const fullName = props.fullName;
-  // const onMessageSent = props.onMessageSent;
   const { fullName, onMessageSent } = props;
 
   const sendMessageHandler = () => {
