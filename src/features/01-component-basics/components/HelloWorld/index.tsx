@@ -19,11 +19,12 @@ export default function HelloWorld(): React.ReactElement {
 }
 
 function calculateCssClasses() {
-  return [
-    // 'globTtt',
+  const cssClasses = [
+    'globTtt',
     styles.helloWorld,
     // styles.gggHhh
-  ].join(' ');
+  ];
+  return cssClasses.join(' ');
 }
 
 
