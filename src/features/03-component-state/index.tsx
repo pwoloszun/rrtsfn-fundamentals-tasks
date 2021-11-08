@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MySimpleCounter from './components/MySimpleCounter';
-// import MyToggleText from './components/MyToggleText';
+import MyToggleText from './components/MyToggleText';
 // import Randomizer from './components/Randomizer';
 
 export default function ComponentState() {
@@ -11,7 +11,7 @@ export default function ComponentState() {
       <MySimpleCounter />
       <hr />
 
-      {/* <MyToggleText /> */}
+      <MyToggleText />
       <hr />
 
       {/* <Randomizer delay={2200} max={50} /> */}
