@@ -21,7 +21,7 @@ export default function Parent(): React.ReactElement {
       <div>
 
         <ParentChild
-          fullName={'a qq!'}
+          fullName={user.name}
           onMessageSent={logMessageHandler}
         />
 
