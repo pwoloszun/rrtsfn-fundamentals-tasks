@@ -3,22 +3,16 @@ import React, { useState } from 'react';
 import styles from './index.module.css';
 
 export default function MyToggleText(): React.ReactElement {
+  // primary/essential state 
   const [isVisible, setIsVisible] = useState(true);
-  const [btnCssClass, setBtnCssClass] = useState('btn-primary');
-  const [btnText, setBtnText] = useState('Toggle Hide');
+
+  // derived/computed state
+  const btnCssClass = isVisible ? 'btn-primary' : 'btn-danger';
+  const btnText = isVisible ? 'Toggle Hide' : 'Toggle Show';
 
   const toggleHandler = () => {
-    if (isVisible) {
-      setIsVisible(false);
-      setBtnCssClass('btn-danger');
-      setBtnText('Toggle Show');
-    } else {
-      setIsVisible(true);
-      setBtnCssClass('btn-primary');
-      setBtnText('Toggle Hide');
-    }
+    setIsVisible((currIsVisible) => !currIsVisible);
   };
-
 
   return (
     <div className={styles.myToggleText}>
