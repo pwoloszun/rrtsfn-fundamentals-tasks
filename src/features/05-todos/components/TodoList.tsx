@@ -5,14 +5,15 @@ import { TodoDto } from 'src/api/dto/todo-dto';
 
 interface TodoListProps {
   todos: TodoDto[];
-  onRemoveClick: (todo: TodoDto) => void;
+  // onRemoveClick: (todo: TodoDto) => void;
 }
 
 export default function TodoList(props: TodoListProps): React.ReactElement {
   // TODO
-  
+
   return (
     <ListGroup>
+
       <ListGroup.Item>
         <Row>
           <Col sm={8}>
@@ -28,6 +29,7 @@ export default function TodoList(props: TodoListProps): React.ReactElement {
           </Col>
         </Row>
       </ListGroup.Item>
+
     </ListGroup>
   );
 }
