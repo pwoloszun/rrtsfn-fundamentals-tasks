@@ -8,22 +8,28 @@ export interface Option {
 }
 
 interface OptionPickerProps {
-
   label: string;
   options: Option[];
-  // onOptionSelect: (option: Option) => void;
+  onOptionSelect: (option: Option) => void;
 }
 
 // TODO: props
-export default function OptionPicker(props: OptionPickerProps): React.ReactElement {
-  const { label, options } = props;
+export default function OptionPicker(
+  props: OptionPickerProps
+): React.ReactElement {
+  const { label, options, onOptionSelect } = props;
+
   return (
     <div className={styles.optionPicker}>
       <span>{label}</span>
       {
         options.map((opt) => {
+          const btnCickHandler = () => onOptionSelect(opt);
+
           return (
-            <button key={opt.id}>{opt.value}</button>
+            <button key={opt.id} onClick={btnCickHandler}>
+              {opt.value}
+            </button>
           );
         })
       }
