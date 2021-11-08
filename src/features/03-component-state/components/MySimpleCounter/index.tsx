@@ -43,7 +43,7 @@ export default function MySimpleCounter(): React.ReactElement {
     });
   };
 
-  return (
+  return ( //snapshot
     <div className={styles.mySimpleCounter}>
       <h3>Value {value}</h3>
       <h3>my Person name: {person.name.value}</h3>
@@ -51,3 +51,14 @@ export default function MySimpleCounter(): React.ReactElement {
     </div>
   );
 }
+
+
+
+
+// 
+// const data = { name: 'qq' }
+// function myFn(data) { }
+// const result = myFn(data);
+
+// const jsx = MySimpleCounter(state);
+
