@@ -8,7 +8,17 @@ export default function HelloWorld(): React.ReactElement {
     age: 123
   };
 
-  React.createElement('h3', { id: '123' }, 'Hello!!');
+  // const jsxEl = React.createElement('h3', { id: '123' }, 'Hello!!');
+
+  let jsxPar = null;
+  if (true) {
+    jsxPar = (
+      <div>
+        <h6>title</h6>
+        <p>a qq!</p>
+      </div>
+    );
+  }
 
   // JSX element !!
   // NOT HTML; NOT DOM!!
@@ -16,6 +26,7 @@ export default function HelloWorld(): React.ReactElement {
     <h3 id="123" className={styles.helloWorld}>
       Hello 22!!!
       {person.name.toUpperCase() + ' qq'}
+      {jsxPar}
     </h3>
   );
 }
