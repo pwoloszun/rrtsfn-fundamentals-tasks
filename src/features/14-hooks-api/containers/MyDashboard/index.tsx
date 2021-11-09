@@ -7,17 +7,6 @@ import EntitiesSimpleList from '../../components/EntitiesSimpleList';
 import useAsync from '../../hooks/useAsync';
 
 export default function MyDashboard() {
-  // fetchRealEstates()
-  //   .then((realEstatesData) => {
-  //     console.log('re:', realEstatesData);
-  //   })
-  //   .catch((err) => {
-  //     console.log('errror:', err);
-  //   })
-  //   .finally(() => {
-  //     console.log('fin:');
-  //   });
-
   const [
     realEstates,
     isRealEstatesLoading,
