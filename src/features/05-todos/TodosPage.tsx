@@ -7,29 +7,30 @@ import { TODOS_DATA } from './data/todos-data';
 
 import { TodoDtoParams, TodoDto } from 'src/api/dto/todo-dto';
 import useManageTodos from './hooks/useManageTodos';
+import { useSelector, useDispatch } from 'react-redux';
 
 // Containers / Smart comp
 // GOOD: know WHAT app should do
 // BAD: smart comp should NOT know HOW app works
 export default function TodosPage(): React.ReactElement {
-  const { createTodo, removeTodo, todos } = useManageTodos();
+  // const { createTodo, removeTodo, todos } = useManageTodos();
+  const todosFacade = useManageTodos();
 
   const handleRemoveClick = (todo: TodoDto) => {
-    removeTodo(todo);
+    todosFacade.removeTodo(todo);
   };
 
   const handleCreateClick = ({ title, description }: OnCreateParams) => {
-    createTodo(title, description);
+    todosFacade.createTodo(title, description);
   };
 
-  // TODO
   return (
     <div style={{ width: '75%', margin: '0 auto' }}>
       <h3>Todos Feature</h3>
       <div>
 
         <TodoList
-          todos={todos}
+          todos={todosFacade.todos}
           onRemoveClick={handleRemoveClick}
         />
 
