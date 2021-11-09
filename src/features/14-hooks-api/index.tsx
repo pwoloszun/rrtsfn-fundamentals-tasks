@@ -19,7 +19,7 @@ export default function HooksApi() {
       <div>
         <h3>useState hooks</h3>
         {/* <NoHooksCounter /> */}
-        {/* <WithHooksCounter /> */}
+        <WithHooksCounter />
         {/* <HistoricCounter /> */}
         {/* <TrackableCounter /> */}
       </div>
