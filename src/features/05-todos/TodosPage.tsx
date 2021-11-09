@@ -7,6 +7,8 @@ import { TODOS_DATA } from './data/todos-data';
 
 import { TodoDtoParams, TodoDto } from 'src/api/dto/todo-dto';
 
+// Containers / Smart comp
+// GOOD: know WHAT app should do
 export default function TodosPage(): React.ReactElement {
   const [todos, setTodos] = useState(TODOS_DATA);
 
