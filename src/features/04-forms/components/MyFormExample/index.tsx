@@ -3,41 +3,64 @@ import React, { useState } from 'react';
 
 import styles from './styles.module.css';
 import { countriesDict } from '../../dictionaries/countries.dict';
+import produce from 'immer';
 
 type FormEl = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
 
 export default function MyFormExample(): React.ReactElement {
-  const formValues = { // TODO
+  const [formsValues, setFormsValues] = useState({ // TODO
     personName: 'bob',
     age: 8,
     countryId: countriesDict[0].id
+  });
+
+  const inputChangeHandler = (event: React.ChangeEvent<FormEl>) => {
+    const { value, name } = event.target;
+    setFormsValues((currFormValues) => {
+      const nextFormValues = produce(currFormValues, (draft) => {
+        (draft as any)[name] = value;
+      });
+      return nextFormValues;
+    });
   };
 
-  // TODO later: refactor
-  // const inputChangeHandler = (event: React.ChangeEvent<FormEl>) => { };
-
   const submitHandler = (ev: React.SyntheticEvent) => {
-    // TODO
+    ev.preventDefault();
+    console.log('all form vals:', formsValues);
   };
 
   return (
     <div className={styles.myFormExample}>
-      <form>
+      <form onSubmit={submitHandler}>
         <label>
           Person Name
-          <input type='text' />
+
+          <input
+            value={formsValues.personName}
+            onChange={inputChangeHandler}
+            name="personName"
+            type='text' />
+
         </label>
-        <p>Curr Person Name: TODO_PLACEHOLDER</p>
+        <p>Curr Person Name: {formsValues.personName}</p>
 
         <label>
           Age
-          <input type='number' />
+          <input
+            value={formsValues.age}
+            onChange={inputChangeHandler}
+            name="age"
+            type='number' />
         </label>
         <p>Curr Age: TODO_PLACEHOLDER</p>
 
         <label>
           Country
-          <select>
+          <select
+            value={formsValues.countryId}
+            name="countryId"
+            onChange={inputChangeHandler}
+          >
             {
               countriesDict.map((country) => {
                 const { id, name } = country;
