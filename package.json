@@ -46,7 +46,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false --maxWorkers=50%",
     "test:watch": "react-scripts test --watch --maxWorkers=1 --no-watchman",
     "json-server": "json-server ./server/db.json -p 4100 -r ./server/config/routes.json -S ./server/snapshots",
     "eject": "react-scripts eject"

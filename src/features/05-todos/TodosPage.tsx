@@ -1,18 +1,16 @@
 /*eslint @typescript-eslint/no-unused-vars: 'off'*/
 import React from 'react';
 
-// import TodoList from './components/TodoList';
-// import TodoForm from './components/TodoForm';
-// import { TODOS_DATA } from './data/todos-data';
+import { TodoDto } from 'src/api/dto/todo-dto';
 
-import { TodoDtoParams, TodoDto } from 'src/api/dto/todo-dto';
+import TodoForm, { OnCreateParams } from './components/TodoForm';
 
 export default function TodosPage(): React.ReactElement {
   // TODO: init local state
   const handleRemoveClick = (todo: TodoDto) => {
     // TODO
   };
-  const handleCreateClick = ({ title, description }: TodoDtoParams) => {
+  const handleCreateClick = ({ title, description }: OnCreateParams) => {
     // TODO
   };
 

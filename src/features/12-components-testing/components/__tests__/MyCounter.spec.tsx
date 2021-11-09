@@ -3,48 +3,26 @@ import userEvent from '@testing-library/user-event';
 
 import MyCounter, { IMyCounterProps } from '../MyCounter';
 
-function renderMyCounter(props: IMyCounterProps) {
-  return render(<MyCounter {...props} />);
-}
-
 describe('MyCounter', () => {
-  describe('defined initialValue', () => {
 
-    it('should render initial value', () => {
-      const initialValue = 123;
-      renderMyCounter({ initialValue });
-      expect(screen.getByText(/Value/)).toHaveTextContent(`Value: ${initialValue}`);
-    });
-
-    describe('increment click', () => {
-      it('should increment value', () => {
-        const initialValue = 123;
-        renderMyCounter({ initialValue });
-
-        userEvent.click(screen.getByText('Increment'));
-
-        expect(screen.getByText(/Value/)).toHaveTextContent(`Value: ${initialValue + 1}`);
-      });
-    });
-
-    describe('decrement click', () => {
-      it('should decrement value', () => {
-        const initialValue = 123;
-        renderMyCounter({ initialValue });
-
-        userEvent.click(screen.getByText('Decrement'));
-
-        expect(screen.getByText(/Value/)).toHaveTextContent(`Value: ${initialValue - 1}`);
-      });
-    });
+  xit('should render initial value', () => {
+    expect(false).toEqual(true);
   });
 
-  describe('undefined initialValue', () => {
-    it('should render default value', () => {
-      render(<MyCounter />);
+  xit('should increment value on increment click', () => {
+    expect(false).toEqual(true);
+  });
 
-      expect(screen.getByText(/Value/)).toHaveTextContent(`Value: 0`);
-    });
+  xit('should decrement value on decrement click', () => {
+    expect(false).toEqual(true);
+  });
+
+  xit('should render default value if undefined initialValue', () => {
+    expect(false).toEqual(true);
   });
 
 });
+
+function renderMyCounter(props: IMyCounterProps) {
+  return render(<MyCounter {...props} />);
+}
