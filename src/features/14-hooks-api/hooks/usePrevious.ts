@@ -10,18 +10,38 @@ type UsePreviousResult<T> = [
 ];
 
 function usePrevious<T>(initialValue: T): UsePreviousResult<T> {
-  const current = initialValue; // TODO
-  const previous = undefined; // TODO
+  const [currentValue, setCurrentValue] = useState(initialValue);
+  const [previousValue, setPreviousValue] = useState<T | undefined>(undefined);
 
   const setNextValue = (nextValue: T) => {
-    // TODO
+    setPreviousValue(currentValue);
+    setCurrentValue(nextValue);
   };
 
   return [
-    current,
-    previous,
+    currentValue,
+    previousValue,
     setNextValue
   ];
 }
 
 export default usePrevious;
+
+
+
+
+
+
+// function g() {
+
+// }
+
+
+// function h() { }
+
+
+// function other() {
+//   const resG = g();
+//   const resf = f();
+//   return resG + resf;
+// }
