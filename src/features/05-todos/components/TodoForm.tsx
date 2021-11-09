@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap';
+import produce from 'immer';
 
 export interface OnCreateParams {
   title: string;
@@ -11,17 +12,40 @@ interface TodoFormProps {
 }
 
 export default function TodoForm(props: TodoFormProps): React.ReactElement {
-  // TODO 1
+  const { onCreateClick } = props;
+  const [formValues, setFormValues] = useState({
+    title: '',
+    description: ''
+  });
+
+  const inputChangeHandler = (event: any) => {
+    const { value, name } = event.target;
+    setFormValues((currFormValues) => {
+      const nextFormValues = produce(currFormValues, (draft) => {
+        (draft as any)[name] = value;
+      });
+      return nextFormValues;
+    });
+  };
+
+  const submitHandler = (ev: any) => {
+    ev.preventDefault();
+    onCreateClick({ ...formValues });
+  };
 
   return (
     <Card>
       <Card.Header>Create Todo Form</Card.Header>
       <Card.Body>
-        <Form>
+        <Form onSubmit={submitHandler}>
           <Form.Group controlId="formTitle">
             <Form.Label>Title</Form.Label>
             {/* TODO 2 */}
             <Form.Control
+              value={formValues.title}
+              onChange={inputChangeHandler}
+              name="title"
+
               type="text"
               placeholder="Enter title" />
           </Form.Group>
@@ -30,6 +54,10 @@ export default function TodoForm(props: TodoFormProps): React.ReactElement {
             <Form.Label>Description (optional)</Form.Label>
             {/* TODO 2 */}
             <Form.Control
+              value={formValues.description}
+              onChange={inputChangeHandler}
+              name="description"
+
               type="text"
               placeholder="Enter description" />
           </Form.Group>
@@ -39,7 +67,7 @@ export default function TodoForm(props: TodoFormProps): React.ReactElement {
             variant="primary"
             type="submit">
             Create
-            </Button>
+          </Button>
         </Form>
       </Card.Body>
     </Card>

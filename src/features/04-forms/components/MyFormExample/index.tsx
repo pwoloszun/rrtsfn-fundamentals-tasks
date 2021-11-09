@@ -13,7 +13,6 @@ export default function MyFormExample(): React.ReactElement {
     age: 8,
     countryId: countriesDict[0].id
   });
-
   const inputChangeHandler = (event: React.ChangeEvent<FormEl>) => {
     const { value, name } = event.target;
     setFormsValues((currFormValues) => {
@@ -23,18 +22,14 @@ export default function MyFormExample(): React.ReactElement {
       return nextFormValues;
     });
   };
-
   const submitHandler = (ev: React.SyntheticEvent) => {
     ev.preventDefault();
     console.log('all form vals:', formsValues);
   };
-
   return (
     <div className={styles.myFormExample}>
       <form onSubmit={submitHandler}>
         <label>
-          Person Name
-
           <input
             value={formsValues.personName}
             onChange={inputChangeHandler}
