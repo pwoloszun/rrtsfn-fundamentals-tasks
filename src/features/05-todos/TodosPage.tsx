@@ -10,7 +10,7 @@ import { TodoDtoParams, TodoDto } from 'src/api/dto/todo-dto';
 export default function TodosPage(): React.ReactElement {
   // TODO: init local state
   const handleRemoveClick = (todo: TodoDto) => {
-    // TODO
+    
   };
   const handleCreateClick = ({ title, description }: TodoDtoParams) => {
     // TODO
@@ -24,7 +24,7 @@ export default function TodosPage(): React.ReactElement {
 
         <TodoList
           todos={TODOS_DATA}
-        // onRemoveClick={handleRemoveClick}
+          onRemoveClick={handleRemoveClick}
         />
 
       </div>
