@@ -14,24 +14,12 @@ import useManageTodos from './hooks/useManageTodos';
 export default function TodosPage(): React.ReactElement {
   const { createTodo, removeTodo, todos } = useManageTodos();
 
-  // const [todos, setTodos] = useState(TODOS_DATA);
-
   const handleRemoveClick = (todo: TodoDto) => {
     removeTodo(todo);
-    // setTodos((currTodos) => {
-    //   const nextTodos = currTodos.filter((td) => td.id !== todo.id);
-    //   return nextTodos;
-    // });
   };
 
   const handleCreateClick = ({ title, description }: OnCreateParams) => {
     createTodo(title, description);
-    // setTodos((currTodos) => {
-    //   const id = Math.random();
-    //   const newTodo = { id, title, description };
-    //   const nextTodos = [...currTodos, newTodo];
-    //   return nextTodos;
-    // });
   };
 
   // TODO
