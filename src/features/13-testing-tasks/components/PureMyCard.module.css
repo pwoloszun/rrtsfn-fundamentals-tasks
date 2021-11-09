@@ -1,0 +1,27 @@
+.mcContainer {
+  width: 50%;
+  margin: 0 auto;
+  padding: 12px;
+  background-color: #fff;
+  box-shadow: 0 5px 15px -5px #000;
+}
+
+.mcHeader {
+  padding: 12px;
+  background-color: #777;
+  color: #fff;
+  border-bottom: 1px solid #000;
+  margin: 0 auto 6px;
+}
+
+.mcContent {
+  padding: 12px;
+}
+
+.mcFooter {
+  padding: 12px;
+  background-color: #333;
+  color: #fff;
+  border-top: 1px solid #000;
+  margin: 6px auto 0;
+}
