@@ -21,15 +21,15 @@ export default function HooksApi() {
         {/* <NoHooksCounter /> */}
         {/* <WithHooksCounter /> */}
         {/* <HistoricCounter /> */}
-        <TrackableCounter />
+        {/* <TrackableCounter /> */}
       </div>
       <div>
         <h3>useEffects hooks</h3>
-        {/* <HelloEffectHook /> */}
+        <HelloEffectHook />
       </div>
       <div>
         {/* <LoadManyThings /> */}
-        {/* <MyDashboard /> */}
+        <MyDashboard />
       </div>
       <div>
         {/* <SearchWithDebounce /> */}
