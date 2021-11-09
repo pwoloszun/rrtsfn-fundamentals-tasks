@@ -1,10 +1,15 @@
 import axios from 'axios';
+import { uniqBy } from 'lodash';
 
 import { isJestRunning } from 'src/mocks/utils/isJestRunning';
 import { delayedValue } from 'src/utils/randoms';
 import getApiUrl from './getApiUrl';
 
 const DEFAULT_DELAY_IN_MS = isJestRunning() ? 0 : 1800;
+
+export interface SearchParams {
+  q: string;
+}
 
 export interface Entity {
   id: number;
@@ -22,6 +27,7 @@ export default function createEntityApi<T extends Entity>(
     getAll(): Promise<T[]> {
       return axios.get(apiDefaultUrl)
         .then((response) => response.data)
+        .then((entities) => uniqBy(entities as any, 'id') as any as T[])
         .then((entities) => delayedValue(entities, DEFAULT_DELAY_IN_MS));
     },
 
@@ -50,6 +56,13 @@ export default function createEntityApi<T extends Entity>(
       return axios.delete(url)
         .then((response) => response.data)
         .then(() => delayedValue(id, DEFAULT_DELAY_IN_MS));
+    },
+
+    search(params: SearchParams): Promise<T[]> {
+      return axios.get(apiDefaultUrl, { params })
+        .then((response) => response.data)
+        .then((entities) => uniqBy(entities as any, 'id') as any as T[])
+        .then((entity) => delayedValue(entity, DEFAULT_DELAY_IN_MS));
     },
   };
 }
