@@ -14,17 +14,19 @@ export default function useAsync<T>(asyncFunction: AsyncFn<T>): UseAsyncResult<T
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    setIsLoading(true);
-    asyncFunction()
-      .then((data) => {
+    async function tmp() {
+      setIsLoading(true);
+      try {
+        const data = await asyncFunction();
         setValue(data);
-      })
-      .catch((err) => {
+      } catch (err: any) {
         setError(err);
-      })
-      .finally(() => {
+      } finally {
         setIsLoading(false);
-      });
+      }
+    }
+
+    tmp();
   }, [asyncFunction]);
 
   return [
