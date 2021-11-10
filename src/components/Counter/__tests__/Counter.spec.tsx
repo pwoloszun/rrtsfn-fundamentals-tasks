@@ -1,4 +1,5 @@
 import { screen, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { merge } from 'lodash';
 
 import Counter, { CounterProps } from '../index';
@@ -10,9 +11,14 @@ describe('Couner comp', () => {
     renderComponent(props);
 
     const valueContEl = await screen.findByText(/Value/i);
-    // expect(valueContEl).toBeInTheDocument();
-
     expect(valueContEl).toHaveTextContent(/123/);
+
+    const incBtn = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    userEvent.click(incBtn);
+
+    const { onIncrement } = props;
+    expect(onIncrement).toBeCalledTimes(1);
+    // expect(onIncrement).toBeCalledWith('a qq!');
   });
 
   xit('should TODO2', () => {
@@ -36,8 +42,15 @@ function renderComponent(props: CounterProps) {
 }
 
 function generateProps(props: Partial<CounterProps> = {}): CounterProps {
-  const defaultProps = {
+  const onIncrement = jest.fn();
+  const onDecrement = jest.fn();
+  const onReset = jest.fn();
+
+  const defaultProps: CounterProps = {
     value: 9999,
+    onIncrement,
+    onDecrement,
+    onReset,
   };
-  return merge({}, defaultProps as CounterProps, props);
+  return merge({}, defaultProps, props);
 }

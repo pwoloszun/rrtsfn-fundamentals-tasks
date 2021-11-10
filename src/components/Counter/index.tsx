@@ -21,6 +21,10 @@ function Counter(props: CounterProps) {
       <button onClick={onIncrement}>Increment</button>
       <button onClick={onDecrement}>Decrement</button>
       <button onClick={onReset}>Reset</button>
+
+      {/* <div role="button" onClick={onIncrement}>Increment</div>
+      <div role="button" onClick={onDecrement}>Decrement</div>
+      <div role="button" onClick={onReset}>Reset</div> */}
     </div>
   );
 }
