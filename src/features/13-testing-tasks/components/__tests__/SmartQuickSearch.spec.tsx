@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { stubServerApi } from 'src/mocks/utils/server-stub';
@@ -9,27 +9,72 @@ import SmartQuickSearch from '../SmartQuickSearch';
 
 describe('SmartQuickSearch', () => {
 
-  fit('should render search field', async () => {
-    // find quick search field by label
+  it('should perfomr search on server side', async () => {
+    renderComponent();
+
+    const quickSearchField = await screen.findByLabelText(/Search/i);
+
+    const entitiesJson = generateEntitiesJson();
+    stubServerApi.stub({
+      method: 'get',
+      path: '/api/players',
+      responseJson: entitiesJson,
+    });
 
     // type some search query
-
-    // "impl" communication with server side
+    userEvent.type(quickSearchField, 'some search query');
 
     // should render spinner
+    await screen.findAllByRole('status', { hidden: true });
 
     // wait for spinner to be removed
+    await waitForElementToBeRemoved(
+      () => screen.queryAllByRole('status', { hidden: true }),
+      { timeout: 2000 }
+    );
 
-    // should render list items count eq to item entities received from server
+    const listItems = await screen.findAllByRole('listitem', { hidden: true });
+    expect(listItems.length).toEqual(entitiesJson.length);
 
-    expect(false).toEqual(true);
+    // expect(false).toEqual(true);
   });
 
-  xit('should render progress while waiting for response from server', async () => {
-    expect(false).toEqual(true);
+  it('RESTRICTIVE should perfomr search on server side', async () => {
+    renderComponent();
+
+    const quickSearchField = await screen.findByLabelText(/Search/i);
+
+    const entitiesJson = generateEntitiesJson();
+    stubServerApi.stub({
+      method: 'get',
+      path: '/api/players',
+      responseJson: entitiesJson,
+    });
+
+    // type some search query
+    userEvent.type(quickSearchField, 'some search query');
+
+    // should render spinner
+    await screen.findAllByRole('status', { hidden: true });
+
+    // wait for spinner to be removed
+    await waitForElementToBeRemoved(
+      () => screen.queryAllByRole('status', { hidden: true }),
+      { timeout: 2000 }
+    );
+
+    const list = await screen.findByRole('list', { hidden: true });
+    const listItems = await within(list).findAllByRole('listitem', { hidden: true });
+    expect(listItems.length).toEqual(entitiesJson.length);
+
+    // expect(false).toEqual(true);
   });
 
 });
+
+function renderComponent() {
+  render(<SmartQuickSearch />);
+}
 
 function generateEntitiesJson(): NbaPlayerDto[] {
   return [
