@@ -19,10 +19,14 @@ describe('PureOptionPickerComponent', () => {
 
     await screen.findByText(/My imba title/i);
 
+    // find btn by role + name
+
+    // click on 2nd btn
+
+    // assert event has been emitted with proper data
     await screen.findByText(/my first/i);
     await screen.findByText(/my sec/i);
     await screen.findByText(/my third/i);
-
     // const { items } = props;
     // for (const item of items) {
     //   await screen.findByText(item.text);
