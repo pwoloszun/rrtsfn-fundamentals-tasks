@@ -11,7 +11,7 @@ export default function NewSyncCounter() {
   );
   const updatedAt = useSelector(
     selectors.selectCounterUpdatedAt
-  );;
+  );
 
   const incrementHandler = () => {
     const action = actions.increment({
