@@ -10,6 +10,7 @@ describe('Couner comp', () => {
     renderComponent(props);
 
     const valueContEl = await screen.findByText(/Value/i);
+    // expect(valueContEl).toBeInTheDocument();
 
     expect(valueContEl).toHaveTextContent(/123/);
   });

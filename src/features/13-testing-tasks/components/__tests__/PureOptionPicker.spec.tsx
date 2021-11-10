@@ -6,11 +6,13 @@ import PureOptionPicker, { IPureOptionPickerProps } from '../PureOptionPicker';
 
 describe('PureOptionPickerComponent', () => {
 
-  xit('should render input title', async () => {
-    expect(false).toEqual(true);
-  });
+  fit('should render input title; render button for each input item', async () => {
+    // render comp
 
-  xit('should render button for each input item', async () => {
+    // find rendered title
+
+    // for each item find rendered item.text
+
     expect(false).toEqual(true);
   });
 
