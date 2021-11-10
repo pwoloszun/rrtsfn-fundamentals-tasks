@@ -24,9 +24,9 @@ describe('PureOptionPickerComponent', () => {
     await screen.findByText(/my third/i);
 
     // const { items } = props;
-    // items.forEach((item) => {
-    //   screen.getByText(item.text);
-    // });
+    // for (const item of items) {
+    //   await screen.findByText(item.text);
+    // }
   });
 
   xit('should not select button for undefined selectedItem prop', async () => {
