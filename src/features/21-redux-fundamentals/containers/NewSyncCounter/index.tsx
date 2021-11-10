@@ -1,14 +1,24 @@
 import React from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Counter from 'src/components/Counter';
-// import { actions, selectors } from 'src/store/21-syncCounter'; // redux module
+import { actions, selectors } from 'src/store/21b-newSyncCounter';
 
 export default function NewSyncCounter() {
-  const syncCounterValue = 123456;
-  const updatedAt = 999999;
+  const dispatch = useDispatch();
+  const syncCounterValue = useSelector(
+    selectors.selectCounterValue
+  );
+  const updatedAt = useSelector(
+    selectors.selectCounterUpdatedAt
+  );;
 
   const incrementHandler = () => {
+    const action = actions.increment({
+      incBy: 5,
+      timestamp: Date.now()
+    });
+    dispatch(action);
   };
 
   return (

@@ -6,7 +6,7 @@ interface CounterState { // slice state shape
 }
 
 const initialState: CounterState = { // initial slice state
-  value: 110,
+  value: 300,
   updatedAt: null,
 };
 
@@ -18,8 +18,19 @@ const newSyncCounterSlice = createSlice({
   initialState,
 
   reducers: {
-    increment: (state, action: PayloadAction<any>) => {
-      // TODO
+
+    increment: (state, action: PayloadAction<{ incBy: number; timestamp: number; }>) => {
+      const { incBy, timestamp } = action.payload;
+      state.value += incBy;
+      state.updatedAt = timestamp;
+    },
+
+    gggHhh: () => {
+
+    },
+
+    tttUuu: () => {
+
     },
 
     // TODO: decrement

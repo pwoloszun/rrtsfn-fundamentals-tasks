@@ -1,7 +1,15 @@
+// Event app
 interface Action {
   type: string;
-  payload: any;
+  payload?: any;
 }
+
+const action2 = {
+  type: 'user/sendMail',
+  // payload: [{ name: 'bob' }]
+}
+
+// FSA = Flux Standard action
 
 class Store {
   dispatch(action: Action) { /*...*/ }
@@ -14,7 +22,19 @@ class Store {
 // in app:
 const store = new Store();
 
+
 const state = {
+  // catalog: {
+  // }, // catalog  slice
+
+  // cart: {
+
+  // }, // cart state slice
+
+  // order: {},
+
+  // admin: {},
+
   counter: { // state slice
     value: 997
   },
@@ -22,8 +42,14 @@ const state = {
     entities: [],
     count: 123
   },
-  todos: [] //state slice
+  todos: [] //state slice,
 };
+
+
+
+
+
+
 
 
 
@@ -39,9 +65,40 @@ store.dispatch(action);
 
 
 
+function counterReducer(state, action) {
+  switch (action.type) {
+    case 'counter/increment': {
+      const nextState = produce(state, (draft) => {
+
+      });
+      return nextState;
+    }
+    case 'counter/decrement': {
+      const nextState = {};
+      return nextState;
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
+
 // reducer(s)
 function usersReducer(state, action) {
-  return {};
+  switch (action.type) {
+    case 'users/fetched': {
+      const nextState = {};
+      return nextState;
+    }
+    case 'users/removed': {
+      const nextState = {};
+      return nextState;
+    }
+    default: {
+      return state;
+    }
+  }
 }
 
 function counterReducer(state, action) {
@@ -49,8 +106,8 @@ function counterReducer(state, action) {
 
 
 function rootReducer(state, action) {
-  const nextUsersState = usersReducer(state.users, action);
   const nextCounterState = counterReducer(state.counter, action);
+  const nextUsersState = usersReducer(state.users, action);
 
   return {
     ...state,
