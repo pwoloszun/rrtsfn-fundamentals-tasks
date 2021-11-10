@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Counter from 'src/components/Counter';
 import { actions, selectors } from 'src/store/21b-newSyncCounter';
 
-export default function NewSyncCounter() {
+// other TS module
+function useCounterFacade() {
   const dispatch = useDispatch();
   const syncCounterValue = useSelector(
     selectors.selectCounterValue
@@ -13,20 +14,46 @@ export default function NewSyncCounter() {
     selectors.selectFormattedCounterUpdatedAt_DECL
   );
 
+  return {
+    syncCounterValue,
+    updatedAt,
+
+    increment() {
+      const action = actions.increment({
+        incBy: 5,
+        timestamp: Date.now()
+      });
+      dispatch(action);
+    }
+  };
+}
+
+
+export default function NewSyncCounter() {
+  const counterFacade = useCounterFacade();
+  // const dispatch = useDispatch();
+  // const syncCounterValue = useSelector(
+  //   selectors.selectCounterValue
+  // );
+  // const updatedAt = useSelector(
+  //   selectors.selectFormattedCounterUpdatedAt_DECL
+  // );
+
   const incrementHandler = () => {
-    const action = actions.increment({
-      incBy: 5,
-      timestamp: Date.now()
-    });
-    dispatch(action);
+    counterFacade.increment();
+    // const action = actions.increment({
+    //   incBy: 5,
+    //   timestamp: Date.now()
+    // });
+    // dispatch(action);
   };
 
   return (
     <div>
       <h3>NewSyncCounter</h3>
-      <p>Upd at {updatedAt}</p>
+      <p>Upd at {counterFacade.updatedAt}</p>
       <Counter
-        value={syncCounterValue}
+        value={counterFacade.syncCounterValue}
         onIncrement={incrementHandler}
       />
     </div>
