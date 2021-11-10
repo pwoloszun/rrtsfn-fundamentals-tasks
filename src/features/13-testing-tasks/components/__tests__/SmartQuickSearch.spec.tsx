@@ -9,7 +9,19 @@ import SmartQuickSearch from '../SmartQuickSearch';
 
 describe('SmartQuickSearch', () => {
 
-  xit('should render search field', async () => {
+  fit('should render search field', async () => {
+    // find quick search field by label
+
+    // type some search query
+
+    // "impl" communication with server side
+
+    // should render spinner
+
+    // wait for spinner to be removed
+
+    // should render list items count eq to item entities received from server
+
     expect(false).toEqual(true);
   });
 
