@@ -10,7 +10,7 @@ export default function NewSyncCounter() {
     selectors.selectCounterValue
   );
   const updatedAt = useSelector(
-    selectors.selectFormattedCounterUpdatedAt
+    selectors.selectFormattedCounterUpdatedAt_DECL
   );
 
   const incrementHandler = () => {
