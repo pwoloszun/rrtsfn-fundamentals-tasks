@@ -16,21 +16,28 @@ describe('PureOptionPickerComponent', () => {
       ]
     });
     renderComponent(props);
+    const { onItemSelect, items } = props;
 
     await screen.findByText(/My imba title/i);
 
-    // find btn by role + name
+    // await screen.findByRole('button', { name: /my first/i, hidden: true });
+    // await screen.findByRole('button', { name: /my sec/i, hidden: true });
+    // const btn = await screen.findByRole('button', { name: /my third/i, hidden: true });
 
-    // click on 2nd btn
+    const allBtns = await screen.findAllByRole('button', { hidden: true });
+    expect(allBtns.length).toEqual(items.length);
+    items.forEach((item, index) => {
+      const btn = allBtns[index];
+      expect(btn).toHaveTextContent(item.text);
+    });
 
-    // assert event has been emitted with proper data
-    await screen.findByText(/my first/i);
-    await screen.findByText(/my sec/i);
-    await screen.findByText(/my third/i);
-    // const { items } = props;
-    // for (const item of items) {
-    //   await screen.findByText(item.text);
-    // }
+    const clickIndex = 2;
+    const btn = allBtns[clickIndex];
+    userEvent.click(btn);
+
+    expect(onItemSelect).toBeCalledTimes(1);
+    expect(onItemSelect).toBeCalledWith(items[clickIndex]);
+    // expect(false).toEqual(true);
   });
 
   xit('should not select button for undefined selectedItem prop', async () => {
@@ -63,7 +70,7 @@ function generateProps(props: Partial<Props> = {}): Props {
   ];
   const defaultProps: Props = {
     items,
-    onItemSelect: () => { },
+    onItemSelect: jest.fn(),
     selectedItem: null,
     title: 'some test title'
   };

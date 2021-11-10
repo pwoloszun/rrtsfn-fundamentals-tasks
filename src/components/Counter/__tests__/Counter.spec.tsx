@@ -13,7 +13,9 @@ describe('Couner comp', () => {
     const valueContEl = await screen.findByText(/Value/i);
     expect(valueContEl).toHaveTextContent(/123/);
 
-    const incBtn = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    const incBtn = await screen.findByRole(
+      'button', { name: /Increment/i, hidden: true }
+    );
     userEvent.click(incBtn);
 
     const { onIncrement } = props;
@@ -21,25 +23,7 @@ describe('Couner comp', () => {
     // expect(onIncrement).toBeCalledWith('a qq!');
   });
 
-  xit('should TODO2', () => {
-    const props = generateProps();
-    renderComponent(props);
-
-    expect(false).toEqual(true);
-  });
-
-  xit('should TODO3', () => {
-    const props = generateProps();
-    renderComponent(props);
-
-    expect(false).toEqual(true);
-  });
-
 });
-
-function renderComponent(props: CounterProps) {
-  render(<Counter {...props} />);
-}
 
 function generateProps(props: Partial<CounterProps> = {}): CounterProps {
   const onIncrement = jest.fn();
@@ -54,3 +38,9 @@ function generateProps(props: Partial<CounterProps> = {}): CounterProps {
   };
   return merge({}, defaultProps, props);
 }
+
+function renderComponent(props: CounterProps) {
+  render(<Counter {...props} />);
+}
+
+
