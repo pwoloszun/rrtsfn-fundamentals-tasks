@@ -3,7 +3,7 @@ import { Card, Form, Spinner } from 'react-bootstrap';
 
 import nbaPlayersApi from 'src/api/nba-player-api';
 
-import useDebounce from '../../14-hooks-api/hooks/useDebounce';
+import useDebounce from '../hooks/useDebounce';
 import useFetch, { RequestStatus } from '../hooks/useFetch';
 import PureList from './PureList';
 
