@@ -15,7 +15,7 @@ export default function PureList<T extends IItem>(props: IPureListProps<T>): Rea
   const { items, renderItem } = props;
 
   return (
-    <ListGroup variant="flush" as="ul" className="shadow">
+    <ListGroup role="list" variant="flush" as="ul" className="shadow">
       {
         items.map((item) => {
           return (
@@ -23,6 +23,7 @@ export default function PureList<T extends IItem>(props: IPureListProps<T>): Rea
               key={item.id}
               action
               as="li"
+              role="listitem"
             >
               {renderItem(item)}
             </ListGroup.Item>
