@@ -10,7 +10,7 @@ const initialState: CounterState = { // initial slice state
   updatedAt: null,
 };
 
-export const newSyncCounterSliceId = 'newSyncCounter'; // slice id
+export const newSyncCounterSliceId = 'ggg HHH'; // slice id
 
 const newSyncCounterSlice = createSlice({
   name: newSyncCounterSliceId,
