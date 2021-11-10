@@ -6,14 +6,27 @@ import PureOptionPicker, { IPureOptionPickerProps } from '../PureOptionPicker';
 
 describe('PureOptionPickerComponent', () => {
 
-  fit('should render input title; render button for each input item', async () => {
-    // render comp
+  it('should render input title; render button for each input item', async () => {
+    const props = generateProps({
+      title: 'My imba title',
+      items: [
+        { id: 100, text: 'my first' },
+        { id: 200, text: 'my sec' },
+        { id: 300, text: 'my third' },
+      ]
+    });
+    renderComponent(props);
 
-    // find rendered title
+    await screen.findByText(/My imba title/i);
 
-    // for each item find rendered item.text
+    await screen.findByText(/my first/i);
+    await screen.findByText(/my sec/i);
+    await screen.findByText(/my third/i);
 
-    expect(false).toEqual(true);
+    // const { items } = props;
+    // items.forEach((item) => {
+    //   screen.getByText(item.text);
+    // });
   });
 
   xit('should not select button for undefined selectedItem prop', async () => {
@@ -32,12 +45,25 @@ describe('PureOptionPickerComponent', () => {
 
 type Props = IPureOptionPickerProps<any>;
 
-// TODO
+function renderComponent(props: Props) {
+  render(<PureOptionPicker {...props} />);
+}
 
-// const items = [
-//   { id: 100, text: 'first item' },
-//   { id: 200, text: 'second item' },
-//   { id: 300, text: 'third item' },
-//   { id: 400, text: 'fourth item' },
-//   { id: 500, text: 'fifth item' },
-// ];
+function generateProps(props: Partial<Props> = {}): Props {
+  const items = [
+    { id: 100, text: 'first item' },
+    { id: 200, text: 'second item' },
+    { id: 300, text: 'third item' },
+    { id: 400, text: 'fourth item' },
+    { id: 500, text: 'fifth item' },
+  ];
+  const defaultProps: Props = {
+    items,
+    onItemSelect: () => { },
+    selectedItem: null,
+    title: 'some test title'
+  };
+  return merge({}, defaultProps, props);
+}
+
+
