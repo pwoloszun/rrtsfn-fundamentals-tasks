@@ -10,19 +10,20 @@ export interface Option {
 interface OptionPickerProps {
   label: string;
   options: Option[];
-  // onOptionSelect: (option: Option) => void;
+  onOptionSelect: (option: Option) => void;
 }
 
-// TODO: props
 export default function OptionPicker(props: OptionPickerProps): React.ReactElement {
-  const { label, options } = props;
+  const { label, options, onOptionSelect } = props;
   return (
     <div className={styles.optionPicker}>
       <span>{label}</span>
       {
         options.map((opt) => {
+          const optionClickHandler = () => onOptionSelect(opt);
+
           return (
-            <button key={opt.id}>{opt.value}</button>
+            <button key={opt.id} onClick={optionClickHandler}>{opt.value}</button>
           );
         })
       }
