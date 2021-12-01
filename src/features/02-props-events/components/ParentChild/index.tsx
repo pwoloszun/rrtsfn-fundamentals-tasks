@@ -9,6 +9,10 @@ interface ParentChildProps {
 
 export default function ParentChild(props: ParentChildProps): React.ReactElement {
   const { fullName, onMessageSent } = props;
+  // const fullName = props.fullName;
+  // const onMessageSent = props.onMessageSent;
+
+
   const sendMessageHandler = () => {
     onMessageSent(`child msg: ${Math.random()}`);
   };

@@ -12,8 +12,24 @@ export default function PeopleListExample(): React.ReactElement {
     <div>
       <h3>PeopleListExample</h3>
       <ul>
-        <li>TODO 1</li>
-        <li>TODO 2</li>
+        {
+          people.map((person, index) => {
+            const myHandler = () => {
+              console.log('name:', person.name);
+            };
+
+            return (
+              <li key={person.id} onClick={myHandler}>
+                <div>
+                  <h3>
+                    {person.name}
+                  </h3>
+                  <span>{index + 1}</span>
+                </div>
+              </li>
+            );
+          })
+        }
       </ul>
     </div>
   );
