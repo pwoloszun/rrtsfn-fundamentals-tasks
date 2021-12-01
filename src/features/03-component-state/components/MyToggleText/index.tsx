@@ -10,7 +10,7 @@ export default function MyToggleText(): React.ReactElement {
     <div className={styles.myToggleText}>
       <button className="btn">
         Toggle TODO
-        </button>
+      </button>
       <hr />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus nisi eu sapien finibus elementum. Integer
@@ -20,7 +20,7 @@ export default function MyToggleText(): React.ReactElement {
         molestie. Morbi leo odio, gravida quis hendrerit non, volutpat eget quam. Nulla sagittis lacus sit amet diam
         lacinia sodales. In fermentum elementum interdum. Donec sit amet venenatis augue. Aliquam suscipit sagittis
         mauris sed vestibulum. Donec facilisis vestibulum venenatis. Proin venenatis libero vel feugiat ultrices.
-        </p>
+      </p>
     </div>
   );
 }
