@@ -28,7 +28,6 @@ const _state = {
 export default function MySimpleCounter(): React.ReactElement {
   console.log('RENDER:',);
   const [value, setValue] = useState(200); // state piece
-  const [name, setName] = useState('bob'); // local piece of state
   const [person, setPerson] = useState({
     name: 'batman',
     id: 123,
@@ -54,7 +53,6 @@ export default function MySimpleCounter(): React.ReactElement {
   return (
     <div className={styles.mySimpleCounter}>
       <h3>Value: {value}</h3>
-      <h3>name: {name}</h3>
       <h3>person: {person.name}</h3>
       <button onClick={incrementHandler}>incr</button>
     </div>
