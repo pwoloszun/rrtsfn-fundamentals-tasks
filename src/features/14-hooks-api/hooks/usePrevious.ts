@@ -10,16 +10,17 @@ type UsePreviousResult<T> = [
 ];
 
 function usePrevious<T>(initialValue: T): UsePreviousResult<T> {
-  const current = initialValue; // TODO
-  const previous = undefined; // TODO
+  const [currentValue, setCurrentValue] = useState(initialValue);
+  const [prevValue, setPrevValue] = useState<undefined | T>(undefined);
 
   const setNextValue = (nextValue: T) => {
-    // TODO
+    setPrevValue(currentValue);
+    setCurrentValue(nextValue);
   };
 
   return [
-    current,
-    previous,
+    currentValue,
+    prevValue,
     setNextValue
   ];
 }
