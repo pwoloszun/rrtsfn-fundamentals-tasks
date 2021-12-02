@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { TodoDto } from 'src/api/dto/todo-dto';
 
 import TodoForm, { OnCreateParams } from './components/TodoForm';
 import TodoList from './components/TodoList';
-import { TODOS_DATA } from './data/todos-data';
-import { produce } from 'immer';
 import useManageTodos from './hooks/useManageTodos';
 
 // Smart Component aka Container
@@ -13,26 +11,13 @@ import useManageTodos from './hooks/useManageTodos';
 // BAD: HOW app does business logic
 export default function TodosPage(): React.ReactElement {
   const { todos, createTodo, removeTodo } = useManageTodos();
-  // const [todos, setTodos] = useState(TODOS_DATA);
 
   const handleRemoveClick = (todo: TodoDto) => {
     removeTodo(todo);
-    // setTodos((currTodos) => {
-    //   const nextTodos = currTodos.filter((td) => td.id !== todo.id);
-    //   return nextTodos;
-    // });
   };
 
   const handleCreateClick = ({ title, description }: OnCreateParams) => {
     createTodo(title, description);
-    // const id = Math.random();
-    // const todo = { id, title, description };
-    // setTodos((currTodos) => {
-    //   const nextTodos = produce(currTodos, (draft) => {
-    //     draft.push(todo);
-    //   });
-    //   return nextTodos;
-    // });
   };
 
   return (
