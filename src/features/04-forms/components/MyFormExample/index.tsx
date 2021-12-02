@@ -14,7 +14,6 @@ export default function MyFormExample(): React.ReactElement {
     countryId: countriesDict[0].id
   });
 
-  // TODO later: refactor
   const inputChangeHandler = (event: React.ChangeEvent<FormEl>) => {
     const { value, name } = event.target;
     setFormValues((currFormValues) => {
