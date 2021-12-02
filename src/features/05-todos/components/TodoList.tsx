@@ -5,16 +5,20 @@ import { TodoDto } from 'src/api/dto/todo-dto';
 
 interface TodoListProps {
   todos: TodoDto[];
-  // onRemoveClick: (todo: TodoDto) => void;
+  onRemoveClick: (todo: TodoDto) => void;
 }
 
 export default function TodoList(props: TodoListProps): React.ReactElement {
-  const { todos } = props;
+  const { todos, onRemoveClick } = props;
 
   return (
     <ListGroup>
       {
         todos.map((todo) => {
+          const removeHandler = () => {
+            onRemoveClick(todo);
+          };
+
           return (
             <ListGroup.Item key={todo.id}>
               <Row>
@@ -24,6 +28,7 @@ export default function TodoList(props: TodoListProps): React.ReactElement {
                 </Col>
                 <Col sm={4}>
                   <Button
+                    onClick={removeHandler}
                     variant="danger"
                     size="sm">
                     Remove
