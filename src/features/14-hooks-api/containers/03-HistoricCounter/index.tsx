@@ -8,6 +8,7 @@ import usePrevious from '../../hooks/usePrevious';
 
 export default function HistoricCounter() {
   const [currentValue, prevValue, setValue] = usePrevious(-997);
+  const [currPer, prevPer, setPer] = usePrevious({ name: 'bob' });
 
   const incrementHandler = () => {
     setValue(currentValue + 10);
