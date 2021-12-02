@@ -5,6 +5,7 @@ import { TodoDto } from 'src/api/dto/todo-dto';
 import TodoForm, { OnCreateParams } from './components/TodoForm';
 import TodoList from './components/TodoList';
 import { TODOS_DATA } from './data/todos-data';
+import { produce } from 'immer';
 
 export default function TodosPage(): React.ReactElement {
   const [todos, setTodos] = useState(TODOS_DATA);
@@ -17,8 +18,15 @@ export default function TodosPage(): React.ReactElement {
   };
 
   const handleCreateClick = ({ title, description }: OnCreateParams) => {
-    // TODO
     const id = Math.random();
+    const todo = { id, title, description };
+    setTodos((currTodos) => {
+      const nextTodos = produce(currTodos, (draft) => {
+        draft.push(todo);
+      });
+      return nextTodos;
+    });
+
   };
 
   return (
@@ -43,3 +51,17 @@ export default function TodosPage(): React.ReactElement {
     </div>
   );
 }
+
+
+
+// function fn(a) {
+//   //
+// }
+
+// const data = { name: 'bob' };
+
+// const result = fn(data);
+
+// const jsx = MyComponent(props); // 
+
+
