@@ -7,6 +7,9 @@ import TodoList from './components/TodoList';
 import { TODOS_DATA } from './data/todos-data';
 import { produce } from 'immer';
 
+// Smart Component aka Container
+// GOOD: WHAT app should do
+// BAD: HOW app does business logic
 export default function TodosPage(): React.ReactElement {
   const [todos, setTodos] = useState(TODOS_DATA);
 
@@ -34,6 +37,7 @@ export default function TodosPage(): React.ReactElement {
       <h3>Todos Feature</h3>
       <div>
 
+        {/* Pure aka Presentation aka Dumb components */}
         <TodoList
           todos={todos}
           onRemoveClick={handleRemoveClick}
