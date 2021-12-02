@@ -13,23 +13,47 @@ interface UseHistoryResult<T> {
 };
 
 export default function useHistory<T>(initialValue: T): UseHistoryResult<T> {
-  // TODO
+  // const [curr, setCurr] = useState(initialValue);
+  // const [past, setPast] = useState<T[]>([]);
+  // const [future, setFuture] = useState<T[]>([]);
+  const [allValues, setAllValues] = useState([initialValue]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const value = allValues[currentIndex];
+  const past = allValues.slice(0, currentIndex);
+  const future = allValues.slice(currentIndex + 1);
+
+  const canUndo = past.length > 0;
+  const canRedo = future.length > 0;
 
   return {
     // part 1
-    value: initialValue,
-    setValue: (nextValue: T) => { },
-    past: [],
+    value,
+    setValue: (nextValue: T) => {
+      const nextAllValues = allValues.slice(0, currentIndex + 1);
+      nextAllValues.push(nextValue)
+      setAllValues(nextAllValues);
+      setCurrentIndex(nextAllValues.length - 1);
+    },
+    past,
 
     // part 2
-    undo: () => { },
+    undo: () => {
+      if (canUndo) {
+        setCurrentIndex(currentIndex - 1);
+      }
+    },
 
     // part 3
-    future: [],
-    redo: () => { },
+    future,
+    redo: () => {
+      if (canRedo) {
+        setCurrentIndex(currentIndex + 1);
+      }
+    },
 
     // part 4
-    canUndo: false,
-    canRedo: false,
+    canUndo,
+    canRedo,
   };
 }
