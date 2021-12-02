@@ -9,27 +9,31 @@ interface TodoListProps {
 }
 
 export default function TodoList(props: TodoListProps): React.ReactElement {
-  // TODO
+  const { todos } = props;
 
   return (
     <ListGroup>
-
-      <ListGroup.Item>
-        <Row>
-          <Col sm={8}>
-            <h5>TITLE_TODO</h5>
-            <small>DESC_TODO</small>
-          </Col>
-          <Col sm={4}>
-            <Button
-              variant="danger"
-              size="sm">
-              Remove
-            </Button>
-          </Col>
-        </Row>
-      </ListGroup.Item>
-
+      {
+        todos.map((todo) => {
+          return (
+            <ListGroup.Item key={todo.id}>
+              <Row>
+                <Col sm={8}>
+                  <h5>{todo.title}</h5>
+                  <small>{todo.description}</small>
+                </Col>
+                <Col sm={4}>
+                  <Button
+                    variant="danger"
+                    size="sm">
+                    Remove
+                  </Button>
+                </Col>
+              </Row>
+            </ListGroup.Item>
+          );
+        })
+      }
     </ListGroup>
   );
 }
