@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import LeafletMap from 'src/components/LeafletMap';
+import { useCallback } from 'react';
 
 interface City {
   name: string;
@@ -24,11 +25,11 @@ export default function Cities(): React.ReactElement {
     setTimeout(() => setCities(CITIES_DATA), 2200);
   }, []);
 
-  const markerClickHandler = (city: any) => {
+  const markerClickHandler = useCallback((city: any) => {
     setSelectedCity((selectedCity: City | null) => {
       return selectedCity === city ? null : city;
     });
-  };
+  }, []);
 
   return (
     <div>

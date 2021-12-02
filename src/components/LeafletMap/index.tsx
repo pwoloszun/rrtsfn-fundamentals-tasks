@@ -35,6 +35,7 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
   const { selected, geoObjects, onMarkerClick } = props;
   const elRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapViewModel | null>(null);
+  const markersRef = useRef<MarkerViewModel[]>([]);
 
   useEffect(() => {
     if (elRef.current !== null) {
@@ -46,10 +47,21 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
 
   useEffect(() => {
     mapRef.current!.removeAllMarkers();
-    geoObjects.forEach((geoObj) => {
-      mapRef.current!.createMarker(geoObj);
+    markersRef.current = geoObjects.map((geoObj) => {
+      const marker = mapRef.current!.createMarker(geoObj);
+      marker.on('click', (obj) => {
+        onMarkerClick(obj);
+      });
+      return marker;
     });
-  }, [geoObjects]);
+  }, [geoObjects, onMarkerClick]);
+
+  useEffect(() => {
+    markersRef.current.forEach((marker) => {
+      const isHighlighted = marker.matches(selected);
+      marker.toggleHighlight(isHighlighted);
+    });
+  }, [selected]);
 
   return (
     <div ref={elRef} className={styles.map}>
