@@ -45,6 +45,7 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
   }, []);
 
   useEffect(() => {
+    mapRef.current!.removeAllMarkers();
     geoObjects.forEach((geoObj) => {
       mapRef.current!.createMarker(geoObj);
     });
