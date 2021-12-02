@@ -4,6 +4,7 @@ import fetchRealEstates, { RealEstate } from 'src/api/fetch-real-estates';
 import fetchUsers, { User } from 'src/api/fetch-users';
 
 import EntitiesSimpleList from '../../components/EntitiesSimpleList';
+import useAsync from '../../hooks/useAsync';
 
 export default function MyDashboard() {
   // const [realEstates, setRealEstates] = useState<RealEstate[]>([]);
@@ -45,8 +46,8 @@ export default function MyDashboard() {
       <h3>MyDashboard</h3>
       <EntitiesSimpleList
         entites={realEstates}
-        isLoading={isLoading}
-        error={error}
+        isLoading={isRealEstatesLoading}
+        error={realEstatesError}
         renderValue="street"
       />
       <hr />
