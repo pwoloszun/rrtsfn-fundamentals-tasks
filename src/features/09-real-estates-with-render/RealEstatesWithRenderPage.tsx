@@ -1,34 +1,36 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Row, Col } from 'react-bootstrap';
+import { RealEstate } from 'src/api/fetch-real-estates';
 
 import LeafletMap from 'src/components/LeafletMap';
 import RenderDataTable from 'src/components/RenderDataTable';
 
 import RealEstateDetailsNext from './components/RealEstateDetailsNext';
-import useManageRealEstates, { RealEstate } from './hooks/useManageRealEstates';
+import RealEstateContainer from './containers/RealEstateContainer';
 
 export default function RealEstatesWithRenderPage(): React.ReactElement {
-
   return (
-    <div>
-      TODO: define provider
-      wrapp app sub-tree
+    <RealEstateContainer.Provider>
       <PageContent />
-    </div>
+    </RealEstateContainer.Provider>
   );
 }
 
 function PageContent(): React.ReactElement {
-  // TODO inject realEstatesFacade 
-  // const { realEstates, selectedRealEstate, fetchAll, toggleSelected } = useManageRealEstates();
+  const {
+    realEstates,
+    selectedRealEstate,
+    fetchAll,
+    toggleSelected
+  } = RealEstateContainer.useContainer();
 
   useEffect(() => {
     fetchAll();
   }, [fetchAll]);
 
-  const selectRealEstateHandler = (estate: any) => {
+  const selectRealEstateHandler = useCallback((estate: any) => {
     toggleSelected(estate);
-  };
+  }, [toggleSelected]);
 
   const header = (
     <Row>

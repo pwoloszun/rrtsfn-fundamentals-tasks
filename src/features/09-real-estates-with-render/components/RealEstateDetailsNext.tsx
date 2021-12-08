@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 
-import { RealEstate } from '../hooks/useManageRealEstates';
+import RealEstateContainer from '../containers/RealEstateContainer';
 
 const styles: CSSProperties = {
   height: '460px',
@@ -10,8 +10,8 @@ const styles: CSSProperties = {
 };
 
 export default function RealEstateDetailsNext(): React.ReactElement {
-  // TODO inject realEstatesFacade 
-  const item: any = {};
+  const { selectedRealEstate } = RealEstateContainer.useContainer();
+  const item = selectedRealEstate;
 
   return (
     <div style={styles}>

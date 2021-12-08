@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 
 import fetchRealEstates, { RealEstate } from 'src/api/fetch-real-estates';
 export type { RealEstate }
@@ -29,10 +29,12 @@ export default function useManageRealEstates(): UseManageRealEstatesResult {
     }
   }, [selectedRealEstate?.id]);
 
-  return {
-    selectedRealEstate,
-    realEstates,
-    fetchAll,
-    toggleSelected,
-  };
+  return useMemo(() => {
+    return {
+      selectedRealEstate,
+      realEstates,
+      fetchAll,
+      toggleSelected,
+    }
+  }, [selectedRealEstate, realEstates, fetchAll, toggleSelected]);
 }
