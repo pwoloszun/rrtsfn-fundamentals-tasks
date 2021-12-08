@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 interface MyRepeaterProps {
   count: number;
-  component: JSX.Element;
+  component: React.ReactElement;
 }
 
 export default class MyRepeater extends Component<MyRepeaterProps> {

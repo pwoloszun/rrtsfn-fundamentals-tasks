@@ -11,6 +11,8 @@ export default function MyPageLayout(
 ): React.ReactElement {
   const { myValue, children } = props;
 
+  console.log('chil:', children);
+
   return (
     <div className={styles.myComp}>
       <h3>MyPageLayout (val: {myValue})</h3>

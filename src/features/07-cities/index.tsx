@@ -25,11 +25,11 @@ export default function Cities(): React.ReactElement {
     setTimeout(() => setCities(CITIES_DATA), 2200);
   }, []);
 
-  const markerClickHandler = useCallback((city: any) => {
+  const markerClickHandler = (city: any) => {
     setSelectedCity((selectedCity: City | null) => {
       return selectedCity === city ? null : city;
     });
-  }, []);
+  };
 
   return (
     <div>

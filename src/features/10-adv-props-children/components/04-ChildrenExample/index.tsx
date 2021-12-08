@@ -17,6 +17,14 @@ export default class ChildrenExample extends Component {
           <div>third</div>
         </MyPageLayout>
 
+        <MyPageLayout myValue={456}>
+          <h1>
+            a QQQ!
+          </h1>
+        </MyPageLayout>
+
+        <MyPageLayout myValue={987} />
+
       </div>
     );
   }
