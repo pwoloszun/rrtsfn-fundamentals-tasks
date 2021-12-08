@@ -30,6 +30,10 @@ export class MarkerViewModel {
     });
   }
 
+  off(eventName: string): void {
+    this.marker.off(eventName);
+  }
+
   toggleHighlight(isHighlighted: boolean) {
     this.marker.setIcon(isHighlighted ? ICONS.highlighted : ICONS.default);
   }

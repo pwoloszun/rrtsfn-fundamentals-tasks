@@ -46,13 +46,20 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
   }, []);
 
   useEffect(() => {
+    console.log('render MARKERS:', geoObjects.length);
     mapRef.current!.removeAllMarkers();
     markersRef.current = geoObjects.map((geoObj) => {
       const marker = mapRef.current!.createMarker(geoObj);
+      return marker;
+    });
+  }, [geoObjects]);
+
+  useEffect(() => {
+    markersRef.current.forEach((marker) => {
+      marker.off('click');
       marker.on('click', (obj) => {
         onMarkerClick(obj);
       });
-      return marker;
     });
   }, [geoObjects, onMarkerClick]);
 
