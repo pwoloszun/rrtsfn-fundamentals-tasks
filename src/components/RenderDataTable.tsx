@@ -9,9 +9,9 @@ interface DataTableItem {
 interface IRenderDataTableProps<T> {
   items: T[];
   renderItem: (item: T) => React.ReactElement;
-  // header: React.ReactElement;
-  // selectedItem: T | null;
-  // onRowClick: (item: T) => void;
+  header: React.ReactElement;
+  selectedItem: T | null;
+  onRowClick: (item: T) => void;
 }
 
 export default function RenderDataTable<T extends DataTableItem>(

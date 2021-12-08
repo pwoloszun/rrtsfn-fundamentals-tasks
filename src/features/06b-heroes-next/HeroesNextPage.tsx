@@ -49,15 +49,32 @@ export default function HeroesNextPage(): React.ReactElement {
       <Row>
         <Col sm="6">
           <RenderDataTable
+            header={
+              <Row>
+                <Col sm="6">Hero Name</Col>
+                <Col sm="6">Secret Identity</Col>
+              </Row>
+            }
             items={heroes}
             renderItem={renderItemFirst}
+            onRowClick={rowClickHandler}
+            selectedItem={selectedHero}
           />
         </Col>
 
         <Col sm="6">
           <RenderDataTable
+            header={
+              <div>
+                <span>ID</span> |&nbsp;
+                <span>Comic Universe</span> |&nbsp;
+                <span>Name</span> |&nbsp;
+              </div>
+            }
             items={heroes}
             renderItem={renderItemSecond}
+            onRowClick={rowClickHandler}
+            selectedItem={selectedHero}
           />
         </Col>
       </Row>
