@@ -31,16 +31,16 @@ export default function HeroesNextPage(): React.ReactElement {
     );
   };
 
-  // const renderItemSecond = (hero: Hero) => {
-  //   const { id, universe, name } = hero;
-  //   return (
-  //     <div>
-  //       <span>ID: {id}</span> | &nbsp;
-  //       <b>{universe}</b> | &nbsp;
-  //       <a href="#todo">{name}</a> | &nbsp;
-  //     </div>
-  //   );
-  // };
+  const renderItemSecond = (hero: Hero) => {
+    const { id, universe, name } = hero;
+    return (
+      <div>
+        <span>ID: {id}</span> | &nbsp;
+        <b>{universe}</b> | &nbsp;
+        <a href="#todo">{name}</a> | &nbsp;
+      </div>
+    );
+  };
 
   return (
     <div>
@@ -49,37 +49,16 @@ export default function HeroesNextPage(): React.ReactElement {
       <Row>
         <Col sm="6">
           <RenderDataTable
-            // TODO 1
             items={heroes}
             renderItem={renderItemFirst}
-            // TODO 2
-            // header={
-            //   <Row>
-            //     <Col sm="6">Hero Name</Col>
-            //     <Col sm="6">Secret Identity</Col>
-            //   </Row>
-            // }
-            // TODO 3
-            // onRowClick={rowClickHandler}
-            // TODO 4
-            // selectedItem={selectedHero}
           />
         </Col>
 
         <Col sm="6">
-          {/* <RenderDataTable
+          <RenderDataTable
             items={heroes}
             renderItem={renderItemSecond}
-            header={
-              <div>
-                <span>ID</span> |&nbsp;
-                <span>Comic Universe</span> |&nbsp;
-                <span>Name</span> |&nbsp;
-              </div>
-            }
-            onRowClick={rowClickHandler}
-            selectedItem={selectedHero}
-          /> */}
+          />
         </Col>
       </Row>
     </div>

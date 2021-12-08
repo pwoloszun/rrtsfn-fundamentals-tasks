@@ -8,7 +8,7 @@ interface RenderFnParams {
 }
 
 interface IMyTestingPanelProps {
-  render: (params: RenderFnParams) => JSX.Element;
+  render: (params: RenderFnParams) => React.ReactElement;
 }
 
 interface IMyTestingPanelState {

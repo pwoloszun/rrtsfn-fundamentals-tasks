@@ -14,6 +14,10 @@ export default function RenderPropsExample(): React.ReactElement {
     return <FancyModal {...props} />
   };
 
+  const otherRender = () => {
+    return <h1>a QQ!</h1>;
+  };
+
   // TODO: children function
 
   return (
@@ -21,6 +25,9 @@ export default function RenderPropsExample(): React.ReactElement {
       <MyTestingPanel render={basicRender} />
       <hr />
       <MyTestingPanel render={fancyRender} />
+      <hr />
+      <MyTestingPanel render={otherRender} />
+
     </div>
   );
 }
