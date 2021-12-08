@@ -9,12 +9,10 @@ const styles: CSSProperties = {
   backgroundColor: 'chocolate',
 };
 
-interface IRealEstateDetailsNextProps {
-  item: RealEstate | null;
-}
+export default function RealEstateDetailsNext(): React.ReactElement {
+  // TODO inject realEstatesFacade 
+  const item: any = {};
 
-export default function RealEstateDetailsNext(props: IRealEstateDetailsNextProps): React.ReactElement {
-  const { item } = props;
   return (
     <div style={styles}>
       <div>

@@ -8,7 +8,20 @@ import RealEstateDetailsNext from './components/RealEstateDetailsNext';
 import useManageRealEstates, { RealEstate } from './hooks/useManageRealEstates';
 
 export default function RealEstatesWithRenderPage(): React.ReactElement {
-  const { realEstates, selectedRealEstate, fetchAll, toggleSelected } = useManageRealEstates();
+
+  return (
+    <div>
+      TODO: define provider
+      wrapp app sub-tree
+      <PageContent />
+    </div>
+  );
+}
+
+
+export default function PageContent(): React.ReactElement {
+  // TODO inject realEstatesFacade 
+  // const { realEstates, selectedRealEstate, fetchAll, toggleSelected } = useManageRealEstates();
 
   useEffect(() => {
     fetchAll();
@@ -39,21 +52,21 @@ export default function RealEstatesWithRenderPage(): React.ReactElement {
       <h3>RealEstates (with render)</h3>
       <Row>
         <Col sm="8">
-          
+
           <LeafletMap
             geoObjects={realEstates}
             selected={selectedRealEstate}
             onMarkerClick={selectRealEstateHandler}
           />
-          
+
         </Col>
         <Col sm="4">
-          <RealEstateDetailsNext item={selectedRealEstate} />
+          <RealEstateDetailsNext />
         </Col>
       </Row>
       <Row>
         <Col>
-          
+
           <RenderDataTable
             items={realEstates}
             renderItem={renderItem}
@@ -61,7 +74,7 @@ export default function RealEstatesWithRenderPage(): React.ReactElement {
             onRowClick={selectRealEstateHandler}
             selectedItem={selectedRealEstate}
           />
-          
+
         </Col>
       </Row>
     </div>
