@@ -34,7 +34,7 @@ export default function LoadingTask(): React.ReactElement {
             Loaded emails:
             <ul>
               {
-                users.map((user) => {
+                users?.map((user) => {
                   return (
                     <li key={user.id}>{user.email}</li>
                   );

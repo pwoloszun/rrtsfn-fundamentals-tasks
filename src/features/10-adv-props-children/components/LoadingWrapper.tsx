@@ -3,6 +3,7 @@ import { Spinner } from 'react-bootstrap';
 
 interface ILoadingWrapperProps {
   isLoading: boolean;
+  error?: Error | null;
 }
 
 export default function LoadingWrapper(
