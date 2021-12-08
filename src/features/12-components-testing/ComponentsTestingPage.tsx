@@ -20,7 +20,7 @@ export default function ComponentsTestingPage(): React.ReactElement {
       <MyCounter />
       <hr />
 
-      <MyAjaxCounter />
+      {/* <MyAjaxCounter />
       <hr />
 
       <MyTaskListContainer />
@@ -33,7 +33,7 @@ export default function ComponentsTestingPage(): React.ReactElement {
       <hr />
 
       <AsyncTimerExample />
-      <hr />
+      <hr /> */}
 
     </div>
   );

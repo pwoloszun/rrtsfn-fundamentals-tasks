@@ -4,6 +4,7 @@ import styles from './MyCounter.module.css';
 
 export interface IMyCounterProps {
   initialValue?: number;
+  gggHhh: string;
 }
 
 export default function MyCounter(props: IMyCounterProps): React.ReactElement {
