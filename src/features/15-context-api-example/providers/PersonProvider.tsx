@@ -9,7 +9,7 @@ interface IPersonProviderProps {
 }
 
 export default function PersonProvider(props: React.PropsWithChildren<IPersonProviderProps>) {
-  const personFacade = usePerson(props.value);
+  const personFacade = usePerson(props.value); // singleton
 
   return (
     <PersonContext.Provider value={personFacade}>
