@@ -18,8 +18,7 @@ export default function RealEstatesWithRenderPage(): React.ReactElement {
   );
 }
 
-
-export default function PageContent(): React.ReactElement {
+function PageContent(): React.ReactElement {
   // TODO inject realEstatesFacade 
   // const { realEstates, selectedRealEstate, fetchAll, toggleSelected } = useManageRealEstates();
 
