@@ -48,6 +48,7 @@ export default function HeroesNextPage(): React.ReactElement {
       <h5>Selected hero: {selectedHero?.name}</h5>
       <Row>
         <Col sm="6">
+
           <RenderDataTable
             header={
               <Row>
@@ -60,9 +61,11 @@ export default function HeroesNextPage(): React.ReactElement {
             onRowClick={rowClickHandler}
             selectedItem={selectedHero}
           />
+
         </Col>
 
         <Col sm="6">
+
           <RenderDataTable
             header={
               <div>
@@ -76,6 +79,7 @@ export default function HeroesNextPage(): React.ReactElement {
             onRowClick={rowClickHandler}
             selectedItem={selectedHero}
           />
+          
         </Col>
       </Row>
     </div>

@@ -17,28 +17,35 @@ interface IRenderDataTableProps<T> {
 export default function RenderDataTable<T extends DataTableItem>(
   props: IRenderDataTableProps<T>
 ): React.ReactElement {
-
-  const { items, renderItem } = props;
-  // TODO 1: render items
-  // TODO 2: render header
-  // TODO 3: emit onRowClick event
-  // TODO 3: highlight (active={true}) list row for selectedItem
+  const {
+    items,
+    renderItem,
+    header,
+    onRowClick,
+    selectedItem
+  } = props;
 
   return (
     <ListGroup variant="flush" as="ul">
       <ListGroup.Item variant="dark" as="li">
-        HEADER_PLACEHODER
+        {header}
       </ListGroup.Item>
 
       {
         items.map((item) => {
           const itemEl = renderItem(item);
+          const itemClickHandler = () => {
+            onRowClick(item);
+          };
+          const isActive = selectedItem?.id === item.id;
+
           return (
             <ListGroup.Item
               key={item.id}
               action
-              active={false}
+              active={isActive}
               as="li"
+              onClick={itemClickHandler}
             >
               {itemEl}
             </ListGroup.Item>
