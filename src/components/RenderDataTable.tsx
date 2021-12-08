@@ -18,6 +18,7 @@ export default function RenderDataTable<T extends DataTableItem>(
   props: IRenderDataTableProps<T>
 ): React.ReactElement {
 
+  const { items, renderItem } = props;
   // TODO 1: render items
   // TODO 2: render header
   // TODO 3: emit onRowClick event
@@ -29,31 +30,25 @@ export default function RenderDataTable<T extends DataTableItem>(
         HEADER_PLACEHODER
       </ListGroup.Item>
 
-      <ListGroup.Item
-        action
-        active={false}
-        as="li"
-      >
-        item 1
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        action
-        active={true}
-        as="li"
-      >
-        item 2
-      </ListGroup.Item>
-
-      <ListGroup.Item
-        action
-        active={false}
-        as="li"
-      >
-        item 3
-      </ListGroup.Item>
+      {
+        items.map((item) => {
+          const itemEl = renderItem(item);
+          return (
+            <ListGroup.Item
+              key={item.id}
+              action
+              active={false}
+              as="li"
+            >
+              {itemEl}
+            </ListGroup.Item>
+          );
+        })
+      }
 
     </ListGroup>
   );
 }
+
+{/* <React.Fragment></React.Fragment> */ }
 
