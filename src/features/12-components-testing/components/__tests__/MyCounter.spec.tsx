@@ -26,8 +26,19 @@ describe('MyCounter', () => {
     expect(valueEl).toHaveTextContent(/Value: 123/i);
   });
 
-  xit('should 3rd', async () => {
-    expect(false).toEqual(true);
+  it('should increment value on "Increment" btn click', async () => {
+    const props = generateProps({
+      initialValue: 100
+    });
+    renderComponent(props);
+
+    const incBtn = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    userEvent.click(incBtn);
+
+    const valueEl = await screen.findByText(/Value/i);
+    expect(valueEl).toHaveTextContent(/Value: 101/i);
+
+    // expect(false).toEqual(true);
   });
 
 });
@@ -38,7 +49,6 @@ function renderComponent(props: IMyCounterProps) {
 
 function generateProps(props: Partial<IMyCounterProps> = {}): IMyCounterProps {
   const defaultProps: IMyCounterProps = {
-    gggHhh: 'qq'
   };
   return merge({}, defaultProps, props);
 }

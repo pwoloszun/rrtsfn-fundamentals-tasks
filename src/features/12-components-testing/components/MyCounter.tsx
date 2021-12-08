@@ -4,7 +4,6 @@ import styles from './MyCounter.module.css';
 
 export interface IMyCounterProps {
   initialValue?: number;
-  gggHhh: string;
 }
 
 export default function MyCounter(props: IMyCounterProps): React.ReactElement {
@@ -19,7 +18,7 @@ export default function MyCounter(props: IMyCounterProps): React.ReactElement {
       <h5>MyCounter</h5>
       <h2>Value: {value}</h2>
       <div>
-        <button onClick={incrementHandler}>Increment</button>
+        <a role="button" onClick={incrementHandler}>    &nbsp; Increment  &nbsp;&nbsp;&nbsp;&nbsp;</a>
         <button onClick={decrementHandler}>Decrement</button>
       </div>
     </div>
