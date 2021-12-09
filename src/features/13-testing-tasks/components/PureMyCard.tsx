@@ -12,14 +12,16 @@ export default function PureMyCard(props: IPureMyCardProps): React.ReactElement 
   const { header, content, footer } = props;
 
   return (
+
+
     <div className={styles.mcContainer}>
-      <div className={styles.mcHeader}>
+      <div role="region" aria-label="Card Header" className={styles.mcHeader}>
         {header}
       </div>
-      <div className={styles.mcContent}>
+      <div role="region" aria-label="Card Content" className={styles.mcContent}>
         {content}
       </div>
-      <div className={styles.mcFooter}>
+      <div role="region" aria-label="Card Footer" className={styles.mcFooter}>
         {footer}
       </div>
     </div>

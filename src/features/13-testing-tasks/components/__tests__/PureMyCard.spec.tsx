@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { merge } from 'lodash';
 
 import PureMyCard, { IPureMyCardProps } from '../PureMyCard';
@@ -16,6 +16,22 @@ describe('PureMyCard', () => {
     await screen.findByText(/my test h/i);
     await screen.findByText(/footer lorem ips/i);
     await screen.findByText(/content my my test/i);
+  });
+
+  it('should render received: header, footer & content within proper regions', async () => {
+    const header = 'some header or footer';
+    const footer = 'some header or footer';
+    const content = 'content my my test';
+    const props = generateProps({ header, footer, content });
+
+    renderComponent(props);
+
+    const headerCont = await screen.findByRole('region', { name: /Card Header/i, hidden: true });
+    await within(headerCont).findByText(/some header or footer/i);
+    const footerCont = await screen.findByRole('region', { name: /Card Footer/i, hidden: true });
+    await within(footerCont).findByText(/some header or footer/i);
+    const contentCont = await screen.findByRole('region', { name: /Card Content/i, hidden: true });
+    await within(contentCont).findByText(/content my my test/i);
   });
 
 });

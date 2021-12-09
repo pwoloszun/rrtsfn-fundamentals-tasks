@@ -32,7 +32,8 @@ describe('MyCounter', () => {
     });
     renderComponent(props);
 
-    const counterValueRegion = await screen.findByRole('region', { name: /Counter Value/i, hidden: true });
+    const counterValueRegion = await screen
+      .findByRole('region', { name: /Counter Value/i, hidden: true });
     const valueEl = await within(counterValueRegion).findByText(/Value/i);
     expect(valueEl).toHaveTextContent(/Value: 456/i);
   });
