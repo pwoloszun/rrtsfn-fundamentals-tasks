@@ -9,17 +9,26 @@ interface IItem {
 export interface IPureListProps<T> {
   items: T[];
   renderItem: (item: T) => React.ReactElement | string;
+  onListClick?: (n: number) => void;
 }
 
 export default function PureList<T extends IItem>(props: IPureListProps<T>): React.ReactElement {
-  const { items, renderItem } = props;
+  const { items, renderItem, onListClick } = props;
+
+  const listClickHandler = (params) => {
+    if (onListClick) {
+      onListClick(123);
+    }
+  };
 
   return (
-    <ListGroup variant="flush" as="ul" className="shadow">
+    <ListGroup role="list"
+      variant="flush" as="ul" className="shadow" onClick={listClickHandler}>
       {
         items.map((item) => {
           return (
             <ListGroup.Item
+              role="listitem"
               key={item.id}
               action
               as="li"
