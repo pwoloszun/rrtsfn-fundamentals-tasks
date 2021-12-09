@@ -6,23 +6,11 @@ import PureOptionPicker, { IPureOptionPickerProps } from '../PureOptionPicker';
 
 describe('PureOptionPickerComponent', () => {
 
-  xit('should render input title', async () => {
+  xit('should render received: title & buttons', async () => {
     expect(false).toEqual(true);
   });
 
-  xit('should render button for each input item', async () => {
-    expect(false).toEqual(true);
-  });
-
-  xit('should not select button for undefined selectedItem prop', async () => {
-    expect(false).toEqual(true);
-  });
-
-  xit('should select button for defined selectedItem prop', async () => {
-    expect(false).toEqual(true);
-  });
-
-  xit('should emit "onItemSelect" event on button click', async () => {
+  xit('should emit "onItemSelect" event on button click and pass related item', async () => {
     expect(false).toEqual(true);
   });
 
