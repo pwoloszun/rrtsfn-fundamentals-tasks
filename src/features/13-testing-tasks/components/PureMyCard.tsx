@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './PureMyCard.module.css';
 
-interface IPureMyCardProps {
+export interface IPureMyCardProps {
   header?: React.ReactElement | string;
   content?: React.ReactElement | string;
   footer?: React.ReactElement | string;
