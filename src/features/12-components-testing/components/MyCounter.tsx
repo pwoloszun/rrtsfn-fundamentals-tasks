@@ -6,6 +6,8 @@ export interface IMyCounterProps {
   initialValue?: number;
 }
 
+
+
 export default function MyCounter(props: IMyCounterProps): React.ReactElement {
   const { initialValue = 0 } = props;
   const [value, setValue] = useState(initialValue);
@@ -16,8 +18,10 @@ export default function MyCounter(props: IMyCounterProps): React.ReactElement {
   return (
     <div className={styles.myCounter}>
       <h5>MyCounter</h5>
-      <h2>Value: {value}</h2>
-      <div>
+      <div role="region" aria-label="Counter Value" className={styles.valueCont}>
+        <h2>Value: {value}</h2>
+      </div>
+      <div role="region">
         <a role="button" onClick={incrementHandler}>    &nbsp; Increment  &nbsp;&nbsp;&nbsp;&nbsp;</a>
         <button onClick={decrementHandler}>Decrement</button>
       </div>

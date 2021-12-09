@@ -4,3 +4,9 @@
   margin: 0 auto;
   width: 480px;
 }
+
+.valueCont {
+  padding: 6px;
+  border: 2px solid #777;
+  background-color: #f00;
+}
