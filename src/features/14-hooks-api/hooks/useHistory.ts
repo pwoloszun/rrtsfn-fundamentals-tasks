@@ -1,58 +1,98 @@
 import { useState } from 'react';
 import { last, first } from 'lodash';
 
+type NextValueFn<T> = (currentValue: T) => T;
+type NextValueArg<T> = T | NextValueFn<T>;
+
 interface UseHistoryResult<T> {
   value: T;
-  setValue: (nextValue: T) => void;
+  setValue: (nextValue: NextValueArg<T>) => void;
   past: T[];
   future: T[];
   undo: () => void;
   redo: () => void;
   canUndo: boolean;
   canRedo: boolean;
-};
+}
+
+interface HistoryState<T> {
+  current: T;
+  past: T[];
+  future: T[];
+}
+
 
 export default function useHistory<T>(initialValue: T): UseHistoryResult<T> {
-  // const [curr, setCurr] = useState(initialValue);
-  // const [past, setPast] = useState<T[]>([]);
-  // const [future, setFuture] = useState<T[]>([]);
-  const [allValues, setAllValues] = useState([initialValue]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [historyState, setHistoryState] = useState<HistoryState<T>>({
+    current: initialValue,
+    past: [],
+    future: [],
+  });
 
-  const value = allValues[currentIndex];
-  const past = allValues.slice(0, currentIndex);
-  const future = allValues.slice(currentIndex + 1);
+  const canUndo = historyState.past.length > 0;
+  const canRedo = historyState.future.length > 0;
 
-  const canUndo = past.length > 0;
-  const canRedo = future.length > 0;
+  const setValue = (nextValueArg: NextValueArg<T>) => {
+    setHistoryState((histVal) => {
+      const { current, past } = histVal;
+      let nextVal: T;
+      if (typeof nextValueArg === 'function') {
+        nextVal = (nextValueArg as NextValueFn<T>)(current);
+      } else {
+        nextVal = nextValueArg;
+      }
+
+      return {
+        past: [...past, current],
+        future: [],
+        current: nextVal,
+      };
+    });
+  };
+
+  const undo = () => {
+    if (!canUndo) {
+      return;
+    }
+    setHistoryState((histVal) => {
+      const { current, past, future } = histVal;
+      const previous = last(past);
+      if (!previous) {
+        return histVal;
+      }
+      return {
+        past: past.slice(0, past.length - 1),
+        future: [current, ...future],
+        current: previous,
+      };
+    });
+  };
+
+  const redo = () => {
+    if (!canRedo) {
+      return;
+    }
+    setHistoryState((histVal) => {
+      const { current, past, future } = histVal;
+      const next = first(future);
+      if (!next) {
+        return histVal;
+      }
+      return {
+        past: [...past, current],
+        future: future.slice(1),
+        current: next,
+      };
+    });
+  };
 
   return {
-    // part 1
-    value,
-    setValue: (nextValue: T) => {
-      const nextAllValues = allValues.slice(0, currentIndex + 1);
-      nextAllValues.push(nextValue)
-      setAllValues(nextAllValues);
-      setCurrentIndex(nextAllValues.length - 1);
-    },
-    past,
-
-    // part 2
-    undo: () => {
-      if (canUndo) {
-        setCurrentIndex(currentIndex - 1);
-      }
-    },
-
-    // part 3
-    future,
-    redo: () => {
-      if (canRedo) {
-        setCurrentIndex(currentIndex + 1);
-      }
-    },
-
-    // part 4
+    value: historyState.current,
+    setValue,
+    past: historyState.past,
+    future: historyState.future,
+    undo,
+    redo,
     canUndo,
     canRedo,
   };
