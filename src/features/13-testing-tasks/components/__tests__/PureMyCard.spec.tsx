@@ -7,14 +7,14 @@ describe('PureMyCard', () => {
 
   it('should render received: header, footer & content', async () => {
     const header = 'my test h';
-    const footer = 'BEF my test h AFTER';
+    const footer = 'footer lorem ips';
     const content = 'content my my test';
     const props = generateProps({ header, footer, content });
 
     renderComponent(props);
 
     await screen.findByText(/my test h/i);
-    await screen.findByText(/my footer test/i);
+    await screen.findByText(/footer lorem ips/i);
     await screen.findByText(/content my my test/i);
   });
 
