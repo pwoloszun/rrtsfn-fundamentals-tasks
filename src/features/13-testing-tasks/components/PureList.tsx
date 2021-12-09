@@ -15,7 +15,7 @@ export interface IPureListProps<T> {
 export default function PureList<T extends IItem>(props: IPureListProps<T>): React.ReactElement {
   const { items, renderItem, onListClick } = props;
 
-  const listClickHandler = (params) => {
+  const listClickHandler = () => {
     if (onListClick) {
       onListClick(123);
     }
