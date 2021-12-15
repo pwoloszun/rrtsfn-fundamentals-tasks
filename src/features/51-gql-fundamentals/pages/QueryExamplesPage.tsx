@@ -13,10 +13,10 @@ import {
 const PROJECT_IDS = ['1000', '200', '300', '400'];
 
 export default function QueryExamplesPage(): React.ReactElement {
-  // const allUsersWithAddressesResp = useQuery(GetAllUsersWithAddresses);
-  const userWithProjectsResp = useQuery(GetUserWithProjects, {
-    variables: { userId: '2000' }
-  });
+  const allUsersWithAddressesResp = useQuery(GetAllUsersWithAddresses);
+  // const userWithProjectsResp = useQuery(GetUserWithProjects, {
+  //   variables: { userId: '2000' }
+  // });
 
   // TODO: GetAllUsersWithAddresses
 
@@ -29,17 +29,17 @@ export default function QueryExamplesPage(): React.ReactElement {
     <div>
       <h3>QueryExamples</h3>
 
-      {/* <Loadable isLoading={allUsersWithAddressesResp.loading} error={allUsersWithAddressesResp.error}>
+      <Loadable isLoading={allUsersWithAddressesResp.loading} error={allUsersWithAddressesResp.error}>
         <h5>All Users with Addresses</h5>
         <PrettyPrintJson data={allUsersWithAddressesResp.data} />
       </Loadable>
-      <hr /> */}
+      <hr />
 
-      <Loadable isLoading={userWithProjectsResp.loading} error={userWithProjectsResp.error}>
+      {/* <Loadable isLoading={userWithProjectsResp.loading} error={userWithProjectsResp.error}>
         <h5>User with PRojects</h5>
         <PrettyPrintJson data={userWithProjectsResp.data} />
       </Loadable>
-      <hr />
+      <hr /> */}
 
 
     </div>

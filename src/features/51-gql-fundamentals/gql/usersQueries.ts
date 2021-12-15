@@ -6,9 +6,13 @@ export const GetAllUsersWithAddresses = gql`
       firstName
       lastName
       email
+
+      address {
+        street
+        city
+      }
     }
     
-    # TODO
   }
 `;
 
