@@ -14,8 +14,12 @@ export const GetAllUsersWithAddresses = gql`
 
 // var: $userId
 export const GetUserWithProjects = gql`
-  query GetUserWithProjects {
-    someField
+  query GetUserWithProjects($userId: ID!) {
+    user(id: $userId) {
+      username
+      title
+      description
+    }
 
     # TODO
   }
