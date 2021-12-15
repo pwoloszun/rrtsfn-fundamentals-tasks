@@ -8,6 +8,8 @@ export const GetAllTeams = gql`
 
       conference
       division
+
+      
   
     }
   }
@@ -26,13 +28,16 @@ export const GetTeam = gql`
 `;
 
 export const GetAllPlayers = gql`
-  query {
+  query GetAllPlayers {
     nbaPlayers {
       first_name
       last_name
       position
 
-      # TODO team
+      team {
+        name
+        city
+      }
     }
   }
 `;
