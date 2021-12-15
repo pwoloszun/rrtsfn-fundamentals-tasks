@@ -4,31 +4,32 @@ export const GetTeam = gql`
   query GetTeam($nbaTeamId: ID!) {
     nbaTeam(id: $nbaTeamId) {
       abbreviation
-      conference
-      division
       full_name
 
-      players {
-        first_name
-        last_name
-        position
-      }
+      # TODO players
+    }
+  }
+`;
+
+export const GetAllPlayers = gql`
+  query {
+    nbaPlayers {
+      first_name
+      last_name
+      position
+
+      # TODO team
     }
   }
 `;
 
 export const GetPlayers = gql`
   query GetPlayers($playerIds: [ID!]) {
-    nbaPlayers(ids: $playerIds) {
-      first_name
-      last_name
-      position
+    someField
 
-      team {
-        abbreviation
-        full_name
-      }
-    }
+    # TODO
+
+    # TODO 2: team
   }
 `;
 
