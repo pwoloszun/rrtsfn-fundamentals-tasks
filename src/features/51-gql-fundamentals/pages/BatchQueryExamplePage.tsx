@@ -12,15 +12,11 @@ const PLAYER_IDS = ['237', '434', '420', '117', '400', '472', '15'];
 const TEAM_ID = '2';
 
 export default function BatchQueryExamplePage(): React.ReactElement {
-  const allTeamsResp = useQuery(GetAllTeams);
+  // const allTeamsResp = useQuery(GetAllTeams);
   // const teamResp = useQuery(GetTeam, {
   //   variables: { nbaTeamId: TEAM_ID }
   // });
   const allPlayersResp = useQuery(GetAllPlayers);
-
-
-
-  // TODO: GetPlayers
 
   return (
     <div>
