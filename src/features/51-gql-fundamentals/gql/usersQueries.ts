@@ -2,7 +2,11 @@ import { gql } from '@apollo/client';
 
 export const GetAllUsersWithAddresses = gql`
   query GetAllUsersWithAddresses {
-    someField
+    users {
+      firstName
+      lastName
+      email
+    }
     
     # TODO
   }

@@ -13,9 +13,7 @@ import {
 const PROJECT_IDS = ['1000', '200', '300', '400'];
 
 export default function QueryExamplesPage(): React.ReactElement {
-  // const someResp = useQuery(GetSomeGraph, {
-  //   variables: { someId: '123' }
-  // });
+  const allUsersWithAddresses = useQuery(GetAllUsersWithAddresses);
 
   // TODO: GetAllUsersWithAddresses
 
@@ -28,11 +26,11 @@ export default function QueryExamplesPage(): React.ReactElement {
     <div>
       <h3>QueryExamples</h3>
 
-      {/* <Loadable isLoading={someResp.loading} error={someResp.error}>
+      <Loadable isLoading={allUsersWithAddresses.loading} error={allUsersWithAddresses.error}>
         <h5>All Users with Addresses</h5>
-        <PrettyPrintJson data={someResp.data} />
+        <PrettyPrintJson data={allUsersWithAddresses.data} />
       </Loadable>
-      <hr /> */}
+      <hr />
 
 
     </div>
