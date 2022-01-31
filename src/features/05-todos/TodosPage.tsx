@@ -4,6 +4,8 @@ import React from 'react';
 import { TodoDto } from 'src/api/dto/todo-dto';
 
 import TodoForm, { OnCreateParams } from './components/TodoForm';
+import TodoList from './components/TodoList';
+import { TODOS_DATA } from './data/todos-data';
 
 export default function TodosPage(): React.ReactElement {
   // TODO: init local state
@@ -25,6 +27,9 @@ export default function TodosPage(): React.ReactElement {
           onRemoveClick={handleRemoveClick}
         />
          */}
+        <TodoList
+          todos={TODOS_DATA}
+        />
       </div>
       <hr />
       <div>
