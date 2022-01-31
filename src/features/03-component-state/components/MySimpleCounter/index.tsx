@@ -1,6 +1,6 @@
-/*eslint @typescript-eslint/no-unused-vars: 'off'*/
-
+import { cloneDeep } from 'lodash';
 import React, { useState } from 'react';
+import { produce } from 'immer';
 
 import styles from './styles.module.css';
 
@@ -12,7 +12,14 @@ const _state = {
 
 export default function MySimpleCounter(): React.ReactElement {
   const [value, setValue] = useState(100); // piece of state
-  const [person, setPerson] = useState({ name: 'bob', age: 123 }); // piece of state
+  const [person, setPerson] = useState({
+    name: 'bob',
+    age: 123,
+    someChilds: [
+      { id: 123, name: 'ed' },
+      { id: 456, name: 'kate' }
+    ]
+  }); // piece of state
 
   const incrementHandler = () => {
     // setValue((currValue) => {
@@ -21,10 +28,13 @@ export default function MySimpleCounter(): React.ReactElement {
     // });
 
     setPerson((currPerson) => {
-      const nextPerson = {
-        ...currPerson,
-        name: `batmqan ${Math.random()}`
-      };
+      // const nextPerson = cloneDeep(currPerson);
+      // nextPerson.name = `batman ${Math.random()}`;
+
+      const nextPerson = produce(currPerson, (draft) => {
+        draft.name = `batman ${Math.random()}`;
+      });
+
       return nextPerson;
     });
   };
