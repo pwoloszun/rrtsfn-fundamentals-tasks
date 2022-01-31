@@ -39,7 +39,6 @@ export default function MySimpleCounter(): React.ReactElement {
     });
   };
 
-
   const isOk = 123 > 100;
   let jsxEl = (
     <div>
@@ -51,12 +50,8 @@ export default function MySimpleCounter(): React.ReactElement {
     <div className={styles.mySimpleCounter}>
       <h3>Value: {value}</h3>
       <h3>Name: {person.name}</h3>
-
       <button onClick={incrementHandler}>incr</button>
-
-
       {isOk && jsxEl}
-
     </div>
   );
 }
