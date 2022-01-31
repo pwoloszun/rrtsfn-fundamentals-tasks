@@ -11,6 +11,7 @@ export default function TodosPage(): React.ReactElement {
   // TODO: init local state
   const handleRemoveClick = (todo: TodoDto) => {
     // TODO
+    console.log('remove handler:', todo);
   };
   const handleCreateClick = ({ title, description }: OnCreateParams) => {
     // TODO
@@ -21,12 +22,12 @@ export default function TodosPage(): React.ReactElement {
     <div style={{ width: '75%', margin: '0 auto' }}>
       <h3>Todos Feature</h3>
       <div>
-        
+
         <TodoList
           todos={TODOS_DATA}
           onRemoveClick={handleRemoveClick}
         />
-        
+
       </div>
       <hr />
       <div>
