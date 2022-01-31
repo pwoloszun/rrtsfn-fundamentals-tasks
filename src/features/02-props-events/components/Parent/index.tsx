@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import ParentChild from '../ParentChild';
 
@@ -8,9 +8,9 @@ export default function Parent(): React.ReactElement {
   const user = {
     name: `Batman ${Math.random()}`
   };
-  const logMessageHandler = (message: string) => {
+  const logMessageHandler = useCallback((message: string): void => {
     console.log('parent received', message);
-  };
+  }, []);
 
   return (
     <div className={styles.parent}>
@@ -22,7 +22,7 @@ export default function Parent(): React.ReactElement {
 
         <ParentChild
           fullName={user.name}
-          onMessageSent={logMessageHandler}
+          onMessageSend={logMessageHandler}
         />
 
       </div>
