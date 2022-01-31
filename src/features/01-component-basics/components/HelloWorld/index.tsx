@@ -1,17 +1,41 @@
 import React from 'react';
 
-// import styles from './styles.module.css';
+import styles from './styles.module.css';
+
+const cssClasses = [
+  styles.helloWorld,
+  styles.gggHhh,
+];
 
 export default function HelloWorld(): React.ReactElement {
   // JSX element !!
-  return (
-    <div>
-      <h3>
-        Hello!!!
-        </h3>
+  const person = { name: `bob ${Math.random()}` };
+
+  return ( // snapshot patch of view
+    <div className={styles.helloWorld}>
+      <h3 id="123">
+        Person: {person.name}
+      </h3>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const element = (
 //   <h1 className="greeting">
