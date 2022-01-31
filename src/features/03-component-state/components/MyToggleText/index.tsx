@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 
 import styles from './index.module.css';
 
+
+const selectFullName = (firtstName: string, lastName: string) => `${firtstName[0]}. ${lastName}`;
+
 const selectBtnCssClass = (isVisible: boolean) => isVisible ? 'btn-danger' : 'btn-primary';
 const selectBtnText = (isVisible: boolean) => isVisible ? 'Toggle Hide' : 'Toggle Show';
 
