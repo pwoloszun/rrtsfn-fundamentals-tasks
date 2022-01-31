@@ -15,6 +15,7 @@ interface OptionPickerProps {
 
 export default function OptionPicker(props: OptionPickerProps): React.ReactElement {
   const { label, options, onOptionSelect } = props;
+
   return (
     <div className={styles.optionPicker}>
       <span>{label}</span>
