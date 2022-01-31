@@ -1,21 +1,24 @@
 import React from 'react';
 
-import styles from './styles.module.css';
-
-const cssClasses = [
-  styles.helloWorld,
-  styles.gggHhh,
-];
+import ggg from './styles.module.css';
 
 export default function HelloWorld(): React.ReactElement {
   // JSX element !!
-  const person = { name: `bob ${Math.random()}` };
+  const person = {
+    name: `bob ${Math.random()}`,
+    pathToPhoto: 'http://somedomain.com/myimg.jpog'
+  };
 
-  return ( // snapshot patch of view
-    <div className={styles.helloWorld}>
+  // snapshot patch of view
+  return (
+    <div className={ggg.helloWorld}>
       <h3 id="123">
         Person: {person.name}
       </h3>
+
+      {/* <img src="http://somephoto.jpg" />
+      <img src={person.pathToPhoto} /> */}
+
     </div>
   );
 }

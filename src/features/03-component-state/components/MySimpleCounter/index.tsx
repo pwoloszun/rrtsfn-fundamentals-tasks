@@ -1,19 +1,30 @@
 /*eslint @typescript-eslint/no-unused-vars: 'off'*/
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from './styles.module.css';
 
+// pseudo code
+const _state = {
+  [0]: 110
+};
+
 export default function MySimpleCounter(): React.ReactElement {
-  const value = 100;
+  const [value, setValue] = useState(100); // piece of state
+
   const incrementHandler = () => {
-    // TODO
+    setValue((currValue) => {
+      const nextValue = currValue + 10;
+      return nextValue;
+    });
+
+    setValue((currValue) => currValue + 10);
   };
 
   return (
     <div className={styles.mySimpleCounter}>
-      TODO_PLACEHOLDER
-      <button>incr</button>
+      <h3>Value: {value}</h3>
+      <button onClick={incrementHandler}>incr</button>
     </div>
   );
 }
