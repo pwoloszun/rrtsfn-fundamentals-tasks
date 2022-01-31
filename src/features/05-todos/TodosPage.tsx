@@ -21,15 +21,12 @@ export default function TodosPage(): React.ReactElement {
     <div style={{ width: '75%', margin: '0 auto' }}>
       <h3>Todos Feature</h3>
       <div>
-        {/* 
+        
         <TodoList
           todos={TODOS_DATA}
           onRemoveClick={handleRemoveClick}
         />
-         */}
-        <TodoList
-          todos={TODOS_DATA}
-        />
+        
       </div>
       <hr />
       <div>
