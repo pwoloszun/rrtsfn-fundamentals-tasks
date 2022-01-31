@@ -5,10 +5,10 @@ import { produce } from 'immer';
 import styles from './styles.module.css';
 
 // pseudo code
-const _state = {
-  [0]: 110,
-  [1]: { name: 'batman 122314312', age: 123 }
-};
+// const _state = {
+//   [0]: 110,
+//   [1]: { name: 'batman 122314312', age: 123 }
+// };
 
 export default function MySimpleCounter(): React.ReactElement {
   const [value, setValue] = useState(100); // piece of state
@@ -22,10 +22,10 @@ export default function MySimpleCounter(): React.ReactElement {
   }); // piece of state
 
   const incrementHandler = () => {
-    // setValue((currValue) => {
-    //   const nextValue = currValue + 10;
-    //   return nextValue;
-    // });
+    setValue((currValue) => {
+      const nextValue = currValue + 10;
+      return nextValue;
+    });
 
     setPerson((currPerson) => {
       // const nextPerson = cloneDeep(currPerson);
@@ -39,12 +39,24 @@ export default function MySimpleCounter(): React.ReactElement {
     });
   };
 
+
+  const isOk = 123 > 100;
+  let jsxEl = (
+    <div>
+      <p>qqq a qq!</p>
+    </div>
+  );
+
   return (
     <div className={styles.mySimpleCounter}>
       <h3>Value: {value}</h3>
       <h3>Name: {person.name}</h3>
 
       <button onClick={incrementHandler}>incr</button>
+
+
+      {isOk && jsxEl}
+
     </div>
   );
 }
