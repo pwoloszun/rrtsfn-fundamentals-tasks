@@ -19,7 +19,8 @@ export default function PeopleListExample(): React.ReactElement {
             };
 
             return (
-              <li key={person.id} onClick={itemClickHandler}>
+              <li key={person.id} 
+              onClick={itemClickHandler}>
                 <div>
                   <h3>
                     {person.name}
