@@ -2,23 +2,19 @@ import React, { useState } from 'react';
 
 import styles from './index.module.css';
 
+const selectBtnCssClass = (isVisible: boolean) => isVisible ? 'btn-danger' : 'btn-primary';
+const selectBtnText = (isVisible: boolean) => isVisible ? 'Toggle Hide' : 'Toggle Show';
+
 export default function MyToggleText(): React.ReactElement {
-  // TODO: init component LOCAL state
-  // TODO css classes: 'btn-danger', 'btn-primary'
+  // primary aka essential state
   const [isVisible, setIsVisible] = useState(true);
-  const [btnCssClass, setBtnCssClass] = useState('btn-danger');
-  const [btnText, setBtnText] = useState('Toggle Hide');
+
+  // computed aka derived state
+  const btnCssClass = selectBtnCssClass(isVisible);
+  const btnText = selectBtnText(isVisible);
 
   const toggleClickHandler = () => {
-    if (isVisible) {
-      setIsVisible(false);
-      setBtnCssClass('btn-primary');
-      setBtnText('Toggle Show');
-    } else {
-      setIsVisible(true);
-      setBtnCssClass('btn-danger');
-      setBtnText('Toggle Hide');
-    }
+    setIsVisible((currIsVisible) => !currIsVisible);
   };
 
   return (
