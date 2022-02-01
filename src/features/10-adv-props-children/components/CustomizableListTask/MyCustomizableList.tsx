@@ -12,11 +12,19 @@ export interface IMyCustomizableListProps<T extends ItemEntity> {
 export default function MyCustomizableList<T extends ItemEntity>(
   props: IMyCustomizableListProps<T>
 ): React.ReactElement {
+  const { items, render } = props;
+
   return (
     <ul>
-      <li>item 1</li>
-      <li>item 2</li>
-      <li>item 3</li>
+      {
+        items.map((item) => {
+          return (
+            <li key={item.id}>
+              {render(item)}
+            </li>
+          );
+        })
+      }
     </ul>
   );
 }
