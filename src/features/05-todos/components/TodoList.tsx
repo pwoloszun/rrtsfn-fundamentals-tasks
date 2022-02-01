@@ -9,7 +9,7 @@ export interface TodoItem {
 
 export interface TodoListProps<T> {
   todos: T[];
-  onRemoveClick: (todo: TodoDto) => void;
+  onRemoveClick: (todo: TodoItem) => void;
 }
 
 export default function TodoList<T extends TodoItem>(
