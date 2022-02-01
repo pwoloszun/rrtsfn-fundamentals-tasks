@@ -1,28 +1,52 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { merge } from 'lodash';
 
 import MyCounter, { IMyCounterProps } from '../MyCounter';
 
 describe('MyCounter', () => {
 
-  xit('should render initial value', () => {
-    expect(false).toEqual(true);
+  it('should render initial value', async () => {
+    const props = generateProps({ initialValue: 100 });
+    renderComponent(props);
+
+    const valueEl = await screen.findByText(/Value/i);
+
+    expect(valueEl).toHaveTextContent(/Value: 100/i);
   });
 
-  xit('should increment value on increment click', () => {
-    expect(false).toEqual(true);
+  it('should increment value on increment click', async () => {
+    const props = generateProps({ initialValue: 100 });
+    renderComponent(props);
+
+    const incrementBtn = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    userEvent.click(incrementBtn);
+
+    const valueEl = await screen.findByText(/Value/i);
+    expect(valueEl).toHaveTextContent(/Value: 101/i);
   });
 
   xit('should decrement value on decrement click', () => {
     expect(false).toEqual(true);
   });
 
-  xit('should render default value if undefined initialValue', () => {
-    expect(false).toEqual(true);
+  it('should render default value if undefined initialValue', async () => {
+    const props = generateProps();
+    renderComponent(props);
+
+    const valueEl = await screen.findByText(/Value/i);
+
+    expect(valueEl).toHaveTextContent(/Value: 0/i);
   });
 
 });
 
-function renderMyCounter(props: IMyCounterProps) {
+function renderComponent(props: IMyCounterProps) {
   return render(<MyCounter {...props} />);
+}
+
+function generateProps(props: Partial<IMyCounterProps> = {}): IMyCounterProps {
+  const defaultProps: IMyCounterProps = {
+  };
+  return merge({}, defaultProps, props);
 }
