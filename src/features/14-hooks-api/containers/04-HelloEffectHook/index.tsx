@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from 'react';
 
 export default function HelloEffectHook() {
+  console.log('RENDER:',);
   const [greeting, setGreeting] = useState(`Hello!`);
-  const [updatedAt, setUpdatedAtGreeting] = useState(0);
 
   useEffect(() => {
-    // TODO 1: async generate next greeting: `Hello Bob ${Math.random()}`
+    console.log('EFFECT:',);
 
-    // TODO 2: cleanup
-  }); // TODO: effect dependencies
+    const intervalId = setInterval(() => {
+      console.log('interval:',);
+      setGreeting(`hello ${Math.random()}`);
+    }, 1000);
 
-  const btnClickHandler = () => setUpdatedAtGreeting(Date.now());
+    return () => { // cleanup
+      console.log('CLEANUP',);
+      clearInterval(intervalId);
+    };
+  }, []); // TODO: effect dependencies
 
   return (
     <div>
       <h3>HelloEffectHook</h3>
       <h5>Greeting: {greeting} </h5>
-      <button onClick={btnClickHandler}>Greet</button>
     </div>
   );
 }
+
+// pseudo code
+
+// const vDom = MYComp(props);
