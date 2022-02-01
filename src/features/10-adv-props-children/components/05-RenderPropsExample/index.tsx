@@ -24,3 +24,7 @@ export default function RenderPropsExample(): React.ReactElement {
     </div>
   );
 }
+
+const names = ['bob', 'ed', 'kate']
+names.map((n) => `Hello ${n}!`);
+names.map((n) => `--=== Hello ${n}!!!!! === -----`);

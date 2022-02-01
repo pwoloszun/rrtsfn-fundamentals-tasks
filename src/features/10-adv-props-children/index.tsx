@@ -8,6 +8,7 @@ import PropsComponentGenerator from './components/02-PropsComponentGenerator';
 import ChildrenExample from './components/04-ChildrenExample';
 import AdvPropsTask from './components/AdvPropsTask';
 import LoadingTask from './components/LoadingTask';
+import CustomizableTaskPage from './components/CustomizableListTask/CustomizableTaskPage';
 
 export default function AdvPropsChildren() {
   const person = {
@@ -21,7 +22,7 @@ export default function AdvPropsChildren() {
         <LoadingTask />
       </Tab>
       <Tab eventKey="Task" title="Task">
-        <AdvPropsTask />
+        <CustomizableTaskPage />
       </Tab>
       <Tab eventKey="PropsExample" title="Props: example">
         <PropsExample label="1st" name={'bob'} age={12} sex={'M'} />

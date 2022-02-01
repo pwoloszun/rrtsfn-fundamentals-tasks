@@ -22,8 +22,22 @@ export default function CustomizableTaskPage(): React.ReactElement {
       <h3>CustomizableListTask</h3>
       <MyCustomizableList
         items={realEstates}
-        render={renderRealEstate}
+        render={(item) => <div>{item.street}</div>}
       />
+
+      <MyCustomizableList
+        items={realEstates}
+        render={(item) => {
+          return (
+            <div>
+              <h1>{item.type}</h1>
+              <strong>Price: {item.price}</strong>
+            </div>
+          );
+        }}
+      />
+
+
     </div>
   );
 }

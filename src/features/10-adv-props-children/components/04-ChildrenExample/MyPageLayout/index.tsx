@@ -20,3 +20,31 @@ export default function MyPageLayout(
     </div>
   );
 }
+
+
+
+
+
+// function ClinetCode() {
+
+//   return (
+//     <PanelCont>
+//       <PAnelHeader></PAnelHeader>
+//       <PAnelContent>...</PAnelContent>
+//       <PanelFooter>...</PanelFooter>
+//     </PanelCont>
+
+//   );
+// }
+
+
+// function ClinetCode2() {
+
+//   return (
+//     <PanelContOther 
+//       header={...}
+//       content={...}
+//       footer={...}
+//     />
+//   );
+// }

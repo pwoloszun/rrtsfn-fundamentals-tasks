@@ -9,6 +9,7 @@ interface PropsExampleProps {
   name: string;
   age: number;
   sex: string;
+  // isAwesome: boolean;
 }
 
 export default class PropsExample extends Component<PropsExampleProps> {
