@@ -14,17 +14,32 @@ export default function useAsync<T>(asyncFunction: AsyncFn<T>): UseAsyncResult<T
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     setIsLoading(true);
     asyncFunction()
       .then((data) => {
+        if (!isMounted) {
+          return;
+        }
         setValue(data);
       })
       .catch((err) => {
+        if (!isMounted) {
+          return;
+        }
         setError(err);
       })
       .finally(() => {
+        if (!isMounted) {
+          return;
+        }
         setIsLoading(false);
       });
+
+    return () => {
+      isMounted = false;
+    };
   }, [asyncFunction]);
 
   return [
