@@ -7,21 +7,6 @@ import EntitiesSimpleList from '../../components/EntitiesSimpleList';
 import useAsync from '../../hooks/useAsync';
 
 export default function MyDashboard() {
-
-  // TODO to remove
-  useEffect(() => {
-    fetchRealEstates()
-      .then((realEstates) => {
-        console.log('RE data:', realEstates);
-      })
-      .catch((err) => {
-        console.log('ERRR:', err);
-      })
-      .finally(() => {
-        console.log('finally');
-      });
-  }, []);
-
   const [
     realEstates,
     isRealEstatesLoading,
@@ -33,7 +18,6 @@ export default function MyDashboard() {
     isUsersLoading,
     usersError
   ] = useAsync(fetchUsers);
-
 
   return (
     <div>

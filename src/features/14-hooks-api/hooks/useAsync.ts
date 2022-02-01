@@ -9,9 +9,23 @@ type UseAsyncResult<T> = [
 ];
 
 export default function useAsync<T>(asyncFunction: AsyncFn<T>): UseAsyncResult<T> {
-  const value = null; // TODO
-  const isLoading = false; // TODO
-  const error = null; // TODO
+  const [value, setValue] = useState<T | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    setIsLoading(true);
+    asyncFunction()
+      .then((data) => {
+        setValue(data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [asyncFunction]);
 
   return [
     value,
