@@ -6,7 +6,9 @@ type UsePreviousResult<T> = [
   (nextValue: T) => void // set function
 ];
 
-export default function usePrevious<T>(initialValue: T): UsePreviousResult<T> {
+export default function usePrevious<T>(
+  initialValue: T
+): UsePreviousResult<T> {
   const [currentValue, setCurrentValue] = useState(initialValue);
   const [prevValue, setPrevValue] = useState<T | null>(null);
 

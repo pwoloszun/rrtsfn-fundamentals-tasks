@@ -4,7 +4,11 @@ import Counter from '../../../../components/Counter';
 import usePrevious from '../../hooks/usePrevious';
 
 export default function HistoricCounter() {
-  const [currentValue, prevValue, setValue] = usePrevious(100);
+  const [
+    currentValue,
+    prevValue,
+    setValue
+  ] = usePrevious(100);
 
   const incrementHandler = () => {
     setValue(currentValue + 10);
