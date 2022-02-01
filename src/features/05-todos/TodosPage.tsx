@@ -1,13 +1,13 @@
 /*eslint @typescript-eslint/no-unused-vars: 'off'*/
 import React from 'react';
 
-import { TodoDto } from 'src/api/dto/todo-dto';
-
 import TodoForm, { OnCreateParams } from './components/TodoForm';
+import TodoList, { TodoItem } from './components/TodoList';
+import { TODOS_DATA } from './data/todos-data';
 
 export default function TodosPage(): React.ReactElement {
   // TODO: init local state
-  const handleRemoveClick = (todo: TodoDto) => {
+  const handleRemoveClick = (todo: TodoItem) => {
     // TODO
   };
   const handleCreateClick = ({ title, description }: OnCreateParams) => {
@@ -24,7 +24,7 @@ export default function TodosPage(): React.ReactElement {
           todos={TODOS_DATA}
           onRemoveClick={handleRemoveClick}
         />
-         */}
+ */}
       </div>
       <hr />
       <div>

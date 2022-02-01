@@ -3,7 +3,7 @@ import { Card, Form, Button } from 'react-bootstrap';
 
 export interface OnCreateParams {
   title: string;
-  description?: string;
+  description: string;
 }
 
 interface TodoFormProps {
@@ -39,7 +39,7 @@ export default function TodoForm(props: TodoFormProps): React.ReactElement {
             variant="primary"
             type="submit">
             Create
-            </Button>
+          </Button>
         </Form>
       </Card.Body>
     </Card>
