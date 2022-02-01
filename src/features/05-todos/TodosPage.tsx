@@ -7,28 +7,32 @@ import TodoForm, { OnCreateParams } from './components/TodoForm';
 import TodoList from './components/TodoList';
 import { TODOS_DATA } from './data/todos-data';
 import { TodoItem } from './components/TodoList';
+import useManageTodos from './hooks/useManageTodos';
 
 // Smart Comp aka Containers
 //    GOOD: know WHAT app/functionality should do 
 //    BAD: should NOT know HOW app/functionality works
 export default function TodosPage(): React.ReactElement {
-  const [todos, setTodos] = useState([...TODOS_DATA]);
+  const { todos, createTodo, removeTodo } = useManageTodos();
+  // const [todos, setTodos] = useState([...TODOS_DATA]);
 
   const handleRemoveClick = (todo: TodoItem) => {
-    setTodos((currTodos) => {
-      const nextTodos = currTodos.filter((t) => t.id !== todo.id);
-      return nextTodos;
-    });
+    removeTodo(todo);
+    // setTodos((currTodos) => {
+    //   const nextTodos = currTodos.filter((t) => t.id !== todo.id);
+    //   return nextTodos;
+    // });
   };
   const handleCreateClick = (params: OnCreateParams) => {
     const { title, description } = params;
+    createTodo(title, description);
 
-    setTodos((currTodos) => {
-      const id = Math.random();
-      const todo: TodoDto = { id, title, description };
-      const nextTodos = [...currTodos, todo];
-      return nextTodos;
-    });
+    // setTodos((currTodos) => {
+    //   const id = Math.random();
+    //   const todo: TodoDto = { id, title, description };
+    //   const nextTodos = [...currTodos, todo];
+    //   return nextTodos;
+    // });
   };
 
   return (

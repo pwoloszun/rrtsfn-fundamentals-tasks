@@ -2,18 +2,18 @@ import React from 'react';
 import { ListGroup, Button, Row, Col, } from 'react-bootstrap';
 
 export interface TodoItem {
-  id: string | number;
+  id: number;
   title: string;
   description?: string;
 }
 
-export interface TodoListProps<T> {
-  todos: T[];
+export interface TodoListProps {
+  todos: TodoItem[];
   onRemoveClick: (todo: TodoItem) => void;
 }
 
-export default function TodoList<T extends TodoItem>(
-  props: TodoListProps<T>
+export default function TodoList(
+  props: TodoListProps
 ): React.ReactElement {
   const { todos, onRemoveClick } = props;
 
