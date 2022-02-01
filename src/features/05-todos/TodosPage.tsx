@@ -8,20 +8,22 @@ import useManageTodos from './hooks/useManageTodos';
 // Smart Comp aka Containers
 //    GOOD: know WHAT app/functionality should do 
 //    BAD: should NOT know HOW app/functionality works
+// Smart Comp/Container === as thin as possible
 export default function TodosPage(): React.ReactElement {
-  const { todos, createTodo, removeTodo, load } = useManageTodos();
+  // useManageTodos === application hook
+  const todosFacade = useManageTodos(); // feature facade
 
   useEffect(() => {
-    load();
+    todosFacade.load();
   }, []);
 
   const handleRemoveClick = (todo: TodoItem) => {
-    removeTodo(todo);
+    todosFacade.removeTodo(todo);
   };
 
   const handleCreateClick = (params: OnCreateParams) => {
     const { title, description } = params;
-    createTodo(title, description);
+    todosFacade.createTodo(title, description);
   };
 
   return (
@@ -31,7 +33,7 @@ export default function TodosPage(): React.ReactElement {
 
         {/* Pure / Presentation / Dumb comp */}
         <TodoList
-          todos={todos}
+          todos={todosFacade.todos}
           onRemoveClick={handleRemoveClick}
         />
 
