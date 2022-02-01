@@ -8,6 +8,9 @@ import TodoList from './components/TodoList';
 import { TODOS_DATA } from './data/todos-data';
 import { TodoItem } from './components/TodoList';
 
+// Smart Comp aka Containers
+//    GOOD: know WHAT app/functionality should do 
+//    BAD: should NOT know HOW app/functionality works
 export default function TodosPage(): React.ReactElement {
   const [todos, setTodos] = useState([...TODOS_DATA]);
 
