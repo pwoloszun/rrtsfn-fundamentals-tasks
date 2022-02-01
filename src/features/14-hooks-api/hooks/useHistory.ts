@@ -13,23 +13,61 @@ interface UseHistoryResult<T> {
 };
 
 export default function useHistory<T>(initialValue: T): UseHistoryResult<T> {
-  // TODO
+  const [currentValue, setCurrentValue] = useState(initialValue);
+  const [past, setPast] = useState<T[]>([]);
+  const [future, setFuture] = useState<T[]>([]);
+
+  const canUndo = past.length > 0;
+  const canRedo = future.length > 0;
+
+  const setValue = (nextValue: T) => {
+    const nextPast = [...past, currentValue];
+    setPast(nextPast);
+    const nextCurrentValue = nextValue;
+    setCurrentValue(nextCurrentValue);
+    const nextFuture: T[] = [];
+    setFuture(nextFuture);
+  };
+
+  const undo = () => {
+    if (!canUndo) {
+      return;
+    }
+    const nextPast = past.slice(0, -1);
+    setPast(nextPast);
+    const nextCurrentValue = past[past.length - 1];
+    setCurrentValue(nextCurrentValue);
+    const nextFuture = [currentValue, ...future];
+    setFuture(nextFuture);
+  };
+
+  const redo = () => {
+    if (!canRedo) {
+      return;
+    }
+    const nextPast = [...past, currentValue];
+    setPast(nextPast);
+    const nextCurrentValue = future[0];
+    setCurrentValue(nextCurrentValue);
+    const nextFuture = future.slice(1);
+    setFuture(nextFuture);
+  };
 
   return {
     // part 1
-    value: initialValue,
-    setValue: (nextValue: T) => { },
-    past: [],
+    value: currentValue,
+    setValue,
+    past,
 
     // part 2
-    undo: () => { },
+    undo,
 
     // part 3
-    future: [],
-    redo: () => { },
+    future,
+    redo,
 
     // part 4
-    canUndo: false,
-    canRedo: false,
+    canUndo,
+    canRedo,
   };
 }
