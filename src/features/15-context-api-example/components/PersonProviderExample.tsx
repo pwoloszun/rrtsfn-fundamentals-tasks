@@ -13,28 +13,48 @@ const PERSON_DATA: Person = {
   age: 123
 };
 
+const batmanData: Person = {
+  firstName: 'batman',
+  lastName: 'wayne',
+  age: 567
+};
+
 export default function PersonProviderExample(): React.ReactElement {
   return (
-    <PersonProvider value={PERSON_DATA}>
-      <div style={{ width: '75%', margin: '0 auto' }}>
-        <h3>Context API tasks</h3>
-        <div>
-          <MutatePersonButton />
-          <CutPersonNameButton />
-        </div>
-        <hr />
+    <React.Fragment>
 
-        <hr />
+      <PersonProvider value={PERSON_DATA}>
+        <div style={{ width: '75%', margin: '0 auto' }}>
+          <h3>Context API tasks</h3>
+          <div>
+            <MutatePersonButton />
 
-        <div>
-          1st:
-          <DisplayPerson />
+            <CutPersonNameButton />
+          </div>
           <hr />
 
-          2nd:
-          <DisplayPerson />
+          <h3>BATMAN BEGINS</h3>
+          <PersonProvider value={batmanData}>
+            <MutatePersonButton />
+            <DisplayPerson />
+
+          </PersonProvider>
+
+          <h3>BATMAN END</h3>
+
+
+          <hr />
+
+          <div>
+            1st:
+            <DisplayPerson />
+            <hr />
+
+            2nd:
+            <DisplayPerson />
+          </div>
         </div>
-      </div>
-    </PersonProvider>
+      </PersonProvider>
+    </React.Fragment>
   );
 }

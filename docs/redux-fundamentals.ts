@@ -1,7 +1,10 @@
+// Events
 interface Action {
   type: string;
-  payload: any;
+  payload?: any;
 }
+
+// FSA Flux Standard Action
 
 class Store {
   dispatch(action: Action) { /*...*/ }
@@ -15,36 +18,39 @@ class Store {
 const store = new Store();
 
 const state = {
+
   counter: { // state slice
     value: 997
   },
+
   users: { // users state slice
     entities: [],
     count: 123
   },
+
   todos: [] //state slice
 };
 
 
 
-// actions
+// Event
 const action = {
-  type: 'users/fetched',
+  type: 'user/successfullyFetched',
   payload: {
     users: [{ id: 123, name: 'bob' }, { id: 2, name: 'ed' }]
   }
 }; // "event"
 
+
 store.dispatch(action);
 
 
 
-// reducer(s)
-function usersReducer(state, action) {
-  return {};
+// slice reducer(s)
+function cartReducer(state, action) {
 }
 
-function counterReducer(state, action) {
+function suggestedProductsReducer(state, action) {
 }
 
 
@@ -64,9 +70,12 @@ function rootReducer(state, action) {
 // client code - Components
 
 // Counter component
+seelctorFn
+
 store.subscribe(() => {
   const state = store.getState();
   //do smth modufy local cmp state
+  seelctorFn(state)
 });
 
 // // Todos component

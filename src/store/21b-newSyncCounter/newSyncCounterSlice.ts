@@ -6,11 +6,14 @@ interface CounterState { // slice state shape
 }
 
 const initialState: CounterState = { // initial slice state
-  value: 110,
+  value: 100,
   updatedAt: null,
 };
 
 export const newSyncCounterSliceId = 'newSyncCounter'; // slice id
+
+
+
 
 const newSyncCounterSlice = createSlice({
   name: newSyncCounterSliceId,
@@ -18,14 +21,22 @@ const newSyncCounterSlice = createSlice({
   initialState,
 
   reducers: {
-    increment: (state, action: PayloadAction<any>) => {
-      // TODO
+
+    increment: (state, action: PayloadAction<{ incBy: number; timestamp: number; }>) => {
+      const { incBy, timestamp } = action.payload;
+      state.value += incBy;
+      state.updatedAt = timestamp;
+    },
+
+    addProduct: (state, action: PayloadAction<any>) => {
+
     },
 
     // TODO: decrement
 
     // TODO: reset
   },
+
 });
 
 export const actions = newSyncCounterSlice.actions;
