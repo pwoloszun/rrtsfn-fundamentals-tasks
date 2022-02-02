@@ -35,6 +35,13 @@ export default function MyCounter(props: IMyCounterProps): React.ReactElement {
 
         <button onClick={testClickHandler}>Lucky Numbers</button>
       </div>
+
+      <ul role="list">
+        <li role="listitem">a</li>
+        <li role="listitem">b</li>
+        <li role="listitem">c</li>
+
+      </ul>
     </div>
   );
 }

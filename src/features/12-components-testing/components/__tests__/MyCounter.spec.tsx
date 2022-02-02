@@ -68,6 +68,22 @@ describe('MyCounter', () => {
   });
 
 
+  fit('should check list', async () => {
+    const props = generateProps();
+    renderComponent(props);
+
+    const listEl = await screen.findByRole('list', { hidden: true });
+
+    const itemEls = await within(listEl).findAllByRole('listitem', { hidden: true });
+
+    const expectedItems = ['a', 'b', 'd'];
+    expect(itemEls.length).toEqual(3);
+    expectedItems.forEach((expectedVal, i) => {
+      const itemEl = itemEls[i];
+      expect(itemEl).toHaveTextContent(expectedVal);
+    });
+  });
+
 });
 
 function renderComponent(props: IMyCounterProps) {
