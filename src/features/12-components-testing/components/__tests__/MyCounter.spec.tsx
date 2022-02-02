@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { merge } from 'lodash';
 
@@ -15,7 +15,7 @@ describe('MyCounter', () => {
     expect(valueEl).toHaveTextContent(/Value: 100/i);
   });
 
-  fit('should emit onMyTest event on "Lucky" btn click', async () => {
+  it('should emit onMyTest event on "Lucky" btn click', async () => {
     const props = generateProps({
       onMyTest: jest.fn()
     });
@@ -26,9 +26,8 @@ describe('MyCounter', () => {
     userEvent.click(luckyBtn);
 
     expect(onMyTest).toHaveBeenCalledTimes(1);
-    expect(onMyTest).toHaveBeenCalledWith([123, 789]);
+    expect(onMyTest).toHaveBeenCalledWith([123, 456]);
     // expect(true).toEqual(false);
-
   });
 
   it('should increment value on increment click', async () => {
@@ -54,6 +53,20 @@ describe('MyCounter', () => {
 
     expect(valueEl).toHaveTextContent(/Value: 0/i);
   });
+
+  it('should increment using upper panel inc btn', async () => {
+    const props = generateProps({ initialValue: 200 });
+    renderComponent(props);
+
+    const upperPanel = await screen.findByRole('region', { name: /Upper Panel/i, hidden: true });
+
+    const incrementBtn = await within(upperPanel).findByRole('button', { name: /Other Inc/i, hidden: true });
+    userEvent.click(incrementBtn);
+
+    const valueEl = await screen.findByText(/Value/i);
+    expect(valueEl).toHaveTextContent(/Value: 201/i);
+  });
+
 
 });
 

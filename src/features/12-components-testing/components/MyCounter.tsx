@@ -23,10 +23,14 @@ export default function MyCounter(props: IMyCounterProps): React.ReactElement {
 
   return (
     <div className={styles.myCounter}>
+      <div role="region" aria-label="Upper Panel">
+        <button onClick={incrementHandler}>Other Inc</button>
+      </div>
       <h5>MyCounter</h5>
       <h2>Value: {value}</h2>
-      <div>
+      <div role="region" aria-label="Lower Panel">
         <div role="button" onClick={incrementHandler}>Increment</div>
+
         <button onClick={decrementHandler}>Decrement</button>
 
         <button onClick={testClickHandler}>Lucky Numbers</button>
