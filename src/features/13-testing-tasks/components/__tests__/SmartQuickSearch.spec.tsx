@@ -9,8 +9,32 @@ import SmartQuickSearch from '../SmartQuickSearch';
 
 describe('SmartQuickSearch', () => {
 
-  xit('should render search field', async () => {
-    expect(false).toEqual(true);
+  it('should implement search functionality', async () => {
+    renderComponent();
+
+    const searchField = await screen.findByLabelText(/Search/i);
+
+    const jsonData = generateEntitiesJson();
+    stubServerApi.stub({
+      method: 'get',
+      path: '/api/players',
+      responseJson: jsonData,
+    });
+
+    userEvent.type(searchField, 'my test search query');
+
+    const spinnerEl = await screen.findByRole('status', { hidden: true });
+
+    await waitForElToNotBeInDoc(spinnerEl);
+
+    await screen.findByText(/Search Results/i);
+
+    const searchResultsList = await screen.findByRole('list', { hidden: true });
+    const searchResultItems = await within(searchResultsList).findAllByRole('listitem', { hidden: true });
+
+    expect(searchResultItems.length).toEqual(jsonData.length);
+
+    // expect(false).toEqual(true);
   });
 
   xit('should render progress while waiting for response from server', async () => {
@@ -18,6 +42,12 @@ describe('SmartQuickSearch', () => {
   });
 
 });
+
+function renderComponent() {
+  return render(
+    <SmartQuickSearch />
+  );
+}
 
 function generateEntitiesJson(): NbaPlayerDto[] {
   return [
