@@ -12,7 +12,7 @@ export default function MessagesTopBar(): React.ReactElement {
             <Col sm={9}>Messages TopBar</Col>
             <Col>
               <h3>
-                <Badge variant="danger" pill className="bg-danger text-light">
+                <Badge bg="warning" pill className="bg-danger text-light">
                   MESSAGES_COUNT_PLACEHOLDER
                 </Badge>
               </h3>
