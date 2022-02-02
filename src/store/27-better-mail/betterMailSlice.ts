@@ -33,11 +33,11 @@ const betterMailSlice = createSlice({
   initialState,
   reducers: {
 
-    mailModalOpened: (state) => {
+    mailModalOpen: (state) => {
       state.isMailOpened = true;
     },
 
-    mailModalClosed: (state) => {
+    mailModalClose: (state) => {
       state.isMailOpened = false;
     },
 
