@@ -12,9 +12,6 @@ const initialState: CounterState = { // initial slice state
 
 export const newSyncCounterSliceId = 'newSyncCounter'; // slice id
 
-
-
-
 const newSyncCounterSlice = createSlice({
   name: newSyncCounterSliceId,
 
