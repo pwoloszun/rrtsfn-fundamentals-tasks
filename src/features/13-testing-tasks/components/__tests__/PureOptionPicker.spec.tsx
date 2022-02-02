@@ -8,7 +8,7 @@ describe('PureOptionPickerComponent', () => {
 
   fit('should render option picker with title and options', async () => {
     const props = generateProps();
-    const { title, items } = props;
+    const { title, items, onItemSelect } = props;
     renderComponent(props);
 
     await screen.findByText(title);
@@ -22,7 +22,12 @@ describe('PureOptionPickerComponent', () => {
       expect(btnEl).toHaveTextContent(item.text);
     })
 
-    // expect(false).toEqual(true);
+    const index = 2;
+    const btn = optionBtns[index];
+    userEvent.click(btn);
+
+    expect(onItemSelect).toHaveBeenCalledTimes(1);
+    expect(onItemSelect).toHaveBeenCalledWith(items[index]);
   });
 
   xit('should render button for each input item', async () => {

@@ -15,6 +15,10 @@ describe('MyCounter', () => {
     expect(valueEl).toHaveTextContent(/Value: 100/i);
   });
 
+
+
+
+
   it('should emit onMyTest event on "Lucky" btn click', async () => {
     const props = generateProps({
       onMyTest: jest.fn()
@@ -29,6 +33,17 @@ describe('MyCounter', () => {
     expect(onMyTest).toHaveBeenCalledWith([123, 456]);
     // expect(true).toEqual(false);
   });
+
+
+
+
+
+
+
+
+
+
+  
 
   it('should increment value on increment click', async () => {
     const props = generateProps({ initialValue: 100 });
