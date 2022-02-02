@@ -20,7 +20,7 @@ describe('PureOptionPickerComponent', () => {
     items.forEach((item, i) => {
       const btnEl = optionBtns[i];
       expect(btnEl).toHaveTextContent(item.text);
-    })
+    });
 
     const index = 2;
     const btn = optionBtns[index];
