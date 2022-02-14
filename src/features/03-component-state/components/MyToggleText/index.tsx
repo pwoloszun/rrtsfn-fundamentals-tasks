@@ -3,20 +3,15 @@ import React, { useState } from 'react';
 import styles from './index.module.css';
 
 export default function MyToggleText(): React.ReactElement {
+  // primary aka essential state
   const [isVisible, setIsVisible] = useState(true);
-  const [btnCssClass, setBtnCssClass] = useState('btn-danger');
-  const [btnText, setBtnText] = useState('Toggle Hide');
+
+  // computed aka derived state
+  const btnCssClass = isVisible ? 'btn-danger' : 'btn-primary';
+  const btnText = isVisible ? 'Toggle Hide' : 'Toggle Show';
 
   const btnClickHandler = () => {
-    if (isVisible) {
-      setIsVisible(false);
-      setBtnCssClass('btn-primary');
-      setBtnText('Toggle Show');
-    } else {
-      setIsVisible(true);
-      setBtnCssClass('btn-danger');
-      setBtnText('Toggle Hide');
-    }
+    setIsVisible((currIsVisilbe) => !currIsVisilbe);
   };
 
   return (
@@ -39,3 +34,15 @@ export default function MyToggleText(): React.ReactElement {
     </div>
   );
 }
+
+
+// functional
+// const state = { name: 'bob' };
+// function HelloWorldCmp(state) {
+
+// }
+
+// const jsx = HelloWorldCmp(state);
+
+
+
