@@ -1,17 +1,57 @@
 import React from 'react';
 
-// import styles from './styles.module.css';
+import styles from './styles.module.css';
 
 export default function HelloWorld(): React.ReactElement {
   // JSX element !!
+  // it is  VDOM object
+  // NOT HTML!!
+  // NOT DOM!!
+
+  const person = {
+    name: `bob ${Math.random()}`,
+    age: 1243,
+    id: '123'
+  };
+
+  // snapshot of patch of screen
   return (
-    <div>
-      <h3>
-        Hello!!!
-        </h3>
+    <div className={styles.helloWorld + ' ' + styles.gggHhh}>
+      <h3 id={person.id} >
+        Hello 22!!! {person.name.toUpperCase()}
+      </h3>
     </div>
   );
 }
+
+
+function getLAstName() {
+  return ' smith';
+}
+
+// pseudo code
+  // const vdomElPseudo = {
+  //   type: 'h3',
+  //   props: { id: '123', children: 'Hello 22!!' },
+  //   //..
+  // };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const element = (
 //   <h1 className="greeting">
