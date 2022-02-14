@@ -4,13 +4,16 @@ import styles from './styles.module.css';
 
 interface ParentChildProps {
   fullName: string;
-  onMessageSent: (message: string) => void;
+  onMessageSend: (message: string) => void;
 }
 
 export default function ParentChild(props: ParentChildProps): React.ReactElement {
-  const { fullName, onMessageSent } = props;
+  const { fullName, onMessageSend } = props;
+  // const fullName = props.fullName;
+  // const onMessageSent = props.onMessageSent;
+
   const sendMessageHandler = () => {
-    onMessageSent(`child msg: ${Math.random()}`);
+    onMessageSend(`child msg: ${Math.random()}`);
   };
 
   return (
