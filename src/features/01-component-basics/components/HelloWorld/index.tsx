@@ -6,16 +6,19 @@ export default function HelloWorld(): React.ReactElement {
   const person = {
     name: `bob ${Math.random()}`,
     age: 1243,
-    id: '123'
+    id: '123',
+    somePhoto: 'http://gggg.jpg'
   };
 
   // snapshot of patch of screen
   // it is  VDOM object - NOT HTML!! NOT DOM!!
   return (
     <div className={styles.helloWorld + ' ' + styles.gggHhh}>
-      <h3 id={person.id} >
+      <h3 id={person.id}>
         Hello 22!!! {person.name.toUpperCase()}
       </h3>
+
+      <img src={person.somePhoto} />
     </div>
   );
 }
