@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import styles from './MyCounter.module.css';
 
 export interface IMyCounterProps {
-  initialValue?: number;
+  value: number;
+  onIncrement: () => void;
+  onDecrement: () => void;
 }
 
 export default function MyCounter(props: IMyCounterProps): React.ReactElement {
-  const { initialValue = 0 } = props;
-  const [value, setValue] = useState(initialValue);
+  const { value, onDecrement, onIncrement } = props;
 
-  const incrementHandler = () => setValue((val) => val + 1);
-  const decrementHandler = () => setValue((val) => val - 1);
+  const incrementHandler = () => onIncrement();
+  const decrementHandler = () => onDecrement();
 
   return (
     <div className={styles.myCounter}>

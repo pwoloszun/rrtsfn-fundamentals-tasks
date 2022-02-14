@@ -5,19 +5,15 @@ import MyCounter, { IMyCounterProps } from '../MyCounter';
 
 describe('MyCounter', () => {
 
-  xit('should render initial value', () => {
+  xit('should render passed value', () => {
     expect(false).toEqual(true);
   });
 
-  xit('should increment value on increment click', () => {
+  xit('should emit onIncrement event on "Increment" btn click', () => {
     expect(false).toEqual(true);
   });
 
-  xit('should decrement value on decrement click', () => {
-    expect(false).toEqual(true);
-  });
-
-  xit('should render default value if undefined initialValue', () => {
+  xit('should emit onDecrement event on "Decrement" btn click', () => {
     expect(false).toEqual(true);
   });
 
