@@ -15,6 +15,7 @@ const _state = {
 
 export default function MySimpleCounter(): React.ReactElement {
   console.log('RENDER:',);
+
   // local state
   // SINGLE source of truth
   const [value, setValue] = useState(200); // piece of state
@@ -24,25 +25,30 @@ export default function MySimpleCounter(): React.ReactElement {
   const incrementHandler = () => {
     console.log('click:',);
 
-    // setValue((currValue) => {
-    //   const nextValue = currValue + 10;
-    //   return nextValue;
-    // });
+    setValue((currValue) => {
+      const nextValue = currValue + 10;
+      return nextValue;
+    });
 
     setPerson((currPerson) => {
       const nextPerson = produce(currPerson, (draft) => {
         draft.name = `batman ${Math.random()}`;
       });
-
       return nextPerson;
     }); // ===
-
   };
+
+  const isOk = true;
 
   return (
     <div className={styles.mySimpleCounter}>
       <h3>Value: {value}</h3>
       <h3>NAme: {person.name}</h3>
+
+      {
+        isOk && <h3>a qq!</h3>
+      }
+
       <button onClick={incrementHandler}>incr</button>
     </div>
   );
