@@ -1,4 +1,0 @@
-DataTable.spec
-useHistory.spec
-
-redux
