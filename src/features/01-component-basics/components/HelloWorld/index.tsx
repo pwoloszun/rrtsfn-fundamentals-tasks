@@ -3,11 +3,6 @@ import React from 'react';
 import styles from './styles.module.css';
 
 export default function HelloWorld(): React.ReactElement {
-  // JSX element !!
-  // it is  VDOM object
-  // NOT HTML!!
-  // NOT DOM!!
-
   const person = {
     name: `bob ${Math.random()}`,
     age: 1243,
@@ -15,6 +10,7 @@ export default function HelloWorld(): React.ReactElement {
   };
 
   // snapshot of patch of screen
+  // it is  VDOM object - NOT HTML!! NOT DOM!!
   return (
     <div className={styles.helloWorld + ' ' + styles.gggHhh}>
       <h3 id={person.id} >
@@ -22,11 +18,6 @@ export default function HelloWorld(): React.ReactElement {
       </h3>
     </div>
   );
-}
-
-
-function getLAstName() {
-  return ' smith';
 }
 
 // pseudo code
