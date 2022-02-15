@@ -21,7 +21,7 @@ export default function HooksApi() {
         {/* <NoHooksCounter /> */}
         {/* <WithHooksCounter /> */}
         <HistoricCounter />
-        {/* <TrackableCounter /> */}
+        <TrackableCounter />
       </div>
       <div>
         <h3>useEffects hooks</h3>
