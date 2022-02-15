@@ -5,6 +5,13 @@ import TodoForm, { OnCreateParams } from './components/TodoForm';
 import TodoList, { TodoItem } from './components/TodoList';
 import { TODOS_DATA } from './data/todos-data';
 
+// Container aka Smart Compo.
+// GOOD should know: WHAT app should do
+// BAD should NOT know: HOW app works under the hood
+
+// responsibility:
+//  + mediator function
+//  + similiar to MVC Controllers
 export default function TodosPage(): React.ReactElement {
   const [todos, setTodos] = useState(TODOS_DATA);
 
@@ -29,6 +36,7 @@ export default function TodosPage(): React.ReactElement {
       <h3>Todos Feature</h3>
       <div>
 
+        {/* Pure / Presentation / Dumb components */}
         <TodoList
           todos={todos}
           onRemoveClick={handleRemoveClick}
