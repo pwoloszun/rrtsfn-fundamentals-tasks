@@ -1,10 +1,8 @@
-/*eslint @typescript-eslint/no-unused-vars: 'off'*/
-import React, { useState } from 'react';
+import React from 'react';
 import { TodoDto } from 'src/api/dto/todo-dto';
 
 import TodoForm, { OnCreateParams } from './components/TodoForm';
-import TodoList, { TodoItem } from './components/TodoList';
-import { TODOS_DATA } from './data/todos-data';
+import TodoList from './components/TodoList';
 import useManageTodos from './hooks/useManageTodos';
 
 // Container aka Smart Compo.
@@ -15,25 +13,18 @@ import useManageTodos from './hooks/useManageTodos';
 //  + mediator function
 //  + similiar to MVC Controllers
 export default function TodosPage(): React.ReactElement {
-  // const [todos, setTodos] = useState(TODOS_DATA);
-  const { createTodo, removeTodo, todos } = useManageTodos();
+  const {
+    createTodo,
+    removeTodo,
+    todos
+  } = useManageTodos();
 
   const handleRemoveClick = (todo: TodoDto) => {
     removeTodo(todo);
-    // setTodos((currTodos) => {
-    //   const nextTodos = currTodos.filter((td) => td.id !== todo.id);
-    //   return nextTodos;
-    // });
   };
 
   const handleCreateClick = ({ title, description }: OnCreateParams) => {
     createTodo(title, description);
-    // setTodos((currTodos) => {
-    //   const id = Math.random();
-    //   const newTodo = { id, title, description };
-    //   const nextTodos = [...currTodos, newTodo];
-    //   return nextTodos;
-    // });
   };
 
   return (
