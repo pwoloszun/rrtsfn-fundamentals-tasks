@@ -56,6 +56,7 @@ export default function CarConfigurator(): React.ReactElement {
         <h3>Drive Wheel: {carConfig.selectedDriveWheel?.value}</h3>
       </div>
       <div>
+        {/* Pure Comp. / Presentation Comp. / Dumb Com. */}
         <OptionPicker
           label="Choose engine type"
           options={ENGINES_DICT}

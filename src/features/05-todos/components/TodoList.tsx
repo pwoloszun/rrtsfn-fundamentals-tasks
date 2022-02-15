@@ -19,6 +19,8 @@ export default function TodoList<T extends TodoItem>(
 
   return (
     <ListGroup>
+
+      {/* iterate over */}
       <ListGroup.Item>
         <Row>
           <Col sm={8}>
@@ -34,6 +36,8 @@ export default function TodoList<T extends TodoItem>(
           </Col>
         </Row>
       </ListGroup.Item>
+
+
     </ListGroup>
   );
 }
