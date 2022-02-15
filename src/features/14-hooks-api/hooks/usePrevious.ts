@@ -1,25 +1,23 @@
 import { useState } from 'react';
 
-// UsePreviousResult[0] is current value
-// UsePreviousResult[1] is previous value(undefined by default)
-// UsePreviousResult[2] is function to set current(and modify previous)
 type UsePreviousResult<T> = [
   T, // current value
-  T | undefined,  // previous value
+  T | null,  // previous value
   (nextValue: T) => void // set function
 ];
 
 function usePrevious<T>(initialValue: T): UsePreviousResult<T> {
-  const current = initialValue; // TODO
-  const previous = undefined; // TODO
+  const [currentValue, setCurrentValue] = useState(initialValue);
+  const [prevValue, setPrevValue] = useState<T | null>(null);
 
   const setNextValue = (nextValue: T) => {
-    // TODO
+    setPrevValue(currentValue);
+    setCurrentValue(nextValue);
   };
 
   return [
-    current,
-    previous,
+    currentValue,
+    prevValue,
     setNextValue
   ];
 }

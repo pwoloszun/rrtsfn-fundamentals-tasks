@@ -3,26 +3,26 @@ import React, { useState } from 'react';
 import Counter from '../../../../components/Counter';
 
 // TODO: refactor
-// import usePrevious from '../../hooks/usePrevious';
-
-const initialValue = 0;
+import usePrevious from '../../hooks/usePrevious';
 
 export default function HistoricCounter() {
-  // TODO introduce state: previousValue
-  // TODO introduce state: currentValue
-  const currentValue = -997; // TODO
+  const [
+    currentValue,
+    prevValue,
+    setValue
+  ] = usePrevious(100);
 
   const incrementHandler = () => {
-    // TODO
+    setValue(currentValue + 10);
   };
   const decrementHandler = () => {
-    // TODO
+    setValue(currentValue - 5);
   };
 
   return (
     <div>
       <h3>HistoricCounter</h3>
-      <h5>Previous Value: PREVIOUS_PLACEHOLDER </h5>
+      <h5>Previous Value: {prevValue}</h5>
       <div>
         <Counter value={currentValue}
           onIncrement={incrementHandler}
