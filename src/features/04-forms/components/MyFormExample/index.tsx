@@ -14,10 +14,8 @@ export default function MyFormExample(): React.ReactElement {
     countryId: countriesDict[0].id
   });
 
-  // TODO later: refactor
   const inputChangeHandler = (event: React.ChangeEvent<FormEl>) => {
     const { value, name } = event.target;
-
     setFormValues((currFormValues) => {
       const nextFormValues = produce(currFormValues, (draft) => {
         (draft as any)[name] = value;
@@ -28,7 +26,6 @@ export default function MyFormExample(): React.ReactElement {
 
   const submitHandler = (ev: React.SyntheticEvent) => {
     ev.preventDefault();
-
     console.log('AJAX REQ formValues:', formValues);
   };
 
