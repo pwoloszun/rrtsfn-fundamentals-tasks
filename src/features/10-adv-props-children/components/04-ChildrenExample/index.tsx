@@ -5,6 +5,7 @@ import MyPageLayout from './MyPageLayout';
 
 export default class ChildrenExample extends Component {
   render() {
+
     return (
       <div className={styles.myComp}>
 
@@ -15,6 +16,11 @@ export default class ChildrenExample extends Component {
           <div>first</div>
           <div>second</div>
           <div>third</div>
+        </MyPageLayout>
+
+
+        <MyPageLayout myValue={456}>
+          <h1>imba!</h1>
         </MyPageLayout>
 
       </div>
