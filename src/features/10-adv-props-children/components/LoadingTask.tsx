@@ -5,32 +5,24 @@ import { delayedValue } from 'src/utils/randoms';
 import fetchUsers, { User } from 'src/api/fetch-users';
 
 import LoadingWrapper from './LoadingWrapper';
+import useAsync from 'src/features/14-hooks-api/hooks/useAsync';
 
 function getMagicNumber(): Promise<number> {
   return delayedValue(123456, 3200);
 }
 
 export default function LoadingTask(): React.ReactElement {
-  const [users, setUsers] = useState<User[]>([]);
-  const isUsersLoading = users.length === 0;
+  const [
+    users,
+    isUsersLoading,
+    errorUsers
+  ] = useAsync(fetchUsers);
 
-  const [magicNumber, setMagicNumber] = useState<number | null>(null);
-  const isMagicNumberLoading = magicNumber === null;
-
-  useEffect(() => {
-    fetchUsers()
-      .then((usersData) => {
-        console.log('users data:', usersData);
-        setUsers(usersData);
-      });
-  }, []);
-
-  useEffect(() => {
-    getMagicNumber()
-      .then((n) => {
-        setMagicNumber(n);
-      });
-  }, []);
+  const [
+    magicNumber,
+    isMagicNumberLoading,
+    errorMagicNumber
+  ] = useAsync(getMagicNumber);
 
   return (
     <div>
@@ -38,11 +30,11 @@ export default function LoadingTask(): React.ReactElement {
 
       <Row>
         <Col sm="6">
-          <LoadingWrapper isLoading={isUsersLoading}>
+          <LoadingWrapper isLoading={isUsersLoading} error={errorUsers}>
             Loaded emails:
             <ul>
               {
-                users.map((user) => {
+                users?.map((user) => {
                   return (
                     <li key={user.id}>{user.email}</li>
                   );
@@ -53,7 +45,7 @@ export default function LoadingTask(): React.ReactElement {
         </Col>
 
         <Col>
-          <LoadingWrapper isLoading={isMagicNumberLoading}>
+          <LoadingWrapper isLoading={isMagicNumberLoading} error={errorMagicNumber}>
             <h5>Your magic number is: {magicNumber}</h5>
           </LoadingWrapper>
         </Col>
