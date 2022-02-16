@@ -49,7 +49,7 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
   useEffect(() => {
     console.log('render MArkers:', geoObjects);
     geoObjects.forEach((obj) => {
-      mapRef.current?.createMarker(obj);
+      const marker = mapRef.current?.createMarker(obj);
     });
   }, [geoObjects]);
 
