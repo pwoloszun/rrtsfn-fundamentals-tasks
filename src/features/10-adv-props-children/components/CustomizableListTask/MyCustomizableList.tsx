@@ -1,4 +1,5 @@
 import React from 'react';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
 interface ItemEntity {
   id: string | number;
@@ -12,11 +13,19 @@ export interface IMyCustomizableListProps<T extends ItemEntity> {
 export default function MyCustomizableList<T extends ItemEntity>(
   props: IMyCustomizableListProps<T>
 ): React.ReactElement {
+  const { items, render } = props;
+
   return (
-    <ul>
-      <li>item 1</li>
-      <li>item 2</li>
-      <li>item 3</li>
-    </ul>
+    <ListGroup>
+      {
+        items.map((item) => {
+          return (
+            <ListGroupItem key={item.id}>
+              {render(item)}
+            </ListGroupItem>
+          );
+        })
+      }
+    </ListGroup>
   );
 }
