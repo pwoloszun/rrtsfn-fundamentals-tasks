@@ -13,18 +13,14 @@ import useManageTodos from './hooks/useManageTodos';
 //  + mediator function
 //  + similiar to MVC Controllers
 export default function TodosPage(): React.ReactElement {
-  const {
-    createTodo,
-    removeTodo,
-    todos
-  } = useManageTodos();
+  const todosFacade = useManageTodos();
 
   const handleRemoveClick = (todo: TodoDto) => {
-    removeTodo(todo);
+    todosFacade.removeTodo(todo);
   };
 
   const handleCreateClick = ({ title, description }: OnCreateParams) => {
-    createTodo(title, description);
+    todosFacade.createTodo(title, description);
   };
 
   return (
@@ -34,7 +30,7 @@ export default function TodosPage(): React.ReactElement {
 
         {/* Pure / Presentation / Dumb components */}
         <TodoList
-          todos={todos}
+          todos={todosFacade.todos}
           onRemoveClick={handleRemoveClick}
         />
 
