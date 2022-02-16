@@ -20,12 +20,12 @@ export default function HooksApi() {
         <h3>useState hooks</h3>
         {/* <NoHooksCounter /> */}
         {/* <WithHooksCounter /> */}
-        <HistoricCounter />
-        <TrackableCounter />
+        {/* <HistoricCounter /> */}
+        {/* <TrackableCounter /> */}
       </div>
       <div>
         <h3>useEffects hooks</h3>
-        {/* <HelloEffectHook /> */}
+        <HelloEffectHook />
       </div>
       <div>
         {/* <LoadManyThings /> */}

@@ -46,3 +46,24 @@ export default function TodosPage(): React.ReactElement {
     </div>
   );
 }
+
+
+
+
+
+
+// different tsx file
+function DefaultTodoListContainer() {
+  const todosFacade = useManageTodos();
+
+  const handleRemoveClick = (todo: TodoDto) => {
+    todosFacade.removeTodo(todo);
+  };
+
+  return (
+    <TodoList
+      todos={todosFacade.todos}
+      onRemoveClick={handleRemoveClick}
+    />
+  );
+}

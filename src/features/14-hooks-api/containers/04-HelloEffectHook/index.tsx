@@ -1,22 +1,41 @@
 import React, { useEffect, useState } from 'react';
 
 export default function HelloEffectHook() {
+  console.log('RENDER:',);
   const [greeting, setGreeting] = useState(`Hello!`);
-  const [updatedAt, setUpdatedAtGreeting] = useState(0);
 
   useEffect(() => {
-    // TODO 1: async generate next greeting: `Hello Bob ${Math.random()}`
+    console.log('EFFECT:',);
 
-    // TODO 2: cleanup
-  }); // TODO: effect dependencies
+    const intervalId = setInterval(() => {
+      console.log('INTERVAL:',);
+      setGreeting(`hello ${Math.random()}`);
+    }, 2000);
 
-  const btnClickHandler = () => setUpdatedAtGreeting(Date.now());
+    return () => { // cleanup 
+      console.log('CLENUP:',);
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
     <div>
       <h3>HelloEffectHook</h3>
       <h5>Greeting: {greeting} </h5>
-      <button onClick={btnClickHandler}>Greet</button>
     </div>
   );
 }
+
+
+
+
+// psuedo
+// function HelloWrodls(props) {
+//   //...
+//   window.title = 'bob ${MAth.random90}'
+
+//   return (<div></div>)
+// }
+
+// const jsx = HelloWrodls(props);
+// // Side Effect
