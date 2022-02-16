@@ -7,14 +7,22 @@ interface ILoadingWrapperProps {
 }
 
 export default function LoadingWrapper(
-  props: any // TODO
+  props: React.PropsWithChildren<ILoadingWrapperProps> // TODO
 ): React.ReactElement {
-  // TODO
+  const { isLoading, children, error } = props;
 
-  return (
-    <Spinner
-      animation="grow"
-      role="status"
-    />
-  );
+  if (error) {
+    return <h3>Error {error.message}</h3>;
+  } else if (isLoading) {
+    return (
+      <Spinner
+        animation="grow"
+        role="status"
+      />
+    );
+  } else {
+    return <React.Fragment>
+      {children}
+    </React.Fragment>;
+  }
 }
