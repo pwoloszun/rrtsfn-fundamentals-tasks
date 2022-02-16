@@ -7,8 +7,11 @@ import MyCustomizableList from './MyCustomizableList';
 export default function CustomizableTaskPage(): React.ReactElement {
   const [realEstates, setRealEstates] = useState<RealEstate[]>([]);
   const renderRealEstate = (realEstate: RealEstate) => {
-    return ( // TODO
-      <div>realEstate_PLACEHOLDER_TODO</div>
+    return (
+      <div>
+        <h3>{realEstate.street}</h3>
+        <small>{realEstate.builtAt}</small>
+      </div>
     );
   };
 
@@ -23,6 +26,11 @@ export default function CustomizableTaskPage(): React.ReactElement {
       <MyCustomizableList
         items={realEstates}
         render={renderRealEstate}
+      />
+
+      <MyCustomizableList
+        items={realEstates}
+        render={(re) => <q>{re.price}</q>}
       />
     </div>
   );
