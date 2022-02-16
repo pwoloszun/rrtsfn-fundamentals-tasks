@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import LeafletMap from 'src/components/LeafletMap';
 
 interface City {
@@ -36,11 +37,13 @@ export default function Cities(): React.ReactElement {
       <div>
         Selected: {selectedCity ? selectedCity.name : null}
       </div>
+      
       <LeafletMap
         selected={selectedCity}
         geoObjects={cities}
         onMarkerClick={markerClickHandler}
       />
+
     </div>
   );
 }
