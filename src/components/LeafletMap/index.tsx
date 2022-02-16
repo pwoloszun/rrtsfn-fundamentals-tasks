@@ -6,6 +6,7 @@ import { LatLng } from './viewmodels/lat-lng.interface';
 import styles from './styles.module.css';
 import { MarkerViewModel } from './viewmodels/marker.vm';
 import { MapViewModel } from './viewmodels/map.vm';
+import useState from 'react';
 
 interface ILeafletMapProps {
   selected: LatLng | null;
@@ -35,17 +36,25 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
   const { selected, geoObjects, onMarkerClick } = props;
 
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const mapRef = useRef<MapViewModel | null>(null);
 
   // do smth AFTER DOM has been printed in browser
   useEffect(() => {
     if (!containerRef.current) {
       throw new Error(`Cant find container DOM el`);
     }
-    const map = new MapViewModel(containerRef.current);
+    mapRef.current = new MapViewModel(containerRef.current);
   }, []);
 
-  console.log('TODO selected', selected);
-  console.log('TODO geoObjects', geoObjects);
+  useEffect(() => {
+    console.log('render MArkers:', geoObjects);
+    geoObjects.forEach((obj) => {
+      mapRef.current?.createMarker(obj);
+    });
+  }, [geoObjects]);
+
+  // console.log('TODO selected', selected);
+  // console.log('TODO geoObjects', geoObjects);
 
   return (
     <div ref={containerRef} className={styles.map}>
