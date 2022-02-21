@@ -49,9 +49,10 @@ export default function RealEstatesWithRenderPage(): React.ReactElement {
         <Col>
 
           <MyCustomizableList
-            selectedItem={selectedRealEstate}
             items={realEstates}
             render={renderItem}
+            selectedItem={selectedRealEstate}
+            onItemClick={selectRealEstateHandler}
           />
 
         </Col>
