@@ -19,7 +19,11 @@ export default function MyCounter(props: IMyCounterProps): React.ReactElement {
     <div className={styles.myCounter}>
       <h5>MyCounter</h5>
       <h2>VALUE: {value}</h2>
-      <div>
+      <a role="button" onClick={incrementHandler}>
+        Increment
+      </a>
+
+      <div role="region" aria-label="Counter Controls">
         <a role="button" onClick={incrementHandler}>
           Increment
         </a>

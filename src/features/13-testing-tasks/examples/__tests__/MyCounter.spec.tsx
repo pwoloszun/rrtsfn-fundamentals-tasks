@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { merge } from 'lodash';
 
@@ -22,7 +22,10 @@ describe('MyCounter', () => {
     renderComponent(props);
     const { onIncrement } = props;
 
-    const btnEl = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    const controlsCont = await screen.findByRole('region', { name: /Counter Controls/i, hidden: true });
+
+    // const btnEl = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    const btnEl = await within(controlsCont).findByRole('button', { name: /Increment/i, hidden: true });
     userEvent.click(btnEl);
 
     expect(onIncrement).toHaveBeenCalledTimes(1);
