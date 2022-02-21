@@ -3,6 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 
 import LeafletMap from 'src/components/LeafletMap';
 import RenderDataTable from 'src/components/RenderDataTable';
+import MyCustomizableList from '../10-adv-props-children/components/CustomizableListTask/MyCustomizableList';
 
 import RealEstateDetailsNext from './components/RealEstateDetailsNext';
 import useManageRealEstates, { RealEstate } from './hooks/useManageRealEstates';
@@ -39,13 +40,13 @@ export default function RealEstatesWithRenderPage(): React.ReactElement {
       <h3>RealEstates (with render)</h3>
       <Row>
         <Col sm="8">
-          {/* 
+
           <LeafletMap
             geoObjects={realEstates}
             selected={selectedRealEstate}
             onMarkerClick={selectRealEstateHandler}
           />
-           */}
+
         </Col>
         <Col sm="4">
           <RealEstateDetailsNext item={selectedRealEstate} />
@@ -53,15 +54,12 @@ export default function RealEstatesWithRenderPage(): React.ReactElement {
       </Row>
       <Row>
         <Col>
-          {/* 
-          <RenderDataTable
+
+          <MyCustomizableList
             items={realEstates}
-            renderItem={renderItem}
-            header={header}
-            onRowClick={selectRealEstateHandler}
-            selectedItem={selectedRealEstate}
+            render={renderItem}
           />
-           */}
+
         </Col>
       </Row>
     </div>
