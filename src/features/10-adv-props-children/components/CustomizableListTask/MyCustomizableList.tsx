@@ -19,8 +19,10 @@ export default function MyCustomizableList<T extends ItemEntity>(
     <ListGroup>
       {
         items.map((item) => {
+          const isSelected = true; // TODO: calculate based on selectedItem prop
+
           return (
-            <ListGroupItem key={item.id}>
+            <ListGroupItem key={item.id} active={isSelected}>
               {render(item)}
             </ListGroupItem>
           );
