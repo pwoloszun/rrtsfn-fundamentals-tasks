@@ -14,9 +14,12 @@ describe('PureOptionPickerComponent', () => {
 
     const el = await screen.findByText(/Batman!!/i);
     // expect(el).toHaveTextContent(/Batman!!/i);
+
   });
 
-  xit('should render button for each input item', async () => {
+  fit('should render button for each input item', async () => {
+    // await screen.findAllByRole('button')
+
     expect(false).toEqual(true);
   });
 
