@@ -6,7 +6,7 @@ import PureOptionPicker, { IPureOptionPickerProps } from '../PureOptionPicker';
 
 describe('PureOptionPickerComponent', () => {
 
-  xit('should render input title', async () => {
+  fit('should render input title', async () => {
     expect(false).toEqual(true);
   });
 
