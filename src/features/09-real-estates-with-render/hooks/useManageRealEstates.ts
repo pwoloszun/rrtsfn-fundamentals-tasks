@@ -11,17 +11,23 @@ type UseManageRealEstatesResult = {
 };
 
 export default function useManageRealEstates(): UseManageRealEstatesResult {
-  // TODO
-  const selectedRealEstate = null;
-  const realEstates: RealEstate[] = [];
+  const [selectedRealEstate, setSelectedRealEstate] = useState<RealEstate | null>(null);
+  const [realEstates, setRealEstates] = useState<RealEstate[]>([]);
 
   const fetchAll = useCallback(() => {
-    // TODO
+    fetchRealEstates()
+      .then((realEstatesData) => {
+        setRealEstates(realEstatesData);
+      });
   }, []);
 
   const toggleSelected = useCallback((estate: RealEstate) => {
-    // TODO
-  }, []);
+    if (selectedRealEstate?.id === estate.id) {
+      setSelectedRealEstate(null);
+    } else {
+      setSelectedRealEstate(estate);
+    }
+  }, [selectedRealEstate]);
 
   return {
     selectedRealEstate,

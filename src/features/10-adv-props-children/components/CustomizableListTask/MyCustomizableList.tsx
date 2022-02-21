@@ -8,6 +8,7 @@ interface ItemEntity {
 export interface IMyCustomizableListProps<T extends ItemEntity> {
   items: T[];
   render: (item: T) => React.ReactElement;
+  selectedItem?: T | null;
 }
 
 export default function MyCustomizableList<T extends ItemEntity>(
