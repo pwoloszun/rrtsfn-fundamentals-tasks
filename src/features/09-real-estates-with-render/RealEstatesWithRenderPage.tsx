@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 
 import LeafletMap from 'src/components/LeafletMap';
-import RenderDataTable from 'src/components/RenderDataTable';
 import MyCustomizableList from '../10-adv-props-children/components/CustomizableListTask/MyCustomizableList';
 
 import RealEstateDetailsNext from './components/RealEstateDetailsNext';
@@ -19,12 +18,6 @@ export default function RealEstatesWithRenderPage(): React.ReactElement {
     toggleSelected(estate);
   };
 
-  const header = (
-    <Row>
-      <Col sm="3">Street</Col>
-      <Col sm="3">Building Type</Col>
-    </Row>
-  );
   const renderItem = (realEstate: RealEstate) => {
     const { street, type } = realEstate;
     return (
