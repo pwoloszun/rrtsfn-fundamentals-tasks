@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 import styles from './MyCounter.module.css';
 
@@ -19,7 +20,9 @@ export default function MyCounter(props: IMyCounterProps): React.ReactElement {
       <h5>MyCounter</h5>
       <h2>VALUE: {value}</h2>
       <div>
-        <button onClick={incrementHandler}>Increment</button>
+        <a role="button" onClick={incrementHandler}>
+          Increment
+        </a>
         <button onClick={decrementHandler}>Decrement</button>
       </div>
     </div>
