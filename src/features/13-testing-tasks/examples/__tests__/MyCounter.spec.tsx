@@ -6,10 +6,6 @@ import MyCounter, { IMyCounterProps } from '../MyCounter';
 
 describe('MyCounter', () => {
 
-  beforeEach(() => {
-
-  });
-
   it('should render passed value', async () => {
     const props = generateProps({
       value: 123
@@ -19,14 +15,18 @@ describe('MyCounter', () => {
     const headerEl = await screen.findByText(/Value:/i);
 
     expect(headerEl).toHaveTextContent(/Value: 123/i);
-    // expect(false).toEqual(true);
   });
 
-  fit('should emit onIncrement event on "Increment" btn click', () => {
+  it('should emit onIncrement event on "Increment" btn click', async () => {
     const props = generateProps();
     renderComponent(props);
+    const { onIncrement } = props;
 
-    expect(false).toEqual(true);
+    const btnEl = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    userEvent.click(btnEl);
+
+    expect(onIncrement).toHaveBeenCalledTimes(1);
+    expect(onIncrement).toHaveBeenCalledWith();
   });
 
   xit('should emit onDecrement event on "Decrement" btn click', () => {
@@ -42,8 +42,8 @@ function renderComponent(props: IMyCounterProps) {
 
 function generateProps(props: Partial<IMyCounterProps> = {}): IMyCounterProps {
   const value = 456;
-  const onIncrement = () => { };
-  const onDecrement = () => { };
+  const onIncrement = jest.fn();
+  const onDecrement = jest.fn();
 
   const defaultProps: IMyCounterProps = {
     value, onDecrement, onIncrement
