@@ -15,16 +15,20 @@ export interface IMyCustomizableListProps<T extends ItemEntity> {
 export default function MyCustomizableList<T extends ItemEntity>(
   props: IMyCustomizableListProps<T>
 ): React.ReactElement {
-  const { items, render } = props;
+  const { items, render, selectedItem, onItemClick } = props;
 
   return (
     <ListGroup>
       {
         items.map((item) => {
-          const isSelected = true; // TODO: calculate based on selectedItem prop
-
+          const isSelected = selectedItem?.id === item.id; // TODO: calculate based on selectedItem prop
+          const itemClickHandler = () => {
+            if (onItemClick) {
+              onItemClick(item);
+            }
+          };
           return (
-            <ListGroupItem key={item.id} active={isSelected}>
+            <ListGroupItem key={item.id} active={isSelected} onClick={itemClickHandler}>
               {render(item)}
             </ListGroupItem>
           );
