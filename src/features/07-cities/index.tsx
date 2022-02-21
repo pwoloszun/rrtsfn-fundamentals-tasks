@@ -26,6 +26,8 @@ export default function Cities(): React.ReactElement {
   }, []);
 
   const markerClickHandler = (city: any) => {
+    console.log('click:', city);
+
     setSelectedCity((selectedCity: City | null) => {
       return selectedCity === city ? null : city;
     });

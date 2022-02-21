@@ -36,8 +36,8 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const mapRef = useRef<MapViewModel | null>(null);
+  const markersRef = useRef<MarkerViewModel[]>([]);
 
-  // do smth AFTER DOM has been printed in browser
   useEffect(() => {
     if (!containerRef.current) {
       throw new Error(`Cant find container DOM el`);
@@ -47,13 +47,26 @@ export default function LeafletMap(props: ILeafletMapProps): React.ReactElement 
 
   useEffect(() => {
     console.log('render MArkers:', geoObjects);
-    geoObjects.forEach((obj) => {
-      const marker = mapRef.current?.createMarker(obj);
+    if (!mapRef.current) {
+      return;
+    }
+    mapRef.current.removeAllMarkers();
+    const markers = geoObjects.map((obj) => {
+      const marker = mapRef.current!.createMarker(obj);
+      marker.on('click', (geoObj) => {
+        onMarkerClick(geoObj);
+      });
+      return marker;
     });
-  }, [geoObjects]);
+    markersRef.current = markers;
+  }, [geoObjects, onMarkerClick]);
 
-  // console.log('TODO selected', selected);
-  // console.log('TODO geoObjects', geoObjects);
+  useEffect(() => {
+    markersRef.current.forEach((marker) => {
+      const isHighlighted = marker.matches(selected);
+      marker.toggleHighlight(isHighlighted);
+    });
+  }, [selected]);
 
   return (
     <div ref={containerRef} className={styles.map}>
