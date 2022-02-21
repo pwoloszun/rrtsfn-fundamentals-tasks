@@ -6,8 +6,14 @@ import PureOptionPicker, { IPureOptionPickerProps } from '../PureOptionPicker';
 
 describe('PureOptionPickerComponent', () => {
 
-  fit('should render input title', async () => {
-    expect(false).toEqual(true);
+  it('should render input title', async () => {
+    const props = generateProps({
+      title: 'Batman!!'
+    });
+    renderComponent(props);
+
+    const el = await screen.findByText(/Batman!!/i);
+    // expect(el).toHaveTextContent(/Batman!!/i);
   });
 
   xit('should render button for each input item', async () => {
@@ -30,12 +36,28 @@ describe('PureOptionPickerComponent', () => {
 
 type Props = IPureOptionPickerProps<any>;
 
-// TODO
+function renderComponent(props: Props) {
+  return render(
+    <PureOptionPicker {...props} />
+  );
+}
 
-// const items = [
-//   { id: 100, text: 'first item' },
-//   { id: 200, text: 'second item' },
-//   { id: 300, text: 'third item' },
-//   { id: 400, text: 'fourth item' },
-//   { id: 500, text: 'fifth item' },
-// ];
+function generateProps(props: Partial<Props> = {}): Props {
+  const items = [
+    { id: 100, text: 'first item' },
+    { id: 200, text: 'second item' },
+    { id: 300, text: 'third item' },
+    { id: 400, text: 'fourth item' },
+    { id: 500, text: 'fifth item' },
+  ];
+  const selectedItem = null;
+  const onItemSelect = jest.fn();
+  const defaultProps: Props = {
+    title: 'some test title',
+    items,
+    selectedItem,
+    onItemSelect,
+  };
+
+  return merge({}, defaultProps, props);
+}
