@@ -37,7 +37,7 @@ export default function Cities(): React.ReactElement {
       <div>
         Selected: {selectedCity ? selectedCity.name : null}
       </div>
-      
+
       <LeafletMap
         selected={selectedCity}
         geoObjects={cities}

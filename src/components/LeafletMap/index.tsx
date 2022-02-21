@@ -6,7 +6,6 @@ import { LatLng } from './viewmodels/lat-lng.interface';
 import styles from './styles.module.css';
 import { MarkerViewModel } from './viewmodels/marker.vm';
 import { MapViewModel } from './viewmodels/map.vm';
-import useState from 'react';
 
 interface ILeafletMapProps {
   selected: LatLng | null;
