@@ -9,8 +9,8 @@ export default function SmartCmpPage(): React.ReactElement {
   return (
     <div>
       <h3>SmartCmpPage</h3>
-      {/*       
-      <Row className="mx-5 mb-1">
+
+      {/* <Row className="mx-5 mb-1">
         <label style={{ width: '33%', margin: '0 auto' }}>
           Real Estate ID:
           <input value={entityId}
@@ -18,14 +18,14 @@ export default function SmartCmpPage(): React.ReactElement {
             type="number"
           />
         </label>
-      </Row>
+      </Row> */}
       <Row className="mx-5 mb-5">
         <SmartRealEstateDetailsCard entityId={entityId} />
-      </Row> */}
-
-      <Row className="mx-5 mb-5">
-        <SmartQuickSearch />
       </Row>
+
+      {/* <Row className="mx-5 mb-5">
+        <SmartQuickSearch />
+      </Row> */}
     </div>
   );
 }
