@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, within, waitForElementToBeRemoved } from '@testing-library/react';
 
 import { stubServerApi } from 'src/mocks/utils/server-stub';
 
@@ -9,11 +9,35 @@ import SmartRealEstateDetailsCard, { ISmartRealEstateDetailsCardProps } from '..
 
 describe('SmartRealEstateDetailsCard', () => {
 
-  fit('should render fetched real estates data', async () => {
-    // EXAMPLE
-    // await screen.findByRole('gggHhh', { name: /yada yada/i, hidden: true });
+  it('should render fetched real estates data', async () => {
+    const entityId = 100;
+    const props = generateProps({ entityId });
+    const jsonData = generateEntityJson(entityId);
 
-    expect(false).toEqual(true);
+    stubServerApi.stub({
+      method: 'get',
+      path: `/api/real-estates/${entityId}`,
+      responseJson: jsonData,
+      options: { delay: 500 }
+    });
+    const { street, price, type } = jsonData;
+
+    renderComponent(props);
+
+    const headerCont = await screen.findByRole('region', { name: /Card Header/i, hidden: true });
+    expect(headerCont).toHaveTextContent(/Loading\.\.\./i);
+
+    const bodyCont = await screen.findByRole('region', { name: /Card Body/i, hidden: true });
+    const spinner = await within(bodyCont).findByRole('status', { hidden: true });
+
+    await waitForElementToBeRemoved(spinner);
+
+    const headerContAfterServerResp = await screen.findByRole('region', { name: /Card Header/i, hidden: true });
+    expect(headerContAfterServerResp).toHaveTextContent(`Street Addr.: ${street}`);
+
+    const bodyContAfterServerResp = await screen.findByRole('region', { name: /Card Body/i, hidden: true });
+    expect(bodyContAfterServerResp).toHaveTextContent(`Price: ${price}`);
+    expect(bodyContAfterServerResp).toHaveTextContent(`Type: ${type}`);
   });
 
   xit('should STRICTLY render loding info and fetched real estates data', async () => {
