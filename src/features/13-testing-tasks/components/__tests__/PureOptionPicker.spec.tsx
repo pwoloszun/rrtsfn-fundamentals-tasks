@@ -12,15 +12,21 @@ describe('PureOptionPickerComponent', () => {
     });
     renderComponent(props);
 
-    const el = await screen.findByText(/Batman!!/i);
-    // expect(el).toHaveTextContent(/Batman!!/i);
-
+    await screen.findByText(/Batman!!/i);
   });
 
   fit('should render button for each input item', async () => {
-    // await screen.findAllByRole('button')
+    const props = generateProps();
+    renderComponent(props);
+    const { items } = props;
 
-    expect(false).toEqual(true);
+    const optionButtons = await screen.findAllByRole('button', { hidden: true });
+
+    expect(optionButtons.length).toEqual(items.length);
+    items.forEach((item, index) => {
+      const optionBtn = optionButtons[index];
+      expect(optionBtn).toHaveTextContent(item.text);
+    });
   });
 
   xit('should not select button for undefined selectedItem prop', async () => {
