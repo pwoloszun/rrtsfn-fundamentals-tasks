@@ -8,7 +8,7 @@ import MyAjaxCounter from '../MyAjaxCounter';
 
 describe('MyAjaxCounter', () => {
 
-  fit('should render initial value fetched from server', async () => {
+  it('should render initial value fetched from server', async () => {
     const counterValueEntity = { id: 123, value: 456 };
     stubServerApi.stub({
       method: 'get',
