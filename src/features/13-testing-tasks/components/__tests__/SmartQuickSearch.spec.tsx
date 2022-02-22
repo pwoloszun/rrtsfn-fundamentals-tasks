@@ -13,7 +13,20 @@ describe('SmartQuickSearch', () => {
     expect(false).toEqual(true);
   });
 
-  xit('should render progress while waiting for response from server', async () => {
+  fit('should render progress while waiting for response from server', async () => {
+    // render comp
+
+    // type some search query
+
+    // spinner should apear
+
+    // spinner should disapear
+
+    // should render 'Search results'
+
+    // check if within 'list' 'listitem' have beef rendered
+    //    check if 'listitem' contain text base on data received from server
+
     expect(false).toEqual(true);
   });
 
