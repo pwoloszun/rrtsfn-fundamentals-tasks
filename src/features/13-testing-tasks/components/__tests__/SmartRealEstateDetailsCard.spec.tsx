@@ -9,7 +9,10 @@ import SmartRealEstateDetailsCard, { ISmartRealEstateDetailsCardProps } from '..
 
 describe('SmartRealEstateDetailsCard', () => {
 
-  xit('should render fetched real estates data', async () => {
+  fit('should render fetched real estates data', async () => {
+    // EXAMPLE
+    // await screen.findByRole('gggHhh', { name: /yada yada/i, hidden: true });
+
     expect(false).toEqual(true);
   });
 
