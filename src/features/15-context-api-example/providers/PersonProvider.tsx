@@ -25,5 +25,3 @@ export function usePersonContext(): UsePersonResult {
   }
   return personFacade;
 }
-
-

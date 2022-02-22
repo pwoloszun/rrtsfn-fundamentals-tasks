@@ -13,6 +13,12 @@ const PERSON_DATA: Person = {
   age: 123
 };
 
+const batmanData: Person = {
+  firstName: 'batman',
+  lastName: 'wayne',
+  age: 456
+};
+
 export default function PersonProviderExample(): React.ReactElement {
   return (
     <PersonProvider value={PERSON_DATA}>
@@ -23,6 +29,14 @@ export default function PersonProviderExample(): React.ReactElement {
           <CutPersonNameButton />
         </div>
         <hr />
+
+        <h3>Batman BEGINS</h3>
+        <PersonProvider value={batmanData}>
+          <MutatePersonButton />
+          <DisplayPerson />
+        </PersonProvider>
+        <h3>Batman ENDS</h3>
+
 
         <hr />
 
