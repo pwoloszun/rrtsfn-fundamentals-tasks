@@ -4,6 +4,7 @@ import HeroesNextPage from 'src/features/06b-heroes-next/HeroesNextPage';
 import Cities from 'src/features/07-cities';
 import RealEstatesWithRenderPage from 'src/features/09-real-estates-with-render/RealEstatesWithRenderPage';
 import AdvPropsChildren from 'src/features/10-adv-props-children';
+import ProjectsPage from 'src/features/35-projects/ProjectsPage';
 
 const reactAdvRoutes = [
   {
@@ -27,6 +28,12 @@ const reactAdvRoutes = [
     path: "/adv-props-children-examples",
     label: 'Adv. Props, Children',
     main: () => <AdvPropsChildren />
+  },
+
+  {
+    path: "/projects-task",
+    label: 'Projects task',
+    main: () => <ProjectsPage />
   },
 
 ];
