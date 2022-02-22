@@ -23,9 +23,9 @@ export default function SmartCmpPage(): React.ReactElement {
         <SmartRealEstateDetailsCard entityId={entityId} />
       </Row>
 
-      {/* <Row className="mx-5 mb-5">
+      <Row className="mx-5 mb-5">
         <SmartQuickSearch />
-      </Row> */}
+      </Row>
     </div>
   );
 }
