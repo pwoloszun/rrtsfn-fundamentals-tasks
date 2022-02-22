@@ -10,7 +10,7 @@ export interface IPureOptionPickerProps<T> {
   title: string;
   items: T[];
   selectedItem: T | null;
-  onItemSelect: (item: IItem) => void;
+  onItemSelect: (item: T) => void;
 }
 
 export default function PureOptionPicker<T extends IItem>(

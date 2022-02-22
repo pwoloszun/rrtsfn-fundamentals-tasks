@@ -15,7 +15,7 @@ describe('PureOptionPickerComponent', () => {
     await screen.findByText(/Batman!!/i);
   });
 
-  fit('should render button for each input item', async () => {
+  it('should render button for each input item', async () => {
     const props = generateProps();
     renderComponent(props);
     const { items } = props;
@@ -37,7 +37,8 @@ describe('PureOptionPickerComponent', () => {
     expect(false).toEqual(true);
   });
 
-  xit('should emit "onItemSelect" event on button click', async () => {
+  fit('should emit "onItemSelect" event on button click', async () => {
+    // TODO
     expect(false).toEqual(true);
   });
 
