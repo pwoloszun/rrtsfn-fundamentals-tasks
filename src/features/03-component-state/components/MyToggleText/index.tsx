@@ -2,21 +2,18 @@ import React, { useState } from 'react';
 
 import styles from './index.module.css';
 
+export const selectBtnText = (isVisible: boolean) => isVisible ? 'Toggle Hide' : 'Toggle Show';
+
 export default function MyToggleText(): React.ReactElement {
+  // primary aka essential state --> NORMALIZED state
   const [isVisible, setIsVisible] = useState(true);
-  const [btnCssClass, setBtnCssClass] = useState('btn btn-danger');
-  const [btnText, setBtnText] = useState('Toggle Hide');
+
+  // derived aka computed state -- DENORMALIZED state
+  const btnCssClass = isVisible ? 'btn btn-danger' : 'btn btn-primary';
+  const btnText = selectBtnText(isVisible);
 
   const toggleClickHandler = () => {
-    if (isVisible) {
-      setIsVisible(false);
-      setBtnCssClass('btn btn-primary');
-      setBtnText('Toggle Show');
-    } else {
-      setIsVisible(true);
-      setBtnCssClass('btn btn-danger');
-      setBtnText('Toggle Hide');
-    }
+    setIsVisible((currIsVisible) => !currIsVisible);
   };
 
   return (
@@ -39,3 +36,11 @@ export default function MyToggleText(): React.ReactElement {
     </div>
   );
 }
+
+
+// pseudo code
+// const data = {};
+// function fn(data) { }
+// const result = fn(data);
+
+// const vdom = MyToggleText(state);
