@@ -4,13 +4,16 @@ import styles from './styles.module.css';
 
 export default function HelloWorld(): React.ReactElement {
 
-  const person = { name: 'bob', age: 123 };
+  const person = { name: `bob ${Math.random()}`, age: 123 };
 
   // NOT HTML!
   // NOT DOM!
   // return Virtual DOM
   return ( // JSX expressions
     <div className={styles.helloWorld + ' ' + styles.gggHhh}>
+
+      {/* <img src={person.name} /> */}
+
       <h3 id="123">
         Hello 22!!!
         {person.name.toUpperCase()}
