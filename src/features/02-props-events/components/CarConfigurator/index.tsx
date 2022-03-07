@@ -33,15 +33,18 @@ export default function CarConfigurator(): React.ReactElement {
       </div>
       <div>
         <OptionPicker
-        // label="Choose engine type"
+          label="Choose engine type"
+          options={ENGINES_DICT}
         />
 
         <OptionPicker
-        // label="Select color"
+          label={'Select color'}
+          options={COLORS_DICT}
         />
 
         <OptionPicker
-        // label="Which one?"
+          label="Which one?"
+          options={DRIVE_WHEELS_DICT}
         />
 
       </div>
