@@ -2,7 +2,7 @@ import React from 'react';
 
 import Parent from './components/Parent';
 import PeopleListExample from './components/PeopleListExample';
-// import CarConfigurator from './components/CarConfigurator';
+import CarConfigurator from './components/CarConfigurator';
 
 export default function PropsEvents() {
   return (
@@ -12,7 +12,7 @@ export default function PropsEvents() {
       <hr />
       <PeopleListExample />
       <hr />
-      {/* <CarConfigurator /> */}
+      <CarConfigurator />
     </div>
   );
 }
