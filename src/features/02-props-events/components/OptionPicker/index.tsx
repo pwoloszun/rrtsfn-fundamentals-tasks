@@ -10,8 +10,9 @@ export interface Option {
 interface OptionPickerProps {
   label: string;
   options: Option[];
-  // onOptionSelect: (option: Option) => void;
-  // selectedOption?: Option;
+  onOptionSelect: (option: Option) => void;
+  // 
+  selectedOption?: Option;
 }
 
 export default function OptionPicker(props: OptionPickerProps): React.ReactElement {
