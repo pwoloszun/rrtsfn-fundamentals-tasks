@@ -9,8 +9,16 @@ export default function HelloWorld(): React.ReactElement {
   // NOT HTML!
   // NOT DOM!
   // return Virtual DOM
+  const isOk = false;
+
+  const myEl = <div><span>qqq</span></div>;
+
   return ( // JSX expressions
     <div className={styles.helloWorld + ' ' + styles.gggHhh}>
+
+      {
+        isOk && myEl
+      }
 
       {/* <img src={person.name} /> */}
 
