@@ -46,7 +46,6 @@ export default function CarConfigurator(): React.ReactElement {
     });
   };
 
-
   return (
     <div className={styles.carConfigurator}>
       <h5>CarConfigurator</h5>
@@ -67,7 +66,6 @@ export default function CarConfigurator(): React.ReactElement {
           label={'Select color'}
           options={COLORS_DICT}
           onOptionSelect={colorChangeHandler}
-
         />
 
         <OptionPicker
