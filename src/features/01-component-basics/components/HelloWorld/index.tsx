@@ -1,17 +1,35 @@
 import React from 'react';
 
-// import styles from './styles.module.css';
+import styles from './styles.module.css';
 
 export default function HelloWorld(): React.ReactElement {
-  // JSX element !!
-  return (
-    <div>
-      <h3>
-        Hello!!!
-        </h3>
+
+  const person = { name: 'bob', age: 123 };
+
+  // NOT HTML!
+  // NOT DOM!
+  // return Virtual DOM
+  return ( // JSX expressions
+    <div className={styles.helloWorld + ' ' + styles.gggHhh}>
+      <h3 id="123">
+        Hello 22!!!
+        {person.name.toUpperCase()}
+      </h3>
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // const element = (
 //   <h1 className="greeting">
