@@ -5,6 +5,9 @@ import TodoForm, { OnCreateParams } from './components/TodoForm';
 import TodoList, { TodoItem } from './components/TodoList';
 import { TODOS_DATA } from './data/todos-data';
 
+// Smart Component aka Container
+// GOOD: WHAT app should do
+// BAD: HOW app works under the hood
 export default function TodosPage(): React.ReactElement {
   const [todos, setTodos] = useState(TODOS_DATA);
 
@@ -30,6 +33,7 @@ export default function TodosPage(): React.ReactElement {
       <h3>Todos Feature</h3>
       <div>
 
+        {/* Pure/Presentation/Dumb component */}
         <TodoList
           todos={todos}
           onRemoveClick={handleRemoveClick}
@@ -39,6 +43,7 @@ export default function TodosPage(): React.ReactElement {
       <hr />
       <div>
 
+        {/* Pure/Presentation/Dumb component */}
         <TodoForm
           onCreateClick={handleCreateClick}
         />
