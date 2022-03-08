@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Form, Button } from 'react-bootstrap';
+import produce from 'immer';
 
 export interface OnCreateParams {
   title: string;
@@ -11,30 +12,59 @@ interface TodoFormProps {
 }
 
 export default function TodoForm(props: TodoFormProps): React.ReactElement {
-  // TODO 1
+  const { onCreateClick } = props;
+  const [formValues, setFormValues] = useState({
+    titleTmp: '',
+    descriptionTmp: '',
+  });
+
+  const inputChangeHandler = (event: any) => {
+    const { name, value } = event.target;
+    setFormValues((currFormValues) => {
+      const nextFormValues = produce(currFormValues, (draft) => {
+        (draft as any)[name] = value;
+      });
+      return nextFormValues;
+    });
+  };
+
+  const submitHandler = (event: any) => {
+    event.preventDefault();
+    onCreateClick({
+      title: formValues.titleTmp,
+      description: formValues.descriptionTmp,
+    });
+  };
 
   return (
     <Card>
       <Card.Header>Create Todo Form</Card.Header>
       <Card.Body>
-        <Form>
+        <Form onSubmit={submitHandler}>
           <Form.Group controlId="formTitle">
             <Form.Label>Title</Form.Label>
-            {/* TODO 2 */}
+
             <Form.Control
+              value={formValues.titleTmp}
+              onChange={inputChangeHandler}
+              name="titleTmp"
               type="text"
               placeholder="Enter title" />
+
           </Form.Group>
 
           <Form.Group controlId="formDescription">
             <Form.Label>Description (optional)</Form.Label>
-            {/* TODO 2 */}
+
             <Form.Control
+              value={formValues.descriptionTmp}
+              onChange={inputChangeHandler}
+              name="descriptionTmp"
               type="text"
               placeholder="Enter description" />
+
           </Form.Group>
 
-          {/* TODO 3 */}
           <Button
             variant="primary"
             type="submit">
