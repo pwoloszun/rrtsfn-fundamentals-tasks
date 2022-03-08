@@ -13,12 +13,12 @@ export default function TrackableCounter() {
     canUndo,
     redo,
     undo,
-  } = useHistory(34);
+  } = useHistory(30);
 
   const undoHandler = () => undo();
   const redoHandler = () => redo();
-  const incrementHandler = () => setValue(value + 1);
-  const decrementHandler = () => setValue(value - 1);
+  const incrementHandler = () => setValue(value + 10);
+  const decrementHandler = () => setValue(value - 10);
 
   return (
     <div>
