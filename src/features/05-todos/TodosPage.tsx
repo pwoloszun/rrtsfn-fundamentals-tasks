@@ -8,16 +8,18 @@ import useManageTodos from './hooks/useManageTodos';
 // Smart Component aka Container
 // + GOOD: WHAT app should do
 // - BAD: HOW app works under the hood
+// responsibility similar to Controllers from MVC
 export default function TodosPage(): React.ReactElement {
-  const { createTodo, removeTodo, todos } = useManageTodos();
+  // const { createTodo, removeTodo, todos } = useManageTodos();
+  const todosFacade = useManageTodos();
 
   const handleRemoveClick = (todo: TodoDto) => {
-    removeTodo(todo);
+    todosFacade.removeTodo(todo);
   };
 
   const handleCreateClick = (params: OnCreateParams) => {
     const { title, description } = params;
-    createTodo(title, description);
+    todosFacade.createTodo(title, description);
   };
 
   return (
@@ -27,7 +29,7 @@ export default function TodosPage(): React.ReactElement {
 
         {/* Pure/Presentation/Dumb component */}
         <TodoList
-          todos={todos}
+          todos={todosFacade.todos}
           onRemoveClick={handleRemoveClick}
         />
 
