@@ -74,6 +74,10 @@ export default function MyFormExample(): React.ReactElement {
 
         <div>
           <button type="submit">save</button>
+          <button type="button">other</button>
+          <button type="reset">reset</button>
+
+
         </div>
       </form>
     </div>
