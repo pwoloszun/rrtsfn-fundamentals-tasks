@@ -1,31 +1,35 @@
-/*eslint @typescript-eslint/no-unused-vars: 'off'*/
-import React, { useState } from 'react';
+import React from 'react';
+import { TodoDto } from 'src/api/dto/todo-dto';
 
 import TodoForm, { OnCreateParams } from './components/TodoForm';
-import TodoList, { TodoItem } from './components/TodoList';
-import { TODOS_DATA } from './data/todos-data';
+import TodoList from './components/TodoList';
+import useManageTodos from './hooks/useManageTodos';
 
 // Smart Component aka Container
 // GOOD: WHAT app should do
 // BAD: HOW app works under the hood
 export default function TodosPage(): React.ReactElement {
-  const [todos, setTodos] = useState(TODOS_DATA);
+  // const [todos, setTodos] = useState(TODOS_DATA);
+  const { createTodo, removeTodo, todos } = useManageTodos();
 
-  const handleRemoveClick = (todo: TodoItem) => {
-    setTodos((currTodos) => {
-      const nextTodos = currTodos.filter((td) => td.id !== todo.id);
-      return nextTodos;
-    });
+  const handleRemoveClick = (todo: TodoDto) => {
+    removeTodo(todo);
+    // setTodos((currTodos) => {
+    //   const nextTodos = currTodos.filter((td) => td.id !== todo.id);
+    //   return nextTodos;
+    // });
   };
 
   const handleCreateClick = (params: OnCreateParams) => {
     const { title, description } = params;
-    setTodos((currTodos) => {
-      const id = Math.random();
-      const todo = { id, title, description };
-      const nextTodos = [...currTodos, todo];
-      return nextTodos;
-    });
+    createTodo(title, description);
+
+    // setTodos((currTodos) => {
+    //   const id = Math.random();
+    //   const todo = { id, title, description };
+    //   const nextTodos = [...currTodos, todo];
+    //   return nextTodos;
+    // });
   };
 
   return (
