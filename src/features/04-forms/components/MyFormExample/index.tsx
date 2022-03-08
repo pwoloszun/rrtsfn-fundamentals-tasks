@@ -3,41 +3,63 @@ import React, { useState } from 'react';
 
 import styles from './styles.module.css';
 import { countriesDict } from '../../dictionaries/countries.dict';
+import produce from 'immer';
 
 type FormEl = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
 
 export default function MyFormExample(): React.ReactElement {
-  const formValues = { // TODO
+  const [formValues, setFormValues] = useState({
     personName: 'bob',
     age: 8,
     countryId: countriesDict[0].id
+  });
+
+  const inputChangeHandler = (event: React.ChangeEvent<FormEl>) => {
+    const { value, name } = event.target;
+
+    setFormValues((currFormValues) => {
+      const nextFormValues = produce(currFormValues, (draft) => {
+        (draft as any)[name] = value;
+      });
+      return nextFormValues;
+    });
   };
 
-  // TODO later: refactor
-  // const inputChangeHandler = (event: React.ChangeEvent<FormEl>) => { };
-
   const submitHandler = (ev: React.SyntheticEvent) => {
-    // TODO
+    ev.preventDefault();
+    console.log('form:', formValues);
   };
 
   return (
     <div className={styles.myFormExample}>
-      <form>
+      <form onSubmit={submitHandler}>
         <label>
           Person Name
-          <input type='text' />
+          <input type='text'
+            value={formValues.personName}
+            onChange={inputChangeHandler}
+            name="personName"
+          />
         </label>
         <p>Curr Person Name: TODO_PLACEHOLDER</p>
 
         <label>
           Age
-          <input type='number' />
+          <input type='number'
+            value={formValues.age}
+            onChange={inputChangeHandler}
+            name="age"
+          />
         </label>
         <p>Curr Age: TODO_PLACEHOLDER</p>
 
         <label>
           Country
-          <select>
+          <select
+            value={formValues.countryId}
+            onChange={inputChangeHandler}
+            name="countryId"
+          >
             {
               countriesDict.map((country) => {
                 const { id, name } = country;
