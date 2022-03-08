@@ -17,7 +17,7 @@ export default function MyCounter(props: IMyCounterProps): React.ReactElement {
   return (
     <div className={styles.myCounter}>
       <h5>MyCounter</h5>
-      <h2>Value: {value}</h2>
+      <h1>Value: {value}</h1>
       <div>
         <button onClick={incrementHandler}>Increment</button>
         <button onClick={decrementHandler}>Decrement</button>

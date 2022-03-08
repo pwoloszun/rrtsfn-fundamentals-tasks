@@ -1,16 +1,32 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { merge } from 'lodash';
 
 import MyCounter, { IMyCounterProps } from '../MyCounter';
 
 describe('MyCounter', () => {
 
-  xit('should render passed value', () => {
-    expect(false).toEqual(true);
+  it('should render passed value', async () => {
+    const props = generateProps({
+      value: 123
+    });
+    renderMyCounter(props);
+
+    const valueEl = await screen.findByText(/Value/i);
+    expect(valueEl).toHaveTextContent(/Value: 123/i);
   });
 
-  xit('should emit onIncrement event on "Increment" btn click', () => {
-    expect(false).toEqual(true);
+  it('should emit onIncrement event on "Increment" btn click', async () => {
+    const props = generateProps();
+    renderMyCounter(props);
+
+    const incBtn = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    userEvent.click(incBtn);
+
+    const { onIncrement } = props;
+
+    expect(onIncrement).toHaveBeenCalledTimes(1);
+    expect(onIncrement).toHaveBeenCalledWith();
   });
 
   xit('should emit onDecrement event on "Decrement" btn click', () => {
@@ -20,5 +36,19 @@ describe('MyCounter', () => {
 });
 
 function renderMyCounter(props: IMyCounterProps) {
-  return render(<MyCounter {...props} />);
+  render(<MyCounter {...props} />);
+}
+
+function generateProps(props: Partial<IMyCounterProps> = {}): IMyCounterProps {
+  const value = 100;
+  const onIncrement = jest.fn();
+  const onDecrement = jest.fn();
+
+  const defaultProps: IMyCounterProps = {
+    value,
+    onIncrement,
+    onDecrement,
+  };
+
+  return merge({}, defaultProps, props);
 }
