@@ -29,7 +29,7 @@ export default function HooksApi() {
       </div>
       <div>
         {/* <LoadManyThings /> */}
-        {/* <MyDashboard /> */}
+        <MyDashboard />
       </div>
       <div>
         {/* <SearchWithDebounce /> */}
