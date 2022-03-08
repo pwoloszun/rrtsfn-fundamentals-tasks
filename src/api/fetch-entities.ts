@@ -13,6 +13,6 @@ export default function fetchEntities<T>(path: string): Promise<T[]> {
       return response.data;
     })
     .then((entities) => {
-      return delayedValue(entities, 1200);
+      return delayedValue(entities, 2200);
     });
 }

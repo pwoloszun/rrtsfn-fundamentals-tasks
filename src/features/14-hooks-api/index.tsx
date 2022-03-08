@@ -25,7 +25,7 @@ export default function HooksApi() {
       </div>
       <div>
         <h3>useEffects hooks</h3>
-        <HelloEffectHook />
+        {/* <HelloEffectHook /> */}
       </div>
       <div>
         {/* <LoadManyThings /> */}
