@@ -17,6 +17,7 @@ export default function TodosPage(): React.ReactElement {
 
   const handleCreateClick = ({ title, description }: OnCreateParams) => {
     // TODO
+    const id = Math.random();
   };
 
   // TODO
@@ -33,11 +34,11 @@ export default function TodosPage(): React.ReactElement {
       </div>
       <hr />
       <div>
-        {/* 
+
         <TodoForm
           onCreateClick={handleCreateClick}
         />
- */}
+
       </div>
     </div>
   );
