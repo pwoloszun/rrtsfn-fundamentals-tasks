@@ -1,4 +1,4 @@
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, within, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { stubServerApi } from 'src/mocks/utils/server-stub';
@@ -9,11 +9,33 @@ import SmartQuickSearch from '../SmartQuickSearch';
 
 describe('SmartQuickSearch', () => {
 
-  fit('should fetch and render entities from server', async () => {
-    // role === 'list'
-    // role === 'listitem'
+  it('should fetch and render entities from server', async () => {
+    renderComponent();
 
-    expect(false).toEqual(true);
+    const json = generateEntitiesJson();
+    stubServerApi.stub({
+      method: 'get',
+      path: `/api/players`,
+      responseJson: json,
+      options: { delay: 200 }
+    });
+
+    const searchField = await screen.findByLabelText(/Search/i);
+    userEvent.type(searchField, 'my search query');
+
+    const spinner = await screen.findByRole('status', { hidden: true });
+    await waitForElementToBeRemoved(spinner);
+
+    await screen.findByText(/Search results/i);
+
+    const searchResultList = await screen.findByRole('list', { hidden: true });
+    const resultItems = await within(searchResultList).findAllByRole('listitem', { hidden: true });
+
+    expect(resultItems.length).toEqual(json.length);
+    json.forEach((playerDto, index) => {
+      const item = resultItems[index];
+      expect(item).toHaveTextContent(`${playerDto.last_name}, ${playerDto.first_name}`);
+    });
   });
 
   xit('should render progress while waiting for response from server', async () => {
@@ -21,6 +43,10 @@ describe('SmartQuickSearch', () => {
   });
 
 });
+
+function renderComponent() {
+  render(<SmartQuickSearch />);
+}
 
 function generateEntitiesJson(): NbaPlayerDto[] {
   return [

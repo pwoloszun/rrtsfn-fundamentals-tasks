@@ -31,6 +31,10 @@ describe('MyAjaxCounter', () => {
     await screen.findByText(/Value: 456/i);
   });
 
+
+
+
+
   xit('should async increment value on increment click', async () => {
     expect(false).toEqual(true);
   });
