@@ -9,7 +9,10 @@ import SmartQuickSearch from '../SmartQuickSearch';
 
 describe('SmartQuickSearch', () => {
 
-  xit('should render search field', async () => {
+  fit('should fetch and render entities from server', async () => {
+    // role === 'list'
+    // role === 'listitem'
+
     expect(false).toEqual(true);
   });
 
