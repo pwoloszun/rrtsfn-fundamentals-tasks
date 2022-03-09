@@ -6,7 +6,7 @@ import PureOptionPicker, { IPureOptionPickerProps } from '../PureOptionPicker';
 
 describe('PureOptionPickerComponent', () => {
 
-  fit('should render input title', async () => {
+  fit('should render input title & button for each input item', async () => {
     // TODO: render PureOptionPicker
 
     // test renderd title
