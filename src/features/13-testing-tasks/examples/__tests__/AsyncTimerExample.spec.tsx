@@ -9,9 +9,9 @@ describe('AsyncTimerExample', () => {
     expect(screen.getByText(/AsyncTimerExample/)).toHaveTextContent(`AsyncTimerExample: 100`);
   });
 
-  xit('should render 200 asynchronously (slow ver.)', async () => {
+  it('should render 200 asynchronously (slow ver.)', async () => {
     render(<AsyncTimerExample />);
-    await waitFor(() => screen.getByText(/AsyncTimerExample: 200/), { timeout: 3000 });
+    await screen.findByText(/AsyncTimerExample: 200/, {}, { timeout: 3000 });
     expect(screen.getByText(/AsyncTimerExample/)).toHaveTextContent(`AsyncTimerExample: 200`);
   });
 
@@ -28,7 +28,7 @@ describe('AsyncTimerExample', () => {
       // jest.runOnlyPendingTimers();
     });
 
-    await waitFor(() => screen.getByText(/AsyncTimerExample: 200/));
+    await screen.findByText(/AsyncTimerExample: 200/, {}, { timeout: 3000 });
     expect(screen.getByText(/AsyncTimerExample/)).toHaveTextContent(`AsyncTimerExample: 200`);
 
     // === restore stubbed timers ===
