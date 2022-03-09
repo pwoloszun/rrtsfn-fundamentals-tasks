@@ -1,7 +1,19 @@
 interface Action {
   type: string;
-  payload: any;
+  payload?: any;
 }
+
+
+const action1: Action = {
+  type: '[Source] Event'
+};
+
+const action3: Action = {
+  type: 'sliceID/source_event'
+};
+
+
+
 
 class Store {
   dispatch(action: Action) { /*...*/ }
@@ -22,26 +34,45 @@ const state = {
     entities: [],
     count: 123
   },
-  todos: [] //state slice
+  todos: [], //state slice
+
+
+  // ecomerc
+
+  // catalog: {}, // catalog state slice
+
+  // admin: {},
+
+  // order: {}, // order state slice
+
+  // user: {},
 };
 
 
 
 // actions
-const action = {
-  type: 'users/fetched',
-  payload: {
-    users: [{ id: 123, name: 'bob' }, { id: 2, name: 'ed' }]
-  }
-}; // "event"
+const action2: Action = {
+  type: 'cartReducer/productSearchPage_addProductToCart',
+  payload: { productId: 123 }
+};
 
-store.dispatch(action);
+store.dispatch(action2);
 
 
 
 // reducer(s)
 function usersReducer(state, action) {
-  return {};
+
+  switch (action.type) {
+    case 'cartReducer/productSearchPage_addProductToCart': {
+      const nextState = { ...}
+      return nextState;
+    }
+    default:
+      return state;
+  }
+
+
 }
 
 function counterReducer(state, action) {
