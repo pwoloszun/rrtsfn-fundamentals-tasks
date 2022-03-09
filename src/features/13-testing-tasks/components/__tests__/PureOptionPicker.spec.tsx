@@ -38,8 +38,19 @@ describe('PureOptionPickerComponent', () => {
     expect(false).toEqual(true);
   });
 
-  xit('should emit "onItemSelect" event on button click', async () => {
-    expect(false).toEqual(true);
+  it('should emit "onItemSelect" event on button click', async () => {
+    const props = generateProps();
+    renderComponent(props);
+
+    const optionBtns = await screen.findAllByRole('button', { hidden: true });
+    const index = 2;
+    const pressedButton = optionBtns[index];
+    userEvent.click(pressedButton);
+
+    const { onItemSelect, items } = props;
+    expect(onItemSelect).toHaveBeenCalledTimes(1);
+    const expectedItem = items[index];
+    expect(onItemSelect).toHaveBeenCalledWith(expectedItem);
   });
 
 });
