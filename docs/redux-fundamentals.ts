@@ -27,6 +27,9 @@ class Store {
 const store = new Store();
 
 const state = {
+  newSyncCounter: { ...}
+
+
   counter: { // state slice
     value: 997
   },
@@ -64,7 +67,11 @@ store.dispatch(action2);
 function usersReducer(state, action) {
 
   switch (action.type) {
-    case 'cartReducer/productSearchPage_addProductToCart': {
+    case 'increment': {
+      const nextState = { ...}
+      return nextState;
+    }
+    case 'tttYyy': {
       const nextState = { ...}
       return nextState;
     }
