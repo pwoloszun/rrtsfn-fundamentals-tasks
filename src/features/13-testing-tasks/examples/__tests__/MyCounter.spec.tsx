@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { merge } from 'lodash';
 
@@ -21,6 +21,20 @@ describe('MyCounter', () => {
     renderMyCounter(props);
 
     const incBtn = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    userEvent.click(incBtn);
+
+    const { onIncrement } = props;
+
+    expect(onIncrement).toHaveBeenCalledTimes(1);
+    expect(onIncrement).toHaveBeenCalledWith();
+  });
+
+  it('RESTRICTED should emit onIncrement event on "Increment" btn click', async () => {
+    const props = generateProps();
+    renderMyCounter(props);
+
+    const ctrlBtsnCont = await screen.findByRole('region', { name: /Upper Control Button/i, hidden: true });
+    const incBtn = await within(ctrlBtsnCont).findByRole('button', { name: /Increment/i, hidden: true });
     userEvent.click(incBtn);
 
     const { onIncrement } = props;
