@@ -8,8 +8,27 @@ import MyAjaxCounter from '../MyAjaxCounter';
 
 describe('MyAjaxCounter', () => {
 
-  xit('should render initial value fetched from server', async () => {
-    expect(false).toEqual(true);
+  it('should render initial value fetched from server', async () => {
+    const value = 456;
+    const json = generateJson(value);
+
+    stubServerApi.stub({
+      method: 'get',
+      path: `/api/counter-values/100`,
+      responseJson: json,
+      options: {
+        delay: 200
+      }
+    });
+    renderComponent();
+
+    const spinner = await screen.findByRole('spinbutton', { hidden: true });
+    const incBtn = await screen.findByRole('button', { name: /Increment/i, hidden: true });
+    expect(incBtn).toBeDisabled();
+
+    await waitForElementToBeRemoved(spinner);
+    expect(incBtn).toBeEnabled();
+    await screen.findByText(/Value: 456/i);
   });
 
   xit('should async increment value on increment click', async () => {
@@ -21,3 +40,11 @@ describe('MyAjaxCounter', () => {
   });
 
 });
+
+function renderComponent() {
+  render(<MyAjaxCounter />);
+}
+
+function generateJson(value: number) {
+  return { id: 100, value };
+}
