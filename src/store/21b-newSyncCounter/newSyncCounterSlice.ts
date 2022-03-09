@@ -18,8 +18,9 @@ const newSyncCounterSlice = createSlice({
   initialState,
 
   reducers: {
-    counter_increment: (state, action: PayloadAction<any>) => {
-      state.value += 10;
+    counter_increment: (state, action: PayloadAction<{ incBy: number; }>) => {
+      const { incBy } = action.payload;
+      state.value += incBy;
       console.log('red:', state, action);
     },
 
